@@ -17,7 +17,7 @@ To run this project locally, make sure you have [Node.js](https://nodejs.org/) i
 1. Clone or download the repository.
 2. Go to the project directory:
    ```bash
-   cd taniarascia.com
+   cd project
    ```
 3. Install the dependencies:
    ```bash
