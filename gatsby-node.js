@@ -69,7 +69,10 @@ const createPages = async ({ graphql, actions }) => {
     }
 
     if (post.node.frontmatter.categories) {
-      post.node.frontmatter.categories.forEach((category) => {
+      const cats = Array.isArray(post.node.frontmatter.categories)
+        ? post.node.frontmatter.categories
+        : [post.node.frontmatter.categories]
+      cats.forEach((category) => {
         categorySet.add(category)
       })
     }
@@ -143,10 +146,17 @@ const createNode = ({ node, actions, getNode }) => {
     const fileNode = getNode(node.parent)
     const parsedFilePath = path.parse(fileNode.relativePath)
 
+    let prefix = ''
+    if (node.frontmatter.template === 'post') {
+      const isPersonal = node.frontmatter.categories === 'Personal' ||
+        (Array.isArray(node.frontmatter.categories) && node.frontmatter.categories.includes('Personal'))
+      prefix = isPersonal ? '/notes' : '/blog'
+    }
+
     if (Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')) {
-      slug = `/${node.frontmatter.slug}/`
+      slug = `${prefix}/${node.frontmatter.slug}/`
     } else {
-      slug = `/${parsedFilePath.dir}/`
+      slug = `${prefix}/${parsedFilePath.dir}/`
     }
 
     createNodeField({
@@ -157,5 +167,13 @@ const createNode = ({ node, actions, getNode }) => {
   }
 }
 
+const express = require('express')
+
+const onCreateDevServer = ({ app }) => {
+  app.use(express.static('public'))
+}
+
 exports.createPages = createPages
 exports.onCreateNode = createNode
+exports.onCreateDevServer = onCreateDevServer
+

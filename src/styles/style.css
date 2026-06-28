@@ -928,10 +928,9 @@ a.navbar-icon {
     padding-left: var(--layout-padding-horizontal);
 
     &.is-note {
-      justify-self: center;
-
       .main-content {
         max-width: calc(var(--content-width) + 50px);
+        margin-left: 0;
       }
 
       .main-article p {
@@ -1681,9 +1680,13 @@ a.footer-link {
   justify-content: space-between;
   padding: 1.5rem 2rem;
   gap: 1.5rem;
-  max-width: var(--content-width);
-  margin-left: auto;
-  margin-right: auto;
+}
+
+@media screen and (min-width: 1020px) {
+  .footer-section {
+    padding-left: 2rem;
+    align-items: center;
+  }
 }
 
 .footer-menu {
@@ -1708,9 +1711,6 @@ a.footer-link {
 }
 
 @media screen and (min-width: 1360px) {
-  .footer-section {
-    max-width: calc(var(--main-layout-width) + 2rem);
-  }
 }
 
 .flex {

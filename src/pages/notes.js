@@ -14,8 +14,11 @@ import config from '../utils/config'
 export default function Notes({ data }) {
   const posts = data.posts.edges
   const simplifiedPosts = useMemo(() => getSimplifiedPosts(posts), [posts])
-  const title = 'Notes'
+  
+  const notesSettings = data.homeHero?.frontmatter || {}
+  const title = notesSettings.notes_title || 'Notes'
   const description =
+    notesSettings.notes_description ||
     'Personal notes about life, music, projects, and everything else.'
 
   return (
@@ -35,6 +38,12 @@ Notes.Layout = Layout
 
 export const notesQuery = graphql`
   query NotesQuery {
+    homeHero: markdownRemark(frontmatter: { template: { eq: "home-hero" } }) {
+      frontmatter {
+        notes_title
+        notes_description
+      }
+    }
     posts: allMarkdownRemark(
       sort: { frontmatter: { date: DESC } }
       filter: {

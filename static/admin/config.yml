@@ -1,0 +1,122 @@
+local_backend: true
+
+backend:
+  name: github
+  repo: muhamadrofii/gatsby-cms-personal # Ganti saat deploy ke Vercel
+  branch: main
+  base_url: https://your-site.vercel.app # Ganti saat deploy ke Vercel
+  auth_endpoint: api/auth
+
+media_folder: "static/thumbnails"
+public_folder: "/thumbnails"
+
+collections:
+  - name: "blog"
+    label: "Blog (Technical)"
+    folder: "content"
+    filter: { field: "categories", value: "Technical" }
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Template", name: "template", widget: "hidden", default: "post" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Categories", name: "categories", widget: "hidden", default: "Technical" }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+      - { label: "Comments Off", name: "comments_off", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "notes"
+    label: "Notes (Personal)"
+    folder: "content"
+    filter: { field: "categories", value: "Personal" }
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Template", name: "template", widget: "hidden", default: "post" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Categories", name: "categories", widget: "hidden", default: "Personal" }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+      - { label: "Comments Off", name: "comments_off", widget: "boolean", default: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "projects"
+    label: "Projects"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Template", name: "template", widget: "hidden", default: "project" }
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Date", name: "date", widget: "string" }
+      - { label: "Slug/Repo Name", name: "slug", widget: "string" }
+      - { label: "Tagline", name: "tagline", widget: "string" }
+      - { label: "Demo URL", name: "url", widget: "string", required: false }
+      - { label: "Writeup URL Path", name: "writeup", widget: "string", required: false }
+      - { label: "Highlight on Home Page", name: "highlight", widget: "boolean", default: false }
+
+  - name: "experience"
+    label: "Experience"
+    folder: "content/experience"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Template", name: "template", widget: "hidden", default: "experience" }
+      - { label: "Company", name: "company", widget: "string" }
+      - { label: "Role", name: "role", widget: "string" }
+      - { label: "Date Range", name: "date_range", widget: "string" }
+      - { label: "Order (for sorting)", name: "order", widget: "number", default: 1 }
+      - { label: "Company Logo", name: "company_logo", widget: "image", required: false }
+      - { label: "Attachment (PDF)", name: "attachment_pdf", widget: "file", required: false }
+      - { label: "Description", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Pages"
+    folder: "content"
+    filter: { field: "template", value: "page" }
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Template", name: "template", widget: "hidden", default: "page" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Categories", name: "categories", widget: "select", options: ["Technical", "Personal", "Highlight", "Meta"], default: "Meta" }
+      - { label: "Linktree Link", name: "linktree_link", widget: "string", required: false }
+      - { label: "Email Address", name: "email_link", widget: "string", required: false }
+      - { label: "GitHub Link", name: "github_link", widget: "string", required: false }
+      - { label: "Instagram Link", name: "instagram_link", widget: "string", required: false }
+      - { label: "Thumbnail", name: "thumbnail", widget: "image", required: false }
+      - { label: "Comments Off", name: "comments_off", widget: "boolean", default: true }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "settings"
+    label: "Settings"
+    delete: false
+    files:
+      - name: "home"
+        label: "Home Page Hero"
+        file: "content/home-hero.md"
+        fields:
+          - { label: "Template", name: "template", widget: "hidden", default: "home-hero" }
+          - { label: "Title (Greeting)", name: "title", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Sub-description", name: "extra_description", widget: "text", required: false }
+          - { label: "Hero Image", name: "image", widget: "image", required: false }
+          - { label: "About Me Link", name: "about_me_link", widget: "string", default: "/me" }
+          - { label: "Newsletter Link", name: "newsletter_link", widget: "string", default: "https://taniarascia.substack.com" }
+          - { label: "Sidebar About Me text", name: "sidebar_about", widget: "text" }
+          - { label: "Notes Page Title", name: "notes_title", widget: "string", default: "Notes" }
+          - { label: "Notes Page Description", name: "notes_description", widget: "text" }
+          - { label: "Projects Page Title", name: "projects_title", widget: "string", default: "Projects" }
+          - { label: "Projects Page Description", name: "projects_description", widget: "text" }
+

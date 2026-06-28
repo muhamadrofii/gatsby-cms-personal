@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Helmet from 'react-helmet'
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 
 import { StarIcon } from '../assets/StarIcon'
 import { Layout } from '../components/Layout'
@@ -8,14 +8,50 @@ import { SEO } from '../components/SEO'
 import { Hero } from '../components/Hero'
 import { PageLayout } from '../components/PageLayout'
 import config from '../utils/config'
-import { projectsList } from '../data/projectsList'
 import github from '../assets/nav-github.png'
 
 export default function Projects() {
   const [repos, setRepos] = useState([])
-  const title = 'Projects'
+  
+  const data = useStaticQuery(graphql`
+    query ProjectsQuery {
+      homeHero: markdownRemark(frontmatter: { template: { eq: "home-hero" } }) {
+        frontmatter {
+          projects_title
+          projects_description
+        }
+      }
+      projects: allMarkdownRemark(
+        filter: { frontmatter: { template: { eq: "project" } } }
+        sort: { frontmatter: { date: DESC } }
+      ) {
+        edges {
+          node {
+            frontmatter {
+              name
+              date
+              slug
+              tagline
+              url
+              writeup
+              highlight
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  const projectSettings = data.homeHero?.frontmatter || {}
+  const title = projectSettings.projects_title || 'Projects'
   const description =
+    projectSettings.projects_description ||
     "Open-source projects I've made over the years, including this website, an emulator, and various games, apps, frameworks, and boilerplates."
+
+  const projects = useMemo(
+    () => data.projects?.edges.map((edge) => edge.node.frontmatter) || [],
+    [data.projects]
+  )
 
   useEffect(() => {
     async function getStars() {
@@ -28,7 +64,12 @@ export default function Projects() {
 
     getStars()
       .then((data) => {
-        setRepos(data)
+        if (Array.isArray(data)) {
+          setRepos(data)
+        } else {
+          console.warn('GitHub API rate limited or returned non-array:', data)
+          setRepos([])
+        }
       })
       .catch((err) => console.error(err))
   }, [])
@@ -42,11 +83,11 @@ export default function Projects() {
         <Hero title={title} description={description} icon={github} />
 
         <div className="cards">
-          {projectsList.map((project) => {
+          {projects.map((project) => {
             return (
               <div className="card" key={project.slug}>
                 <div className="stars">
-                  {repos.find((repo) => repo.name === project.slug) && (
+                  {Array.isArray(repos) && repos.find((repo) => repo.name === project.slug) && (
                     <div className="star">
                       <a
                         href={`https://github.com/taniarascia/${project.slug}/stargazers`}
@@ -74,7 +115,7 @@ export default function Projects() {
                   {project.writeup && (
                     <Link
                       className="button secondary small"
-                      to={project.writeup}
+                      to={project.writeup.startsWith('/blog/') ? project.writeup : `/blog${project.writeup}`}
                     >
                       Article
                     </Link>

@@ -22,7 +22,7 @@ const links = [
   { url: '/me', label: 'About Me', image: floppy },
 ]
 
-const socialLinks = [{ url: 'https://bsky.app/profile/tania.dev' }]
+const socialLinks = [{ url: 'https://www.instagram.com/em.rofii/' }]
 
 export const Navigation = ({
   handleUpdateTheme,
@@ -58,7 +58,7 @@ export const Navigation = ({
                 width="16"
               />
             </span>
-            <span className="site-name">Tania Rascia</span>
+            <span className="site-name">M. Rofi'i</span>
           </Link>
         </div>
       </div>
@@ -113,14 +113,20 @@ export const Navigation = ({
               setCurrentColor={setCurrentColor}
             />
             {socialLinks.map((link) => (
-              <SocialIcon
-                target="_blank"
+              <a
                 key={link.url}
-                url={link.url}
-                fgColor="currentColor"
-                bgColor="transparent"
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="navbar-icon"
-              />
+                style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'currentColor', padding: '4px' }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </a>
             ))}
           </nav>
         </section>

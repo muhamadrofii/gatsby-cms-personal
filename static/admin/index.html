@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Manager</title>
+</head>
+<body>
+  <!-- Sveltia CMS Application JavaScript -->
+  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  <script>
+    // Wait for CMS to be ready
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.CMS) {
+        window.CMS.registerEditorComponent({
+          id: "code-block",
+          label: "Code Block (Medium-style)",
+          fields: [
+            {
+              name: 'language',
+              label: 'Language',
+              widget: 'select',
+              options: ['javascript', 'html', 'css', 'python', 'bash', 'json', 'typescript', 'go', 'rust', 'sql', 'yaml', 'markdown'],
+              default: 'javascript'
+            },
+            {
+              name: 'code',
+              label: 'Code',
+              widget: 'text'
+            }
+          ],
+          pattern: /^```(\w*)\n([\s\S]*?)\n```$/m,
+          fromBlock: function(match) {
+            return {
+              language: match[1],
+              code: match[2]
+            };
+          },
+          toBlock: function(data) {
+            return '```' + (data.language || '') + '\n' + (data.code || '') + '\n```';
+          },
+          toPreview: function(data) {
+            return '<pre><code class="language-' + data.language + '">' + data.code + '</code></pre>';
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
