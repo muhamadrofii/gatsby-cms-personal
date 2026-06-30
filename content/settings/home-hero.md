@@ -1,6 +1,6 @@
 ---
 template: home-hero
-title: Halo, Saya Rofii!
+title: Halo, Saya Rofii!.
 description: I'm a software engineer, open-source creator, and former professional chef. I've been making websites since 1998 and writing on this blog for over ten years!
 extra_description: Everything on this site is written by me, not AI.
 image: /ram.png
