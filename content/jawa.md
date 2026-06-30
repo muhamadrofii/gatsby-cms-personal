@@ -1,6 +1,6 @@
 ---
 template: post
-title: jawas
+title: jawa
 date: 2026-06-27T15:55
 slug: jawa
 description: jawa
