@@ -102,8 +102,9 @@ collections:
   - name: "settings"
     label: "Settings"
     folder: "content/settings"
-    create: false
+    create: true
     delete: false
+    identifier_field: "title"
     slug: "{{slug}}"
     fields:
       - { label: "Template", name: "template", widget: "hidden", default: "home-hero" }
