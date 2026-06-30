@@ -53,7 +53,7 @@ export default async function handler(req, res) {
           const provider = "github";
           
           function post(message) {
-            window.opener.postMessage(message, window.location.origin);
+            window.opener.postMessage(message, "*");
           }
           
           if (token) {

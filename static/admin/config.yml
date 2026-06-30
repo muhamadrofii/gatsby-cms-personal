@@ -4,7 +4,7 @@ backend:
   name: github
   repo: muhamadrofii/gatsby-cms-personal # Ganti saat deploy ke Vercel
   branch: main
-  base_url: https://0xmuhamadrofii.my.id # Ganti saat deploy ke Vercel
+  base_url: https://www.0xmuhamadrofii.my.id
   auth_endpoint: api/auth
 
 media_folder: "static/thumbnails"
