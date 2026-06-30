@@ -101,22 +101,22 @@ collections:
 
   - name: "settings"
     label: "Settings"
+    folder: "content/settings"
+    create: false
     delete: false
-    files:
-      - name: "home"
-        label: "Home Page Hero"
-        file: "content/home-hero.md"
-        fields:
-          - { label: "Template", name: "template", widget: "hidden", default: "home-hero" }
-          - { label: "Title (Greeting)", name: "title", widget: "string" }
-          - { label: "Description", name: "description", widget: "text" }
-          - { label: "Sub-description", name: "extra_description", widget: "text", required: false }
-          - { label: "Hero Image", name: "image", widget: "string", required: false, hint: "Path to image, e.g. /ram.png" }
-          - { label: "About Me Link", name: "about_me_link", widget: "string", default: "/me" }
-          - { label: "Newsletter Link", name: "newsletter_link", widget: "string", default: "https://taniarascia.substack.com" }
-          - { label: "Sidebar About Me text", name: "sidebar_about", widget: "text" }
-          - { label: "Notes Page Title", name: "notes_title", widget: "string", default: "Notes" }
-          - { label: "Notes Page Description", name: "notes_description", widget: "text" }
-          - { label: "Projects Page Title", name: "projects_title", widget: "string", default: "Projects" }
-          - { label: "Projects Page Description", name: "projects_description", widget: "text" }
+    slug: "{{slug}}"
+    fields:
+      - { label: "Template", name: "template", widget: "hidden", default: "home-hero" }
+      - { label: "Title (Greeting)", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Sub-description", name: "extra_description", widget: "text", required: false }
+      - { label: "Hero Image", name: "image", widget: "string", required: false, hint: "Path to image, e.g. /ram.png" }
+      - { label: "About Me Link", name: "about_me_link", widget: "string", default: "/me" }
+      - { label: "Newsletter Link", name: "newsletter_link", widget: "string", default: "https://taniarascia.substack.com" }
+      - { label: "Sidebar About Me text", name: "sidebar_about", widget: "text" }
+      - { label: "Notes Page Title", name: "notes_title", widget: "string", default: "Notes" }
+      - { label: "Notes Page Description", name: "notes_description", widget: "text" }
+      - { label: "Projects Page Title", name: "projects_title", widget: "string", default: "Projects" }
+      - { label: "Projects Page Description", name: "projects_description", widget: "text" }
+
 
