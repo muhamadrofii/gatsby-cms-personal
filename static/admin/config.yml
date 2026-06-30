@@ -111,7 +111,7 @@ collections:
           - { label: "Title (Greeting)", name: "title", widget: "string" }
           - { label: "Description", name: "description", widget: "text" }
           - { label: "Sub-description", name: "extra_description", widget: "text", required: false }
-          - { label: "Hero Image", name: "image", widget: "image", required: false }
+          - { label: "Hero Image", name: "image", widget: "string", required: false, hint: "Path to image, e.g. /ram.png" }
           - { label: "About Me Link", name: "about_me_link", widget: "string", default: "/me" }
           - { label: "Newsletter Link", name: "newsletter_link", widget: "string", default: "https://taniarascia.substack.com" }
           - { label: "Sidebar About Me text", name: "sidebar_about", widget: "text" }
