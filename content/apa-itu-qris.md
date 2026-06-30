@@ -1,6 +1,6 @@
 ---
 template: post
-title: apa itu qris
+title: apa itu qris.
 date: 2026-06-26T00:07
 slug: oke
 description: test
