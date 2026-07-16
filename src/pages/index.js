@@ -13,7 +13,7 @@ import { PageLayout } from '../components/PageLayout'
 import { getSimplifiedPosts } from '../utils/helpers'
 import config from '../utils/config'
 import blog from '../assets/nav-blog.png'
-import projects from '../assets/nav-projects.png'
+import projectsIcon from '../assets/nav-projects.png'
 import github from '../assets/nav-github.png'
 
 export default function Index({ data }) {
@@ -109,7 +109,7 @@ export default function Index({ data }) {
           <Heading
             title="Notes"
             description="Life, music, projects, and everything else."
-            icon={projects}
+            icon={projectsIcon}
           />
           <Posts data={notes} />
         </section>
