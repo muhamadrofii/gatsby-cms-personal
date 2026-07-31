@@ -11,6 +11,7 @@ linktree_link: https://linktr.ee/muhamadrofii
 email_link: rofii@example.com
 github_link: https://github.com/muhamadrofii
 instagram_link: https://instagram.com/em.rofii
+thumbnail: /thumbnails/211363.png
 comments_off: true
 ---
 
