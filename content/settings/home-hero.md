@@ -10,7 +10,7 @@ description: |-
 extra_description: Everything on this site is written by me, not AI.
 image: /ram.png
 about_me_link: /me
-newsletter_link: https://taniarascia.substack.com
+newsletter_link: https://instagram.com/em.rofii
 sidebar_about: I'm Rofii, a web developer based in Indonesia. This is my digital garden.
 notes_title: My Notes
 notes_description: Koleksi catatan seputar programming.
