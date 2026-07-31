@@ -8,7 +8,7 @@ description: |-
 
   I am currently building my portfolio and seeking opportunities to grow as a Backend Developer or Software Engineer. I am eager to learn new technologies, collaborate with others, and contribute to meaningful projects that create real value.
 extra_description: Everything on this site is written by me, not AI.
-image: /ram.png
+image: /profil.png
 about_me_link: /me
 newsletter_link: https://instagram.com/em.rofii
 sidebar_about: I'm Rofii, a web developer based in Indonesia. This is my digital garden.
