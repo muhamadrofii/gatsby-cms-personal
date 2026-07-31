@@ -10,17 +10,19 @@ categories: Meta
 linktree_link: https://linktr.ee/muhamadrofii
 email_link: rofii@example.com
 github_link: https://github.com/muhamadrofii
-instagram_link: https://instagram.com/muhamadrofii
+instagram_link: https://instagram.com/em.rofii
 comments_off: true
 ---
 
 ## Hi, I'm Rofii! 👋
 
-I'm a web developer based in Indonesia. I enjoy building websites and exploring new technologies.
+I am an aspiring Backend Developer and Software Engineer with a strong interest in building scalable, secure, and maintainable applications. I enjoy solving problems through clean code and continuously improving my technical skills.
+
+My experience includes developing backend applications using Java, Spring Boot, Laravel, SQL, API Pylayment Gateway and REST APIs. I am also expanding my knowledge of software architecture, database design, web security, and best practices in software development.
+
+I am currently building my portfolio and seeking opportunities to grow as a Backend Developer or Software Engineer. I am eager to learn new technologies, collaborate with others, and contribute to meaningful projects that create real value.
 
 ### Skills
-- HTML, CSS, JavaScript
-- React, Next.js, Gatsby
-- Node.js, Express
-- Flutter, Dart
 
+- Express, Laravel, Java
+- Git, Flutter, Go
