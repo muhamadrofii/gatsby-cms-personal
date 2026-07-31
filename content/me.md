@@ -11,9 +11,11 @@ linktree_link: https://linktr.ee/muhamadrofii
 email_link: rofii@example.com
 github_link: https://github.com/muhamadrofii
 instagram_link: https://instagram.com/em.rofii
-thumbnail: /thumbnails/211363.png
+thumbnail: /thumbnails/profil.png
 comments_off: true
 ---
+
+<img src="/profil.png" alt="Rofii" style="width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--color-primary); object-fit: cover; object-position: center 20%; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12); margin: 0 0 1.5rem 0; display: block;" />
 
 ## Hi, I'm Rofii! 👋
 
