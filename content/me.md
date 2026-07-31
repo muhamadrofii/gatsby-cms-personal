@@ -15,7 +15,7 @@ thumbnail: /thumbnails/profil.png
 comments_off: true
 ---
 
-<img src="/profil.png" alt="Rofii" style="width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--color-primary); object-fit: cover; object-position: center 20%; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12); margin: 0 0 1.5rem 0; display: block;" />
+<img src="/profil.png" alt="Rofii" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--color-primary); object-fit: cover; object-position: center 15%; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12); float: right; margin: 0 0 1.5rem 1.5rem;" />
 
 ## Hi, I'm Rofii! 👋
 
