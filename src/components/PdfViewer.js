@@ -16,7 +16,7 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
         marginTop: '0.75rem',
       }}
     >
-      {/* Action Buttons Toolbar */}
+      {/* Harmonized Action Buttons Toolbar */}
       <div
         style={{
           display: 'flex',
@@ -37,18 +37,18 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
             href={src}
             target="_blank"
             rel="noreferrer"
-            className="button primary small"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.8rem' }}
+            className="button secondary small"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
           >
-            👁️ Lihat PDF
+            👁️ Lihat PDF ↗
           </a>
           <a
             href={src}
             download
             className="button secondary small"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.8rem' }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
           >
-            📥 Unduh
+            📄 Download PDF
           </a>
         </div>
       </div>
