@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
-  const [numPages, setNumPages] = useState(0)
+  const [numPages, setNumPages] = useState(1)
   const [currentSlide, setCurrentSlide] = useState(1)
+  const [useFallback, setUseFallback] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
 
   const sliderRef = useRef(null)
   const pdfDocRef = useRef(null)
   const canvasRefs = useRef([])
   const renderedPagesRef = useRef(new Set())
 
-  // Render a specific page onto canvas
-  const renderSlide = useCallback((pdfDoc, pageNum) => {
+  // Render page to canvas if PDF.js is available
+  const renderSlide = (pdfDoc, pageNum) => {
     if (!pdfDoc || renderedPagesRef.current.has(pageNum)) return Promise.resolve()
 
     const canvas = canvasRefs.current[pageNum - 1]
@@ -20,48 +20,41 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
 
     renderedPagesRef.current.add(pageNum)
 
-    return pdfDoc.getPage(pageNum).then((page) => {
-      const containerWidth = sliderRef.current?.clientWidth || 600
-      const unscaledViewport = page.getViewport({ scale: 1.0 })
+    return pdfDoc
+      .getPage(pageNum)
+      .then((page) => {
+        const containerWidth = sliderRef.current?.clientWidth || 600
+        const unscaledViewport = page.getViewport({ scale: 1.0 })
+        const targetWidth = Math.min(containerWidth - 32, 700)
+        const scale = targetWidth / unscaledViewport.width
+        const viewport = page.getViewport({ scale: scale > 0 ? scale : 1.0 })
 
-      // Responsive scale to container
-      const targetWidth = Math.min(containerWidth - 32, 700)
-      const scale = targetWidth / unscaledViewport.width
-      const viewport = page.getViewport({ scale: scale > 0 ? scale : 1.0 })
+        const context = canvas.getContext('2d')
+        canvas.height = viewport.height
+        canvas.width = viewport.width
 
-      const context = canvas.getContext('2d')
-      canvas.height = viewport.height
-      canvas.width = viewport.width
-
-      return page.render({ canvasContext: context, viewport }).promise
-    }).catch((err) => {
-      console.error(`Error rendering page ${pageNum}:`, err)
-      renderedPagesRef.current.delete(pageNum)
-    })
-  }, [])
-
-  // Lazy render surrounding pages around current active slide
-  const lazyRenderNearby = useCallback(
-    (activePage, totalPages, pdfDoc) => {
-      if (!pdfDoc) return
-      const pagesToRender = [activePage, activePage + 1, activePage - 1].filter(
-        (p) => p >= 1 && p <= totalPages
-      )
-
-      pagesToRender.forEach((p) => {
-        renderSlide(pdfDoc, p)
+        return page.render({ canvasContext: context, viewport }).promise
       })
-    },
-    [renderSlide]
-  )
+      .catch((err) => {
+        console.warn(`Could not render page ${pageNum} via PDF.js:`, err)
+        renderedPagesRef.current.delete(pageNum)
+      })
+  }
 
   useEffect(() => {
     let isMounted = true
     setIsLoading(true)
-    setError(null)
-    setNumPages(0)
-    setCurrentSlide(1)
+    setUseFallback(false)
     renderedPagesRef.current.clear()
+
+    // 1.5s TIMEOUT SAFETY NET: If CDN is slow or blocked, switch to native viewer immediately!
+    const fallbackTimer = setTimeout(() => {
+      if (isMounted && isLoading && !pdfDocRef.current) {
+        console.warn('PDF.js CDN load timeout. Switching to native PDF previewer.')
+        setUseFallback(true)
+        setIsLoading(false)
+      }
+    }, 1500)
 
     const loadPdfJs = () => {
       return new Promise((resolve, reject) => {
@@ -91,7 +84,7 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
           }
         }
 
-        script.onerror = () => reject(new Error('Failed to load PDF.js script'))
+        script.onerror = () => reject(new Error('CDN failed to load'))
       })
     }
 
@@ -102,40 +95,41 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
       })
       .then((pdf) => {
         if (!isMounted || !pdf) return
+        clearTimeout(fallbackTimer)
         pdfDocRef.current = pdf
         setNumPages(pdf.numPages)
-        // Mark loading false as soon as PDF document metadata is parsed!
         setIsLoading(false)
       })
       .catch((err) => {
         if (!isMounted) return
-        console.error('Error loading PDF for slider:', err)
-        setError('Gagal memuat slide PDF.')
+        clearTimeout(fallbackTimer)
+        console.warn('PDF.js loading error, using native fallback:', err)
+        setUseFallback(true)
         setIsLoading(false)
       })
 
     return () => {
       isMounted = false
+      clearTimeout(fallbackTimer)
     }
   }, [src])
 
-  // Trigger page 1 render as soon as numPages is set and canvas elements mount
+  // Render slides on demand
   useEffect(() => {
-    if (numPages > 0 && pdfDocRef.current) {
-      // Small timeout to allow canvas elements to attach to DOM
+    if (numPages > 0 && pdfDocRef.current && !useFallback) {
       const timer = setTimeout(() => {
-        renderSlide(pdfDocRef.current, 1)
-        if (numPages > 1) {
-          lazyRenderNearby(1, numPages, pdfDocRef.current)
+        renderSlide(pdfDocRef.current, currentSlide)
+        if (currentSlide < numPages) {
+          renderSlide(pdfDocRef.current, currentSlide + 1)
         }
       }, 50)
       return () => clearTimeout(timer)
     }
-  }, [numPages, renderSlide, lazyRenderNearby])
+  }, [numPages, currentSlide, useFallback])
 
-  // Track active slide on scroll / swipe & lazy load visible page
+  // Track active slide on scroll / swipe
   const handleScroll = () => {
-    if (!sliderRef.current || numPages === 0 || !pdfDocRef.current) return
+    if (!sliderRef.current || numPages === 0) return
     const container = sliderRef.current
     const scrollPosition = container.scrollLeft
     const width = container.clientWidth
@@ -144,24 +138,24 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
 
     if (clampedIndex !== currentSlide) {
       setCurrentSlide(clampedIndex)
-      lazyRenderNearby(clampedIndex, numPages, pdfDocRef.current)
     }
   }
 
   // Navigate to slide
   const scrollToSlide = (slideIndex) => {
-    if (!sliderRef.current || !pdfDocRef.current) return
+    if (!sliderRef.current) return
     const container = sliderRef.current
     const targetScroll = (slideIndex - 1) * container.clientWidth
 
-    renderSlide(pdfDocRef.current, slideIndex).then(() => {
-      container.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth',
-      })
-      setCurrentSlide(slideIndex)
-      lazyRenderNearby(slideIndex, numPages, pdfDocRef.current)
+    if (pdfDocRef.current && !useFallback) {
+      renderSlide(pdfDocRef.current, slideIndex)
+    }
+
+    container.scrollTo({
+      left: targetScroll,
+      behavior: 'smooth',
     })
+    setCurrentSlide(slideIndex)
   }
 
   return (
@@ -189,7 +183,7 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', fontWeight: 600 }}>
           <span>📽️ {title}</span>
-          {numPages > 0 && (
+          {!isLoading && numPages > 0 && (
             <span
               style={{
                 fontSize: '0.75rem',
@@ -206,7 +200,7 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
         </div>
 
         {/* PPT Nav Controls */}
-        {numPages > 1 && (
+        {numPages > 1 && !isLoading && (
           <div style={{ display: 'flex', gap: '0.35rem', alignItems: 'center' }}>
             <button
               onClick={() => scrollToSlide(currentSlide - 1)}
@@ -246,25 +240,41 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
         )}
       </div>
 
-      {/* Loading / Error state */}
+      {/* Loading State */}
       {isLoading && (
-        <div style={{ padding: '2.5rem 1rem', textAlign: 'center', color: 'var(--color-text-secondary, #64748b)' }}>
+        <div style={{ padding: '2rem 1rem', textAlign: 'center', color: 'var(--color-text-secondary, #64748b)' }}>
           <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>⏳</div>
           <span>Memuat slide presentasi PDF...</span>
         </div>
       )}
 
-      {error && (
-        <div style={{ padding: '1.5rem', textAlign: 'center', color: '#ef4444' }}>
-          <p style={{ margin: '0 0 0.5rem 0' }}>{error}</p>
-          <a href={src} target="_blank" rel="noreferrer" style={{ textDecoration: 'underline', fontSize: '0.9rem' }}>
-            Buka PDF secara langsung ↗
-          </a>
+      {/* Instant Native Viewer Fallback (If CDN is slow or blocked) */}
+      {!isLoading && useFallback && (
+        <div style={{ padding: '1rem', background: '#0f172a', textCenter: 'center' }}>
+          <object
+            data={`${src}#toolbar=0&navpanes=0&view=Fit`}
+            type="application/pdf"
+            width="100%"
+            height="320px"
+            style={{ display: 'block', borderRadius: '6px', border: 'none' }}
+          >
+            <div style={{ padding: '1.5rem', color: '#fff', textAlign: 'center' }}>
+              <p style={{ margin: '0 0 1rem 0' }}>Pratinjau PDF dapat dilihat langsung:</p>
+              <a
+                href={src}
+                target="_blank"
+                rel="noreferrer"
+                className="button primary small"
+              >
+                👁️ Buka Dokumen PDF ↗
+              </a>
+            </div>
+          </object>
         </div>
       )}
 
-      {/* PPT Horizontal Scroll Container (Scroll-Snap Swipe for Mobile) */}
-      {!isLoading && !error && numPages > 0 && (
+      {/* PPT Canvas Slider Container */}
+      {!isLoading && !useFallback && numPages > 0 && (
         <div
           ref={sliderRef}
           onScroll={handleScroll}
@@ -275,7 +285,7 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
             scrollBehavior: 'smooth',
             WebkitOverflowScrolling: 'touch',
             padding: '0.75rem 0',
-            background: '#0f172a', // Dark presentation backdrop
+            background: '#0f172a',
             minHeight: '280px',
           }}
         >
@@ -322,8 +332,8 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
         </div>
       )}
 
-      {/* Footer Mobile Swipe Instruction */}
-      {numPages > 1 && !isLoading && !error && (
+      {/* Footer Instructions */}
+      {!isLoading && (
         <div
           style={{
             padding: '0.4rem 0.75rem',
