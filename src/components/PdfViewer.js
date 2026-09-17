@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
   if (!src) return null
+
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent || '' : ''
+    const mobileCheck = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)
+    setIsMobile(mobileCheck)
+  }, [])
 
   const isPrivateHost = (hostname) => {
     if (!hostname) return true
@@ -23,11 +31,7 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
     !isPrivateHost(hostname)
 
   const fullUrl = typeof window !== 'undefined' ? `${window.location.origin}${src}` : src
-
-  // Use Google Docs Viewer ONLY on public live domains to avoid "Preview not available" on local IPs
-  const embedUrl = isPublicDomain
-    ? `https://docs.google.com/viewer?url=${encodeURIComponent(fullUrl)}&embedded=true`
-    : `${src}#toolbar=0&navpanes=0&view=Fit`
+  const googleDocsUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(fullUrl)}&embedded=true`
 
   return (
     <div
@@ -47,9 +51,9 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: '0.5rem',
-          padding: '0.6rem 0.85rem',
+          padding: '0.65rem 0.85rem',
           background: 'var(--color-card, #ffffff)',
-          borderBottom: '1px solid var(--color-border, #e2e8f0)',
+          borderBottom: isPublicDomain || !isMobile ? '1px solid var(--color-border, #e2e8f0)' : 'none',
         }}
       >
         <span style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--color-text, #1e293b)' }}>
@@ -76,24 +80,30 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
         </div>
       </div>
 
-      {/* Embedded PDF Viewer Frame */}
-      <div style={{ position: 'relative', width: '100%', height: height, background: '#f1f5f9' }}>
-        <object
-          data={`${src}#toolbar=0&navpanes=0&view=Fit`}
-          type="application/pdf"
-          width="100%"
-          height="100%"
-          style={{ display: 'block', width: '100%', height: '100%', border: 'none' }}
-        >
+      {/* Embedded PDF Viewer Area */}
+      {isPublicDomain ? (
+        /* Live Server (Netlify/Vercel): Use Google Docs Viewer for 100% inline mobile & desktop view */
+        <div style={{ position: 'relative', width: '100%', height: height, background: '#f1f5f9' }}>
           <iframe
-            src={embedUrl}
+            src={googleDocsUrl}
             title={title}
             width="100%"
             height="100%"
             style={{ border: 'none', display: 'block', width: '100%', height: '100%' }}
           />
-        </object>
-      </div>
+        </div>
+      ) : !isMobile ? (
+        /* Desktop PC Localhost: Use native browser PDF engine (<object>) */
+        <div style={{ position: 'relative', width: '100%', height: height, background: '#f1f5f9' }}>
+          <object
+            data={`${src}#toolbar=0&navpanes=0&view=Fit`}
+            type="application/pdf"
+            width="100%"
+            height="100%"
+            style={{ display: 'block', width: '100%', height: '100%', border: 'none' }}
+          />
+        </div>
+      ) : null /* Mobile Local IP: Clean card toolbar only, eliminating Android Chrome's native fallback prompt */}
     </div>
   )
 }
