@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const PdfViewer = ({ src, title = 'Dokumen PDF' }) => {
+export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
   if (!src) return null
 
   // Use Google Docs Viewer when on a public domain, or direct PDF embed on local/desktop
@@ -23,14 +23,16 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF' }) => {
         overflow: 'hidden',
         background: 'var(--color-bg-secondary, #f8fafc)',
         marginTop: '0.75rem',
+        height: height,
+        boxSizing: 'border-box',
       }}
     >
       <iframe
         src={embedUrl}
         title={title}
         width="100%"
-        height="320px"
-        style={{ border: 'none', display: 'block', width: '100%' }}
+        height="100%"
+        style={{ border: 'none', display: 'block', width: '100%', height: '100%' }}
       />
     </div>
   )
