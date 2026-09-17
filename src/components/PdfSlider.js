@@ -44,7 +44,6 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
   const lazyRenderNearby = useCallback(
     (activePage, totalPages, pdfDoc) => {
       if (!pdfDoc) return
-      // Render active page, previous page, and next page
       const pagesToRender = [activePage, activePage + 1, activePage - 1].filter(
         (p) => p >= 1 && p <= totalPages
       )
@@ -105,21 +104,8 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
         if (!isMounted || !pdf) return
         pdfDocRef.current = pdf
         setNumPages(pdf.numPages)
-
-        // Render Page 1 IMMEDIATELY and show slider instantly!
-        setTimeout(() => {
-          if (isMounted) {
-            renderSlide(pdf, 1).then(() => {
-              if (isMounted) {
-                setIsLoading(false)
-                // Lazy render page 2 background
-                if (pdf.numPages > 1) {
-                  lazyRenderNearby(1, pdf.numPages, pdf)
-                }
-              }
-            })
-          }
-        }, 50)
+        // Mark loading false as soon as PDF document metadata is parsed!
+        setIsLoading(false)
       })
       .catch((err) => {
         if (!isMounted) return
@@ -131,7 +117,21 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
     return () => {
       isMounted = false
     }
-  }, [src, renderSlide, lazyRenderNearby])
+  }, [src])
+
+  // Trigger page 1 render as soon as numPages is set and canvas elements mount
+  useEffect(() => {
+    if (numPages > 0 && pdfDocRef.current) {
+      // Small timeout to allow canvas elements to attach to DOM
+      const timer = setTimeout(() => {
+        renderSlide(pdfDocRef.current, 1)
+        if (numPages > 1) {
+          lazyRenderNearby(1, numPages, pdfDocRef.current)
+        }
+      }, 50)
+      return () => clearTimeout(timer)
+    }
+  }, [numPages, renderSlide, lazyRenderNearby])
 
   // Track active slide on scroll / swipe & lazy load visible page
   const handleScroll = () => {
@@ -154,7 +154,6 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
     const container = sliderRef.current
     const targetScroll = (slideIndex - 1) * container.clientWidth
 
-    // Render target slide before smooth scrolling
     renderSlide(pdfDocRef.current, slideIndex).then(() => {
       container.scrollTo({
         left: targetScroll,
@@ -265,61 +264,63 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
       )}
 
       {/* PPT Horizontal Scroll Container (Scroll-Snap Swipe for Mobile) */}
-      <div
-        ref={sliderRef}
-        onScroll={handleScroll}
-        style={{
-          display: isLoading || error ? 'none' : 'flex',
-          overflowX: 'auto',
-          scrollSnapType: 'x mandatory',
-          scrollBehavior: 'smooth',
-          WebkitOverflowScrolling: 'touch',
-          padding: '0.75rem 0',
-          background: '#0f172a', // Dark presentation backdrop
-          minHeight: '280px',
-        }}
-      >
-        {Array.from({ length: numPages }, (_, i) => i + 1).map((pageNum, idx) => (
-          <div
-            key={pageNum}
-            style={{
-              flex: '0 0 100%',
-              scrollSnapAlign: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              position: 'relative',
-              padding: '0 0.5rem',
-              boxSizing: 'border-box',
-              minHeight: '260px',
-            }}
-          >
-            <canvas
-              ref={(el) => (canvasRefs.current[idx] = el)}
-              style={{
-                maxWidth: '95%',
-                height: 'auto',
-                borderRadius: '6px',
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.4)',
-                background: '#ffffff',
-              }}
-            />
+      {!isLoading && !error && numPages > 0 && (
+        <div
+          ref={sliderRef}
+          onScroll={handleScroll}
+          style={{
+            display: 'flex',
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            scrollBehavior: 'smooth',
+            WebkitOverflowScrolling: 'touch',
+            padding: '0.75rem 0',
+            background: '#0f172a', // Dark presentation backdrop
+            minHeight: '280px',
+          }}
+        >
+          {Array.from({ length: numPages }, (_, i) => i + 1).map((pageNum, idx) => (
             <div
+              key={pageNum}
               style={{
-                marginTop: '0.5rem',
-                fontSize: '0.75rem',
-                color: '#94a3b8',
-                background: 'rgba(15, 23, 42, 0.8)',
-                padding: '0.2rem 0.6rem',
-                borderRadius: '10px',
+                flex: '0 0 100%',
+                scrollSnapAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+                padding: '0 0.5rem',
+                boxSizing: 'border-box',
+                minHeight: '260px',
               }}
             >
-              Slide {pageNum} dari {numPages}
+              <canvas
+                ref={(el) => (canvasRefs.current[idx] = el)}
+                style={{
+                  maxWidth: '95%',
+                  height: 'auto',
+                  borderRadius: '6px',
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.4)',
+                  background: '#ffffff',
+                }}
+              />
+              <div
+                style={{
+                  marginTop: '0.5rem',
+                  fontSize: '0.75rem',
+                  color: '#94a3b8',
+                  background: 'rgba(15, 23, 42, 0.8)',
+                  padding: '0.2rem 0.6rem',
+                  borderRadius: '10px',
+                }}
+              >
+                Slide {pageNum} dari {numPages}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      )}
 
       {/* Footer Mobile Swipe Instruction */}
       {numPages > 1 && !isLoading && !error && (
