@@ -10,6 +10,7 @@ import { SEO } from '../components/SEO'
 import { Heading } from '../components/Heading'
 import { Hero } from '../components/Hero'
 import { PageLayout } from '../components/PageLayout'
+import { PdfViewer } from '../components/PdfViewer'
 import { getSimplifiedPosts } from '../utils/helpers'
 import config from '../utils/config'
 import blog from '../assets/nav-blog.png'
@@ -173,15 +174,7 @@ export default function Index({ data }) {
                     <div className="experience-description" dangerouslySetInnerHTML={{ __html: exp.html }} />
                     {exp.attachment_pdf && (
                       <div style={{ marginTop: '0.75rem' }}>
-                        <div style={{ border: '1px solid var(--color-border)', borderRadius: '6px', overflow: 'hidden' }}>
-                          <iframe 
-                            src={`${exp.attachment_pdf}#toolbar=0&view=Fit`} 
-                            width="100%" 
-                            height="280px" 
-                            style={{ border: 'none', display: 'block' }} 
-                            title="PDF Preview" 
-                          />
-                        </div>
+                        <PdfViewer src={exp.attachment_pdf} title={`Document - ${exp.company}`} />
                         <div style={{ marginTop: '0.5rem' }}>
                           <a 
                             href={exp.attachment_pdf} 
