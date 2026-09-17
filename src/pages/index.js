@@ -10,7 +10,7 @@ import { SEO } from '../components/SEO'
 import { Heading } from '../components/Heading'
 import { Hero } from '../components/Hero'
 import { PageLayout } from '../components/PageLayout'
-import { PdfSlider } from '../components/PdfSlider'
+import { PdfViewer } from '../components/PdfViewer'
 import { getSimplifiedPosts } from '../utils/helpers'
 import config from '../utils/config'
 import blog from '../assets/nav-blog.png'
@@ -174,7 +174,7 @@ export default function Index({ data }) {
                     <div className="experience-description" dangerouslySetInnerHTML={{ __html: exp.html }} />
                     {exp.attachment_pdf && (
                       <div style={{ marginTop: '0.75rem' }}>
-                        <PdfSlider src={exp.attachment_pdf} title={`Slide PDF - ${exp.company}`} />
+                        <PdfViewer src={exp.attachment_pdf} title={`Dokumen PDF - ${exp.company}`} />
                         <div style={{ marginTop: '0.5rem' }}>
                           <a 
                             href={exp.attachment_pdf} 
