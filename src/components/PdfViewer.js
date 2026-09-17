@@ -9,7 +9,8 @@ async function getPdfJs() {
   const mod = await import('pdfjs-dist')
   pdfjsLib = mod
   // Use CDN worker — bundled worker causes issues with Gatsby webpack
-  pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`
+  // Use locally bundled worker — no CDN needed, no download dialog
+  pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js'
   return pdfjsLib
 }
 
