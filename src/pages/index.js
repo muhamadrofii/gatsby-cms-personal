@@ -175,17 +175,6 @@ export default function Index({ data }) {
                     {exp.attachment_pdf && (
                       <div style={{ marginTop: '0.75rem' }}>
                         <PdfViewer src={exp.attachment_pdf} title={`Dokumen PDF - ${exp.company}`} />
-                        <div style={{ marginTop: '0.5rem' }}>
-                          <a 
-                            href={exp.attachment_pdf} 
-                            target="_blank" 
-                            rel="noreferrer" 
-                            className="button secondary small"
-                            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
-                          >
-                            📄 Download PDF
-                          </a>
-                        </div>
                       </div>
                     )}
                   </div>

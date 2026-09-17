@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
   if (!src) return null
+
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const userAgent = typeof navigator !== 'undefined' ? navigator.userAgent || '' : ''
+    const mobileCheck = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)
+    setIsMobile(mobileCheck)
+  }, [])
 
   const isPrivateHost = (hostname) => {
     if (!hostname) return true
@@ -24,7 +32,6 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
 
   const fullUrl = typeof window !== 'undefined' ? `${window.location.origin}${src}` : src
 
-  // Use Google Docs Viewer ONLY for public domain live servers, direct PDF embed for local testing
   const embedUrl = isPublicDomain
     ? `https://docs.google.com/viewer?url=${encodeURIComponent(fullUrl)}&embedded=true`
     : `${src}#toolbar=0&navpanes=0&view=Fit`
@@ -37,25 +44,94 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
         overflow: 'hidden',
         background: 'var(--color-bg-secondary, #f8fafc)',
         marginTop: '0.75rem',
-        height: height,
-        boxSizing: 'border-box',
       }}
     >
-      <object
-        data={`${src}#toolbar=0&navpanes=0&view=Fit`}
-        type="application/pdf"
-        width="100%"
-        height="100%"
-        style={{ display: 'block', width: '100%', height: '100%', border: 'none' }}
+      {/* Action Buttons Toolbar */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          flexWrap: 'wrap',
+          gap: '0.5rem',
+          padding: '0.6rem 0.85rem',
+          background: 'var(--color-card, #ffffff)',
+          borderBottom: '1px solid var(--color-border, #e2e8f0)',
+        }}
       >
-        <iframe
-          src={embedUrl}
-          title={title}
-          width="100%"
-          height="100%"
-          style={{ border: 'none', display: 'block', width: '100%', height: '100%' }}
-        />
-      </object>
+        <span style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--color-text, #1e293b)' }}>
+          📄 {title}
+        </span>
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+          <a
+            href={src}
+            target="_blank"
+            rel="noreferrer"
+            className="button primary small"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.8rem' }}
+          >
+            👁️ Lihat PDF
+          </a>
+          <a
+            href={src}
+            download
+            className="button secondary small"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.8rem' }}
+          >
+            📥 Unduh
+          </a>
+        </div>
+      </div>
+
+      {/* Embedded Viewer Area */}
+      <div style={{ position: 'relative', width: '100%', height: height, background: '#f1f5f9' }}>
+        {isMobile && !isPublicDomain ? (
+          /* On Mobile local testing: Display a clean notice card since Android Chrome restricts local iframe PDFs */
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '100%',
+              padding: '1.5rem',
+              textAlign: 'center',
+              boxSizing: 'border-box',
+            }}
+          >
+            <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>📑</div>
+            <p style={{ margin: '0 0 1rem 0', fontSize: '0.85rem', color: 'var(--color-text-secondary, #475569)' }}>
+              Pratinjau PDF di Mobile dapat dibuka langsung di tab baru.
+            </p>
+            <a
+              href={src}
+              target="_blank"
+              rel="noreferrer"
+              className="button primary small"
+              style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}
+            >
+              👁️ Lihat PDF (Buka di Tab Baru) ↗
+            </a>
+          </div>
+        ) : (
+          /* Desktop & Production Live Domain Embedded Viewer */
+          <object
+            data={`${src}#toolbar=0&navpanes=0&view=Fit`}
+            type="application/pdf"
+            width="100%"
+            height="100%"
+            style={{ display: 'block', width: '100%', height: '100%', border: 'none' }}
+          >
+            <iframe
+              src={embedUrl}
+              title={title}
+              width="100%"
+              height="100%"
+              style={{ border: 'none', display: 'block', width: '100%', height: '100%' }}
+            />
+          </object>
+        )}
+      </div>
     </div>
   )
 }
