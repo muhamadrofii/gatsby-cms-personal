@@ -9,15 +9,22 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
   const sliderRef = useRef(null)
   const pdfDocRef = useRef(null)
   const canvasRefs = useRef([])
+  const renderedPagesRef = useRef(new Set())
 
   // Render a specific page onto canvas
-  const renderSlide = useCallback((pdfDoc, pageNum, canvas) => {
-    if (!pdfDoc || !canvas) return Promise.resolve()
+  const renderSlide = useCallback((pdfDoc, pageNum) => {
+    if (!pdfDoc || renderedPagesRef.current.has(pageNum)) return Promise.resolve()
+
+    const canvas = canvasRefs.current[pageNum - 1]
+    if (!canvas) return Promise.resolve()
+
+    renderedPagesRef.current.add(pageNum)
 
     return pdfDoc.getPage(pageNum).then((page) => {
       const containerWidth = sliderRef.current?.clientWidth || 600
       const unscaledViewport = page.getViewport({ scale: 1.0 })
-      // Scale canvas to fit slider container
+
+      // Responsive scale to container
       const targetWidth = Math.min(containerWidth - 32, 700)
       const scale = targetWidth / unscaledViewport.width
       const viewport = page.getViewport({ scale: scale > 0 ? scale : 1.0 })
@@ -27,23 +34,24 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
       canvas.width = viewport.width
 
       return page.render({ canvasContext: context, viewport }).promise
+    }).catch((err) => {
+      console.error(`Error rendering page ${pageNum}:`, err)
+      renderedPagesRef.current.delete(pageNum)
     })
   }, [])
 
-  // Render all pages
-  const renderAllSlides = useCallback(
-    async (pdfDoc, totalPages) => {
-      for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
-        const canvas = canvasRefs.current[pageNum - 1]
-        if (canvas) {
-          try {
-            await renderSlide(pdfDoc, pageNum, canvas)
-          } catch (e) {
-            console.error(`Error rendering page ${pageNum}:`, e)
-          }
-        }
-      }
-      setIsLoading(false)
+  // Lazy render surrounding pages around current active slide
+  const lazyRenderNearby = useCallback(
+    (activePage, totalPages, pdfDoc) => {
+      if (!pdfDoc) return
+      // Render active page, previous page, and next page
+      const pagesToRender = [activePage, activePage + 1, activePage - 1].filter(
+        (p) => p >= 1 && p <= totalPages
+      )
+
+      pagesToRender.forEach((p) => {
+        renderSlide(pdfDoc, p)
+      })
     },
     [renderSlide]
   )
@@ -54,6 +62,7 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
     setError(null)
     setNumPages(0)
     setCurrentSlide(1)
+    renderedPagesRef.current.clear()
 
     const loadPdfJs = () => {
       return new Promise((resolve, reject) => {
@@ -96,12 +105,21 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
         if (!isMounted || !pdf) return
         pdfDocRef.current = pdf
         setNumPages(pdf.numPages)
-        // Wait for canvas elements to mount into DOM
+
+        // Render Page 1 IMMEDIATELY and show slider instantly!
         setTimeout(() => {
           if (isMounted) {
-            renderAllSlides(pdf, pdf.numPages)
+            renderSlide(pdf, 1).then(() => {
+              if (isMounted) {
+                setIsLoading(false)
+                // Lazy render page 2 background
+                if (pdf.numPages > 1) {
+                  lazyRenderNearby(1, pdf.numPages, pdf)
+                }
+              }
+            })
           }
-        }, 100)
+        }, 50)
       })
       .catch((err) => {
         if (!isMounted) return
@@ -113,29 +131,38 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
     return () => {
       isMounted = false
     }
-  }, [src, renderAllSlides])
+  }, [src, renderSlide, lazyRenderNearby])
 
-  // Track active slide on scroll / swipe
+  // Track active slide on scroll / swipe & lazy load visible page
   const handleScroll = () => {
-    if (!sliderRef.current || numPages === 0) return
+    if (!sliderRef.current || numPages === 0 || !pdfDocRef.current) return
     const container = sliderRef.current
     const scrollPosition = container.scrollLeft
     const width = container.clientWidth
     const index = Math.round(scrollPosition / width) + 1
     const clampedIndex = Math.min(Math.max(index, 1), numPages)
-    setCurrentSlide(clampedIndex)
+
+    if (clampedIndex !== currentSlide) {
+      setCurrentSlide(clampedIndex)
+      lazyRenderNearby(clampedIndex, numPages, pdfDocRef.current)
+    }
   }
 
   // Navigate to slide
   const scrollToSlide = (slideIndex) => {
-    if (!sliderRef.current) return
+    if (!sliderRef.current || !pdfDocRef.current) return
     const container = sliderRef.current
     const targetScroll = (slideIndex - 1) * container.clientWidth
-    container.scrollTo({
-      left: targetScroll,
-      behavior: 'smooth',
+
+    // Render target slide before smooth scrolling
+    renderSlide(pdfDocRef.current, slideIndex).then(() => {
+      container.scrollTo({
+        left: targetScroll,
+        behavior: 'smooth',
+      })
+      setCurrentSlide(slideIndex)
+      lazyRenderNearby(slideIndex, numPages, pdfDocRef.current)
     })
-    setCurrentSlide(slideIndex)
   }
 
   return (
@@ -265,6 +292,7 @@ export const PdfSlider = ({ src, title = 'Presentasi PDF' }) => {
               position: 'relative',
               padding: '0 0.5rem',
               boxSizing: 'border-box',
+              minHeight: '260px',
             }}
           >
             <canvas
