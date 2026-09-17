@@ -173,7 +173,23 @@ const onCreateDevServer = ({ app }) => {
   app.use(express.static('public'))
 }
 
+// Fix: pdfjs-dist optionally requires 'canvas' for Node.js environments.
+// During Gatsby SSR/HTML generation, webpack tries to resolve it and fails.
+// We alias it to false so webpack skips it — canvas is only needed in the browser.
+const onCreateWebpackConfig = ({ stage, actions }) => {
+  if (stage === 'build-html' || stage === 'develop-html') {
+    actions.setWebpackConfig({
+      resolve: {
+        alias: {
+          canvas: false,
+        },
+      },
+    })
+  }
+}
+
 exports.createPages = createPages
 exports.onCreateNode = createNode
 exports.onCreateDevServer = onCreateDevServer
+exports.onCreateWebpackConfig = onCreateWebpackConfig
 
