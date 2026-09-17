@@ -5,14 +5,34 @@ let pdfjsLib = null
 
 async function getPdfJs() {
   if (pdfjsLib) return pdfjsLib
-  // Dynamic import so Gatsby SSR doesn't choke on browser-only APIs
   const mod = await import('pdfjs-dist')
   pdfjsLib = mod
-  // Use CDN worker — bundled worker causes issues with Gatsby webpack
-  // Use locally bundled worker — no CDN needed, no download dialog
   pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js'
   return pdfjsLib
 }
+
+// Load Lucide icons from CDN once
+let lucideLoaded = false
+function loadLucide() {
+  if (typeof window === 'undefined' || lucideLoaded) return
+  if (document.getElementById('lucide-cdn')) return
+  const script = document.createElement('script')
+  script.id = 'lucide-cdn'
+  script.src = 'https://unpkg.com/lucide@latest/dist/umd/lucide.min.js'
+  script.onload = () => {
+    lucideLoaded = true
+    if (window.lucide) window.lucide.createIcons()
+  }
+  document.head.appendChild(script)
+}
+
+// SVG icon component using Lucide (inline SVG fallback if CDN not ready)
+const Icon = ({ name, size = 14 }) => (
+  <i
+    data-lucide={name}
+    style={{ width: size, height: size, display: 'inline-block', verticalAlign: 'middle', flexShrink: 0 }}
+  />
+)
 
 export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
   if (!src) return null
@@ -38,7 +58,7 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
     return pdfDoc.getPage(pageNum).then((page) => {
       const containerWidth = containerRef.current?.clientWidth || 600
       const unscaledViewport = page.getViewport({ scale: 1.0 })
-      const targetWidth = Math.min(containerWidth - 24, 800) // subtract padding
+      const targetWidth = Math.min(containerWidth - 24, 800)
       const scale = targetWidth / unscaledViewport.width
       const viewport = page.getViewport({ scale: scale > 0 ? scale : 1.0 })
 
@@ -54,6 +74,8 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
       renderTaskRef.current = renderTask
       return renderTask.promise.then(() => {
         renderTaskRef.current = null
+        // Re-activate Lucide icons after render
+        if (window.lucide) window.lucide.createIcons()
       })
     }).catch((err) => {
       if (err?.name !== 'RenderingCancelledException') {
@@ -64,6 +86,7 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
 
   useEffect(() => {
     if (typeof window === 'undefined') return
+    loadLucide()
 
     let isMounted = true
     setIsLoading(true)
@@ -91,20 +114,22 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
 
     return () => {
       isMounted = false
-      if (renderTaskRef.current) {
-        renderTaskRef.current.cancel()
-      }
+      if (renderTaskRef.current) renderTaskRef.current.cancel()
     }
   }, [src])
 
-  // Render canvas whenever page changes
   useEffect(() => {
     if (numPages > 0 && pdfDocRef.current && !isLoading) {
-      renderPage(pdfDocRef.current, currentPage)
+      renderPage(pdfDocRef.current, currentPage).then(() => {
+        if (window.lucide) window.lucide.createIcons()
+      })
     }
   }, [currentPage, numPages, isLoading, renderPage])
 
-  // Re-render on window resize (responsive width)
+  useEffect(() => {
+    if (window.lucide) window.lucide.createIcons()
+  })
+
   useEffect(() => {
     let timer
     const handleResize = () => {
@@ -122,18 +147,58 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
     }
   }, [currentPage, isLoading, renderPage])
 
+  const btnBase = {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '0.3rem',
+    padding: '0.35rem 0.7rem',
+    borderRadius: '6px',
+    fontSize: '0.78rem',
+    fontWeight: 600,
+    cursor: 'pointer',
+    border: '1.5px solid',
+    lineHeight: 1,
+    textDecoration: 'none',
+    transition: 'all 0.15s ease',
+    whiteSpace: 'nowrap',
+  }
+
+  const btnSecondary = {
+    ...btnBase,
+    background: 'var(--color-background-button-secondary, transparent)',
+    borderColor: 'var(--color-border-button-secondary, #cbd5e1)',
+    color: 'var(--color-text-button-secondary, #374151)',
+  }
+
+  const btnNavDisabled = {
+    ...btnBase,
+    background: 'transparent',
+    borderColor: 'transparent',
+    color: 'var(--color-text-secondary, #9ca3af)',
+    cursor: 'not-allowed',
+    opacity: 0.35,
+    padding: '0.35rem 0.45rem',
+  }
+
+  const btnNav = {
+    ...btnBase,
+    background: 'transparent',
+    borderColor: 'transparent',
+    color: 'var(--color-text-secondary, #64748b)',
+    padding: '0.35rem 0.45rem',
+  }
+
   return (
     <div
       ref={containerRef}
       style={{
         border: '1px solid var(--color-border, #e2e8f0)',
-        borderRadius: '8px',
+        borderRadius: '10px',
         overflow: 'hidden',
-        background: 'var(--color-bg-secondary, #f8fafc)',
-        marginTop: '0.75rem',
+        marginTop: '0.85rem',
       }}
     >
-      {/* Toolbar */}
+      {/* ── Toolbar ─────────────────────────────────────────── */}
       <div
         style={{
           display: 'flex',
@@ -141,87 +206,132 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
           justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: '0.5rem',
-          padding: '0.6rem 0.85rem',
+          padding: '0.55rem 0.85rem',
           background: 'var(--color-card, #ffffff)',
           borderBottom: '1px solid var(--color-border, #e2e8f0)',
         }}
       >
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-          <span style={{ fontWeight: 600, fontSize: '0.85rem', color: 'var(--color-text, #1e293b)' }}>
-            📄 {title}
+        {/* Left: title + page count */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', minWidth: 0 }}>
+          <Icon name="file-text" size={14} />
+          <span
+            style={{
+              fontWeight: 600,
+              fontSize: '0.82rem',
+              color: 'var(--color-text, #1e293b)',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              maxWidth: '180px',
+            }}
+          >
+            {title}
           </span>
           {numPages > 0 && (
-            <span style={{ fontSize: '0.75rem', color: 'var(--color-text-secondary, #64748b)' }}>
-              ({currentPage}/{numPages})
+            <span
+              style={{
+                fontSize: '0.72rem',
+                color: 'var(--color-text-secondary, #94a3b8)',
+                background: 'var(--color-background-button-secondary, #f1f5f9)',
+                border: '1px solid var(--color-border, #e2e8f0)',
+                borderRadius: '99px',
+                padding: '0.1rem 0.5rem',
+                flexShrink: 0,
+              }}
+            >
+              {currentPage} / {numPages}
             </span>
           )}
         </div>
 
-        <div style={{ display: 'flex', gap: '0.4rem', alignItems: 'center', flexWrap: 'wrap' }}>
-          {numPages > 1 && (
-            <>
-              <button
-                onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                disabled={currentPage <= 1}
-                className="button secondary small"
-                style={{ opacity: currentPage <= 1 ? 0.4 : 1, cursor: currentPage <= 1 ? 'not-allowed' : 'pointer' }}
-              >
-                ◀
-              </button>
-              <button
-                onClick={() => setCurrentPage(p => Math.min(numPages, p + 1))}
-                disabled={currentPage >= numPages}
-                className="button secondary small"
-                style={{ opacity: currentPage >= numPages ? 0.4 : 1, cursor: currentPage >= numPages ? 'not-allowed' : 'pointer' }}
-              >
-                ▶
-              </button>
-            </>
-          )}
+        {/* Right: nav + action buttons */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', flexShrink: 0 }}>
+          {/* Prev */}
+          <button
+            onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
+            disabled={currentPage <= 1 || numPages <= 1}
+            title="Halaman sebelumnya"
+            style={currentPage <= 1 || numPages <= 1 ? btnNavDisabled : btnNav}
+          >
+            <Icon name="chevron-left" size={15} />
+          </button>
+
+          {/* Next */}
+          <button
+            onClick={() => setCurrentPage(p => Math.min(numPages, p + 1))}
+            disabled={currentPage >= numPages || numPages <= 1}
+            title="Halaman berikutnya"
+            style={currentPage >= numPages || numPages <= 1 ? btnNavDisabled : btnNav}
+          >
+            <Icon name="chevron-right" size={15} />
+          </button>
+
+          {/* Divider */}
+          <div style={{ width: '1px', height: '20px', background: 'var(--color-border, #e2e8f0)', margin: '0 0.2rem' }} />
+
+          {/* Lihat PDF */}
           <a
             href={src}
             target="_blank"
             rel="noreferrer"
-            className="button secondary small"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+            title="Buka di tab baru"
+            style={btnSecondary}
           >
-            👁️ Lihat PDF ↗
+            <Icon name="external-link" size={13} />
+            <span>Lihat</span>
           </a>
+
+          {/* Download PDF */}
           <a
             href={src}
             download
-            className="button secondary small"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}
+            title="Download PDF"
+            style={btnSecondary}
           >
-            📄 Download PDF
+            <Icon name="download" size={13} />
+            <span>Download</span>
           </a>
         </div>
       </div>
 
-      {/* Canvas area */}
+      {/* ── Canvas area ─────────────────────────────────────── */}
       <div
         style={{
-          background: '#1e293b',
+          background: '#0f172a',
           minHeight: height,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '0.75rem',
+          padding: '1rem',
           boxSizing: 'border-box',
         }}
       >
         {isLoading && (
-          <div style={{ textAlign: 'center', color: '#94a3b8', padding: '2rem' }}>
-            <div style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>⏳</div>
-            <span style={{ fontSize: '0.85rem' }}>Memuat dokumen...</span>
+          <div style={{ textAlign: 'center', padding: '2rem' }}>
+            <div
+              style={{
+                width: '36px',
+                height: '36px',
+                border: '3px solid rgba(148,163,184,0.2)',
+                borderTop: '3px solid #94a3b8',
+                borderRadius: '50%',
+                margin: '0 auto 0.75rem',
+                animation: 'pdfSpin 0.8s linear infinite',
+              }}
+            />
+            <style>{`@keyframes pdfSpin { to { transform: rotate(360deg); } }`}</style>
+            <span style={{ fontSize: '0.8rem', color: '#64748b' }}>Memuat dokumen...</span>
           </div>
         )}
 
         {error && (
-          <div style={{ textAlign: 'center', color: '#f87171', padding: '1.5rem' }}>
-            <p style={{ margin: '0 0 1rem 0', fontSize: '0.9rem' }}>{error}</p>
-            <a href={src} target="_blank" rel="noreferrer" className="button secondary small">
-              👁️ Buka Langsung ↗
+          <div style={{ textAlign: 'center', padding: '1.5rem' }}>
+            <div style={{ color: '#f87171', marginBottom: '0.75rem', fontSize: '0.9rem' }}>
+              Gagal memuat PDF
+            </div>
+            <a href={src} target="_blank" rel="noreferrer" style={{ ...btnSecondary, fontSize: '0.8rem' }}>
+              <Icon name="external-link" size={13} />
+              Buka Langsung
             </a>
           </div>
         )}
@@ -232,8 +342,8 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
             display: isLoading || error ? 'none' : 'block',
             maxWidth: '100%',
             height: 'auto',
-            borderRadius: '4px',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+            borderRadius: '6px',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.5)',
             background: '#fff',
           }}
         />
