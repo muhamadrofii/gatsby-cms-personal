@@ -18,6 +18,87 @@ import projectsIcon from '../assets/nav-projects.png'
 import github from '../assets/nav-github.png'
 import floppy from '../assets/floppylogo.png'
 
+const CertificateCard = ({ cert }) => {
+  const [showPdf, setShowPdf] = useState(false)
+
+  return (
+    <div className="card certificate-card">
+      <div>
+        <div className="certificate-header">
+          <div>
+            <h3 className="certificate-title">{cert.title}</h3>
+            {cert.issuer && (
+              <span className="certificate-issuer">
+                🏛️ {cert.issuer}
+              </span>
+            )}
+          </div>
+          {cert.issue_date && (
+            <span className="certificate-date-badge">
+              📅 {cert.issue_date}
+            </span>
+          )}
+        </div>
+
+        {cert.credential_id && (
+          <div className="certificate-credential">
+            Credential ID: <code>{cert.credential_id}</code>
+          </div>
+        )}
+
+        {cert.html && cert.html.trim().length > 0 && (
+          <div
+            className="certificate-description"
+            dangerouslySetInnerHTML={{ __html: cert.html }}
+          />
+        )}
+
+        {cert.attachment_pdf && showPdf && (
+          <div style={{ marginTop: '0.75rem', marginBottom: '1rem' }}>
+            <PdfViewer
+              src={cert.attachment_pdf}
+              title={`Sertifikat PDF - ${cert.title}`}
+            />
+          </div>
+        )}
+      </div>
+
+      <div className="certificate-actions">
+        {cert.attachment_pdf && (
+          <button
+            type="button"
+            className="button secondary small"
+            onClick={() => setShowPdf(!showPdf)}
+          >
+            {showPdf ? '▲ Tutup Preview PDF' : '📄 Preview PDF'}
+          </button>
+        )}
+        {cert.credential_url && (
+          <a
+            className="button secondary small"
+            href={cert.credential_url}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Verify ↗
+          </a>
+        )}
+        {cert.attachment_pdf && (
+          <a
+            className="button secondary small"
+            href={cert.attachment_pdf}
+            target="_blank"
+            rel="noreferrer"
+            download
+          >
+            Download PDF ⬇
+          </a>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default function Index({ data }) {
   const latestNotes = data.latestNotes?.edges || []
   const latestArticles = data.latestArticles?.edges || []
@@ -263,115 +344,9 @@ export default function Index({ data }) {
             description={certificates_description}
             icon={floppy}
           />
-          <div className="certificate-list">
+          <div className="certificates-grid">
             {certificates.map((cert, index) => (
-              <div
-                className="card certificate-card"
-                key={index}
-                style={{
-                  marginBottom: '1.5rem',
-                  padding: '1.5rem',
-                  borderRadius: '8px',
-                  border: '1px solid var(--color-border)',
-                  backgroundColor: 'var(--color-bg-secondary)',
-                }}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'baseline',
-                    flexWrap: 'wrap',
-                    gap: '0.5rem',
-                    marginBottom: '0.75rem',
-                  }}
-                >
-                  <div>
-                    <h3 style={{ margin: 0, fontSize: '1.2rem' }}>
-                      {cert.title}
-                    </h3>
-                    {cert.issuer && (
-                      <div
-                        style={{
-                          marginTop: '0.25rem',
-                          fontSize: '0.9rem',
-                          color: 'var(--color-primary)',
-                          fontWeight: '600',
-                        }}
-                      >
-                        {cert.issuer}
-                      </div>
-                    )}
-                  </div>
-                  {cert.issue_date && (
-                    <span
-                      style={{
-                        fontSize: '0.85rem',
-                        color: 'var(--color-text-light)',
-                        backgroundColor: 'var(--color-bg)',
-                        padding: '4px 10px',
-                        borderRadius: '4px',
-                        border: '1px solid var(--color-border)',
-                      }}
-                    >
-                      {cert.issue_date}
-                    </span>
-                  )}
-                </div>
-
-                {cert.credential_id && (
-                  <div
-                    style={{
-                      fontSize: '0.85rem',
-                      color: 'var(--color-text-light)',
-                      marginBottom: '0.75rem',
-                    }}
-                  >
-                    Credential ID: <code style={{ fontSize: '0.8rem' }}>{cert.credential_id}</code>
-                  </div>
-                )}
-
-                {cert.html && cert.html.trim().length > 0 && (
-                  <div
-                    className="certificate-description"
-                    dangerouslySetInnerHTML={{ __html: cert.html }}
-                    style={{ fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1rem' }}
-                  />
-                )}
-
-                {cert.attachment_pdf && (
-                  <div style={{ marginTop: '0.75rem', marginBottom: '1rem' }}>
-                    <PdfViewer
-                      src={cert.attachment_pdf}
-                      title={`Dokumen PDF - ${cert.title}`}
-                    />
-                  </div>
-                )}
-
-                <div className="card-links" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginTop: '0.75rem' }}>
-                  {cert.credential_url && (
-                    <a
-                      className="button secondary small"
-                      href={cert.credential_url}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Verify Credential ↗
-                    </a>
-                  )}
-                  {cert.attachment_pdf && (
-                    <a
-                      className="button secondary small"
-                      href={cert.attachment_pdf}
-                      target="_blank"
-                      rel="noreferrer"
-                      download
-                    >
-                      Download PDF
-                    </a>
-                  )}
-                </div>
-              </div>
+              <CertificateCard cert={cert} key={index} />
             ))}
           </div>
         </section>

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -9,6 +9,101 @@ import { PageLayout } from '../components/PageLayout'
 import { PdfViewer } from '../components/PdfViewer'
 import config from '../utils/config'
 import floppy from '../assets/floppylogo.png'
+
+const CertificateCard = ({ cert }) => {
+  const [showPdf, setShowPdf] = useState(false)
+
+  return (
+    <div className="card certificate-card">
+      <div>
+        <div className="certificate-header">
+          <div>
+            <h3 className="certificate-title">{cert.title}</h3>
+            {cert.issuer && (
+              <span className="certificate-issuer">
+                🏛️ {cert.issuer}
+              </span>
+            )}
+          </div>
+          {cert.issue_date && (
+            <span className="certificate-date-badge">
+              📅 {cert.issue_date}
+            </span>
+          )}
+        </div>
+
+        {cert.credential_id && (
+          <div className="certificate-credential">
+            Credential ID: <code>{cert.credential_id}</code>
+          </div>
+        )}
+
+        {cert.html && cert.html.trim().length > 0 && (
+          <div
+            className="certificate-description"
+            dangerouslySetInnerHTML={{ __html: cert.html }}
+          />
+        )}
+
+        {cert.certificate_image && (
+          <div style={{ marginBottom: '1rem' }}>
+            <img
+              src={cert.certificate_image}
+              alt={`${cert.title} Certificate`}
+              style={{
+                maxWidth: '100%',
+                borderRadius: '6px',
+                border: '1px solid var(--color-border)',
+              }}
+            />
+          </div>
+        )}
+
+        {cert.certificate_pdf && showPdf && (
+          <div style={{ marginTop: '0.75rem', marginBottom: '1rem' }}>
+            <PdfViewer
+              src={cert.certificate_pdf}
+              title={`Sertifikat PDF - ${cert.title}`}
+            />
+          </div>
+        )}
+      </div>
+
+      <div className="certificate-actions">
+        {cert.certificate_pdf && (
+          <button
+            type="button"
+            className="button secondary small"
+            onClick={() => setShowPdf(!showPdf)}
+          >
+            {showPdf ? '▲ Tutup Preview PDF' : '📄 Preview PDF'}
+          </button>
+        )}
+        {cert.credential_url && (
+          <a
+            className="button secondary small"
+            href={cert.credential_url}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Verify ↗
+          </a>
+        )}
+        {cert.certificate_pdf && (
+          <a
+            className="button secondary small"
+            href={cert.certificate_pdf}
+            target="_blank"
+            rel="noreferrer"
+            download
+          >
+            Download PDF ⬇
+          </a>
+        )}
+      </div>
+    </div>
+  )
+}
 
 export default function Certificates() {
   const data = useStaticQuery(graphql`
@@ -65,144 +160,9 @@ export default function Certificates() {
       <PageLayout>
         <Hero title={title} description={description} icon={floppy} />
 
-        <div className="certificate-list">
+        <div className="certificates-grid">
           {certificates.map((cert, index) => (
-            <div
-              className="card certificate-card"
-              key={index}
-              style={{
-                marginBottom: '1.75rem',
-                padding: '1.5rem',
-                borderRadius: '8px',
-                border: '1px solid var(--color-border)',
-                backgroundColor: 'var(--color-bg-secondary)',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'baseline',
-                  flexWrap: 'wrap',
-                  gap: '0.5rem',
-                  marginBottom: '0.75rem',
-                }}
-              >
-                <div>
-                  <h3 style={{ margin: 0, fontSize: '1.25rem' }}>
-                    {cert.title}
-                  </h3>
-                  {cert.issuer && (
-                    <div
-                      style={{
-                        marginTop: '0.25rem',
-                        fontSize: '0.95rem',
-                        color: 'var(--color-primary)',
-                        fontWeight: '600',
-                      }}
-                    >
-                      {cert.issuer}
-                    </div>
-                  )}
-                </div>
-                {cert.issue_date && (
-                  <span
-                    style={{
-                      fontSize: '0.85rem',
-                      color: 'var(--color-text-light)',
-                      backgroundColor: 'var(--color-bg)',
-                      padding: '4px 10px',
-                      borderRadius: '4px',
-                      border: '1px solid var(--color-border)',
-                    }}
-                  >
-                    {cert.issue_date}
-                  </span>
-                )}
-              </div>
-
-              {cert.credential_id && (
-                <div
-                  style={{
-                    fontSize: '0.85rem',
-                    color: 'var(--color-text-light)',
-                    marginBottom: '0.75rem',
-                  }}
-                >
-                  Credential ID:{' '}
-                  <code style={{ fontSize: '0.8rem' }}>
-                    {cert.credential_id}
-                  </code>
-                </div>
-              )}
-
-              {cert.html && cert.html.trim().length > 0 && (
-                <div
-                  className="certificate-description"
-                  dangerouslySetInnerHTML={{ __html: cert.html }}
-                  style={{
-                    fontSize: '0.95rem',
-                    lineHeight: '1.6',
-                    marginBottom: '1rem',
-                  }}
-                />
-              )}
-
-              {cert.certificate_image && (
-                <div style={{ marginBottom: '1rem' }}>
-                  <img
-                    src={cert.certificate_image}
-                    alt={`${cert.title} Certificate`}
-                    style={{
-                      maxWidth: '100%',
-                      borderRadius: '6px',
-                      border: '1px solid var(--color-border)',
-                    }}
-                  />
-                </div>
-              )}
-
-              {cert.certificate_pdf && (
-                <div style={{ marginTop: '0.75rem', marginBottom: '1rem' }}>
-                  <PdfViewer
-                    src={cert.certificate_pdf}
-                    title={`Sertifikat PDF - ${cert.title}`}
-                  />
-                </div>
-              )}
-
-              <div
-                className="card-links"
-                style={{
-                  display: 'flex',
-                  gap: '0.5rem',
-                  flexWrap: 'wrap',
-                  marginTop: '1rem',
-                }}
-              >
-                {cert.credential_url && (
-                  <a
-                    className="button secondary small"
-                    href={cert.credential_url}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Verify Credential ↗
-                  </a>
-                )}
-                {cert.certificate_pdf && (
-                  <a
-                    className="button secondary small"
-                    href={cert.certificate_pdf}
-                    target="_blank"
-                    rel="noreferrer"
-                    download
-                  >
-                    Download PDF
-                  </a>
-                )}
-              </div>
-            </div>
+            <CertificateCard cert={cert} key={index} />
           ))}
         </div>
       </PageLayout>
