@@ -55,7 +55,7 @@ collections:
     fields:
       - { label: "Template", name: "template", widget: "hidden", default: "project" }
       - { label: "Name", name: "name", widget: "string" }
-      - { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD", date_format: "DD MMMM YYYY" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { label: "Slug/Repo Name", name: "slug", widget: "string" }
       - { label: "Tagline", name: "tagline", widget: "string" }
       - { label: "Demo URL", name: "url", widget: "string", required: false }
