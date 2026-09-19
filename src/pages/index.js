@@ -52,7 +52,11 @@ export default function Index({ data }) {
     extra_description = "Everything on this site is written by me, not AI.",
     image = "/profil.png",
     about_me_link = "/me",
-    newsletter_link = "https://taniarascia.substack.com"
+    newsletter_link = "https://taniarascia.substack.com",
+    notes_title = "Notes",
+    notes_description = "Life, music, projects, and everything else.",
+    projects_title = "Projects",
+    projects_description = "Open-source projects I've worked on over the years."
   } = heroData
 
   const renderLink = (url, text, className) => {
@@ -108,8 +112,8 @@ export default function Index({ data }) {
 
         <section className="section-index">
           <Heading
-            title="Notes"
-            description="Life, music, projects, and everything else."
+            title={notes_title}
+            description={notes_description}
             icon={projectsIcon}
           />
           <Posts data={notes} />
@@ -186,10 +190,10 @@ export default function Index({ data }) {
 
         <section>
           <Heading
-            title="Projects"
+            title={projects_title}
             slug="/projects"
             buttonText="All Projects"
-            description="Open-source projects I've worked on over the years."
+            description={projects_description}
             icon={github}
           />
 
@@ -201,7 +205,7 @@ export default function Index({ data }) {
                   <div className="card" key={`hightlight-${project.slug}`}>
                     <time>{project.date}</time>
                     <a
-                      href={`https://github.com/taniarascia/${project.slug}`}
+                      href={project.url || `https://github.com/muhamadrofii/${project.slug}`}
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -229,7 +233,7 @@ export default function Index({ data }) {
                       )}
                       <a
                         className="button secondary small"
-                        href={`https://github.com/taniarascia/${project.slug}`}
+                        href={`https://github.com/muhamadrofii/${project.slug}`}
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -270,6 +274,7 @@ export const pageQuery = graphql`
     }
     projects: allMarkdownRemark(
       filter: { frontmatter: { template: { eq: "project" } } }
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {
@@ -293,6 +298,10 @@ export const pageQuery = graphql`
         image
         about_me_link
         newsletter_link
+        notes_title
+        notes_description
+        projects_title
+        projects_description
       }
     }
     latestNotes: allMarkdownRemark(

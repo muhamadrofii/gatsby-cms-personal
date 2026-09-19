@@ -104,7 +104,7 @@ export default function Projects() {
                 <time>{project.date}</time>
                 <a
                   className="card-header"
-                  href={`https://github.com/taniarascia/${project.slug}`}
+                  href={project.url || `https://github.com/muhamadrofii/${project.slug}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -132,7 +132,7 @@ export default function Projects() {
                   )}
                   <a
                     className="button secondary small"
-                    href={`https://github.com/taniarascia/${project.slug}`}
+                    href={`https://github.com/muhamadrofii/${project.slug}`}
                     target="_blank"
                     rel="noreferrer"
                   >
