@@ -45,8 +45,10 @@ export const Sidebar = ({
     { url: '/blog', label: 'Blog', image: blog },
     { url: '/notes', label: 'Notes', image: projects },
     { url: '/projects', label: 'Projects', image: github },
-    { url: '/me', label: 'About Me', emoji: '👤' },
+    { url: '/certificates', label: 'Certificates', emoji: '📜' },
     { url: '/#experience', label: 'Experience', emoji: '💼' },
+    { url: '/#organizations', label: 'Organizations', emoji: '🏛️' },
+    { url: '/me', label: 'About Me', emoji: '👤' },
     { url: '/me#contact', label: 'Contact', emoji: '📬' },
   ]
 

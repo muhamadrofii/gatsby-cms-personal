@@ -16,6 +16,7 @@ import config from '../utils/config'
 import blog from '../assets/nav-blog.png'
 import projectsIcon from '../assets/nav-projects.png'
 import github from '../assets/nav-github.png'
+import floppy from '../assets/floppylogo.png'
 
 export default function Index({ data }) {
   const latestNotes = data.latestNotes?.edges || []
@@ -53,6 +54,14 @@ export default function Index({ data }) {
     [data.organizations]
   )
 
+  const certificates = useMemo(
+    () => data.certificates?.edges.map((edge) => ({
+      html: edge.node.html,
+      ...edge.node.frontmatter
+    })) || [],
+    [data.certificates]
+  )
+
   const heroData = data.homeHero?.frontmatter || {}
   const {
     title = "Hey, I'm Tania!",
@@ -66,7 +75,9 @@ export default function Index({ data }) {
     projects_title = "Projects",
     projects_description = "Open-source projects I've worked on over the years.",
     organizations_title = "Organization Experience",
-    organizations_description = "Leadership and active involvement in student and tech organizations."
+    organizations_description = "Leadership and active involvement in student and tech organizations.",
+    certificates_title = "Certifications",
+    certificates_description = "Licenses, certificates, and verified professional credentials."
   } = heroData
 
   const renderLink = (url, text, className) => {
@@ -244,6 +255,127 @@ export default function Index({ data }) {
           </div>
         </section>
 
+        <section className="section-index" id="certificates">
+          <Heading
+            title={certificates_title}
+            slug="/certificates"
+            buttonText="All Certificates"
+            description={certificates_description}
+            icon={floppy}
+          />
+          <div className="certificate-list">
+            {certificates.map((cert, index) => (
+              <div
+                className="card certificate-card"
+                key={index}
+                style={{
+                  marginBottom: '1.5rem',
+                  padding: '1.5rem',
+                  borderRadius: '8px',
+                  border: '1px solid var(--color-border)',
+                  backgroundColor: 'var(--color-bg-secondary)',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'baseline',
+                    flexWrap: 'wrap',
+                    gap: '0.5rem',
+                    marginBottom: '0.75rem',
+                  }}
+                >
+                  <div>
+                    <h3 style={{ margin: 0, fontSize: '1.2rem' }}>
+                      {cert.title}
+                    </h3>
+                    {cert.issuer && (
+                      <div
+                        style={{
+                          marginTop: '0.25rem',
+                          fontSize: '0.9rem',
+                          color: 'var(--color-primary)',
+                          fontWeight: '600',
+                        }}
+                      >
+                        {cert.issuer}
+                      </div>
+                    )}
+                  </div>
+                  {cert.issue_date && (
+                    <span
+                      style={{
+                        fontSize: '0.85rem',
+                        color: 'var(--color-text-light)',
+                        backgroundColor: 'var(--color-bg)',
+                        padding: '4px 10px',
+                        borderRadius: '4px',
+                        border: '1px solid var(--color-border)',
+                      }}
+                    >
+                      {cert.issue_date}
+                    </span>
+                  )}
+                </div>
+
+                {cert.credential_id && (
+                  <div
+                    style={{
+                      fontSize: '0.85rem',
+                      color: 'var(--color-text-light)',
+                      marginBottom: '0.75rem',
+                    }}
+                  >
+                    Credential ID: <code style={{ fontSize: '0.8rem' }}>{cert.credential_id}</code>
+                  </div>
+                )}
+
+                {cert.html && cert.html.trim().length > 0 && (
+                  <div
+                    className="certificate-description"
+                    dangerouslySetInnerHTML={{ __html: cert.html }}
+                    style={{ fontSize: '0.95rem', lineHeight: '1.6', marginBottom: '1rem' }}
+                  />
+                )}
+
+                {cert.attachment_pdf && (
+                  <div style={{ marginTop: '0.75rem', marginBottom: '1rem' }}>
+                    <PdfViewer
+                      src={cert.attachment_pdf}
+                      title={`Dokumen PDF - ${cert.title}`}
+                    />
+                  </div>
+                )}
+
+                <div className="card-links" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginTop: '0.75rem' }}>
+                  {cert.credential_url && (
+                    <a
+                      className="button secondary small"
+                      href={cert.credential_url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Verify Credential ↗
+                    </a>
+                  )}
+                  {cert.attachment_pdf && (
+                    <a
+                      className="button secondary small"
+                      href={cert.attachment_pdf}
+                      target="_blank"
+                      rel="noreferrer"
+                      download
+                    >
+                      Download PDF
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section>
           <Heading
             title={projects_title}
@@ -363,6 +495,26 @@ export const pageQuery = graphql`
         }
       }
     }
+    certificates: allMarkdownRemark(
+      filter: { frontmatter: { template: { eq: "certificate" } } }
+      sort: { frontmatter: { order: ASC } }
+    ) {
+      edges {
+        node {
+          html
+          frontmatter {
+            title
+            issuer
+            issue_date
+            credential_id
+            credential_url
+            attachment_pdf: certificate_pdf
+            certificate_image
+            order
+          }
+        }
+      }
+    }
     projects: allMarkdownRemark(
       filter: { frontmatter: { template: { eq: "project" } } }
       sort: { frontmatter: { date: DESC } }
@@ -395,6 +547,8 @@ export const pageQuery = graphql`
         projects_description
         organizations_title
         organizations_description
+        certificates_title
+        certificates_description
       }
     }
     latestNotes: allMarkdownRemark(
