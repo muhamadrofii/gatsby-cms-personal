@@ -45,6 +45,14 @@ export default function Index({ data }) {
     [data.experiences]
   )
 
+  const organizations = useMemo(
+    () => data.organizations?.edges.map((edge) => ({
+      html: edge.node.html,
+      ...edge.node.frontmatter
+    })) || [],
+    [data.organizations]
+  )
+
   const heroData = data.homeHero?.frontmatter || {}
   const {
     title = "Hey, I'm Tania!",
@@ -56,7 +64,9 @@ export default function Index({ data }) {
     notes_title = "Notes",
     notes_description = "Life, music, projects, and everything else.",
     projects_title = "Projects",
-    projects_description = "Open-source projects I've worked on over the years."
+    projects_description = "Open-source projects I've worked on over the years.",
+    organizations_title = "Organization Experience",
+    organizations_description = "Leadership and active involvement in student and tech organizations."
   } = heroData
 
   const renderLink = (url, text, className) => {
@@ -188,6 +198,52 @@ export default function Index({ data }) {
           </div>
         </section>
 
+        <section className="section-index" id="organizations">
+          <Heading
+            title={organizations_title}
+            description={organizations_description}
+          />
+          <div className="experience-list">
+            {organizations.map((org, index) => (
+              <div className="card experience-card" key={index} style={{ marginBottom: '1.5rem', padding: '1.5rem' }}>
+                <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                  {org.organization_logo && (
+                    <img 
+                      src={org.organization_logo} 
+                      alt={`${org.organization} Logo`} 
+                      style={{ 
+                        width: '48px', 
+                        height: '48px', 
+                        objectFit: 'contain', 
+                        borderRadius: '6px', 
+                        border: '1px solid var(--color-border)',
+                        backgroundColor: 'var(--color-bg-secondary)',
+                        flexShrink: 0
+                      }} 
+                    />
+                  )}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', marginBottom: '0.5rem', gap: '0.5rem' }}>
+                      <h3 style={{ margin: 0, fontSize: '1.2rem' }}>
+                        {org.role} @ <strong style={{ color: 'var(--color-primary)' }}>{org.organization}</strong>
+                      </h3>
+                      <span style={{ fontSize: '0.85rem', color: 'var(--color-text-light)' }}>{org.date_range}</span>
+                    </div>
+                    {org.html && org.html.trim().length > 0 && (
+                      <div className="experience-description" dangerouslySetInnerHTML={{ __html: org.html }} />
+                    )}
+                    {org.attachment_pdf && (
+                      <div style={{ marginTop: '0.75rem' }}>
+                        <PdfViewer src={org.attachment_pdf} title={`Dokumen PDF - ${org.organization}`} />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         <section>
           <Heading
             title={projects_title}
@@ -289,6 +345,24 @@ export const pageQuery = graphql`
         }
       }
     }
+    organizations: allMarkdownRemark(
+      filter: { frontmatter: { template: { eq: "organization" } } }
+      sort: { frontmatter: { order: ASC } }
+    ) {
+      edges {
+        node {
+          html
+          frontmatter {
+            organization
+            role
+            date_range
+            order
+            organization_logo
+            attachment_pdf
+          }
+        }
+      }
+    }
     projects: allMarkdownRemark(
       filter: { frontmatter: { template: { eq: "project" } } }
       sort: { frontmatter: { date: DESC } }
@@ -319,6 +393,8 @@ export const pageQuery = graphql`
         notes_description
         projects_title
         projects_description
+        organizations_title
+        organizations_description
       }
     }
     latestNotes: allMarkdownRemark(

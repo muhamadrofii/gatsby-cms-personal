@@ -18,4 +18,6 @@ projects_title: Projects
 projects_description: Koleksi project open-source yang telah saya buat.
 certificates_title: Certifications
 certificates_description: Licenses, certificates, and verified professional credentials.
+organizations_title: Organization Experience
+organizations_description: Leadership and active involvement in student and tech organizations.
 ---

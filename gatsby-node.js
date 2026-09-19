@@ -210,6 +210,8 @@ const createSchemaCustomization = ({ actions }) => {
       order: Int
       company_logo: String
       attachment_pdf: String
+      organization: String
+      organization_logo: String
       issuer: String
       issue_date: String
       credential_id: String
@@ -222,6 +224,8 @@ const createSchemaCustomization = ({ actions }) => {
       projects_description: String
       certificates_title: String
       certificates_description: String
+      organizations_title: String
+      organizations_description: String
       about_me_link: String
       newsletter_link: String
       extra_description: String
