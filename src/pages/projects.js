@@ -56,7 +56,7 @@ export default function Projects() {
   useEffect(() => {
     async function getStars() {
       const repos = await fetch(
-        'https://api.github.com/users/taniarascia/repos?per_page=100'
+        'https://api.github.com/users/muhamadrofii/repos?per_page=100'
       )
 
       return repos.json()
@@ -84,13 +84,19 @@ export default function Projects() {
 
         <div className="cards">
           {projects.map((project) => {
+            const isExternalWriteup = project.writeup && (project.writeup.startsWith('http://') || project.writeup.startsWith('https://'))
+            const hasValidRepo = project.slug && !project.slug.includes(' ')
+            const projectUrl = project.url || (hasValidRepo ? `https://github.com/muhamadrofii/${project.slug}` : (project.writeup || '#'))
+
             return (
               <div className="card" key={project.slug}>
                 <div className="stars">
-                  {Array.isArray(repos) && repos.find((repo) => repo.name === project.slug) && (
+                  {hasValidRepo && Array.isArray(repos) && repos.find((repo) => repo.name === project.slug) && (
                     <div className="star">
                       <a
-                        href={`https://github.com/taniarascia/${project.slug}/stargazers`}
+                        href={`https://github.com/muhamadrofii/${project.slug}/stargazers`}
+                        target="_blank"
+                        rel="noreferrer"
                       >
                         {Number(
                           repos.find((repo) => repo.name === project.slug)
@@ -104,7 +110,7 @@ export default function Projects() {
                 <time>{project.date}</time>
                 <a
                   className="card-header"
-                  href={project.url || `https://github.com/muhamadrofii/${project.slug}`}
+                  href={projectUrl}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -113,12 +119,23 @@ export default function Projects() {
                 <p>{project.tagline}</p>
                 <div className="card-links">
                   {project.writeup && (
-                    <Link
-                      className="button secondary small"
-                      to={project.writeup.startsWith('/blog/') ? project.writeup : `/blog${project.writeup}`}
-                    >
-                      Article
-                    </Link>
+                    isExternalWriteup ? (
+                      <a
+                        className="button secondary small"
+                        href={project.writeup}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Article
+                      </a>
+                    ) : (
+                      <Link
+                        className="button secondary small"
+                        to={project.writeup.startsWith('/blog/') ? project.writeup : `/blog${project.writeup}`}
+                      >
+                        Article
+                      </Link>
+                    )
                   )}
                   {project.url && (
                     <a
@@ -130,14 +147,16 @@ export default function Projects() {
                       Demo
                     </a>
                   )}
-                  <a
-                    className="button secondary small"
-                    href={`https://github.com/muhamadrofii/${project.slug}`}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Source
-                  </a>
+                  {hasValidRepo && (
+                    <a
+                      className="button secondary small"
+                      href={`https://github.com/muhamadrofii/${project.slug}`}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Source
+                    </a>
+                  )}
                 </div>
               </div>
             )

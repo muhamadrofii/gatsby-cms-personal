@@ -201,11 +201,15 @@ export default function Index({ data }) {
             {projects
               .filter((project) => project.highlight)
               .map((project) => {
+                const isExternalWriteup = project.writeup && (project.writeup.startsWith('http://') || project.writeup.startsWith('https://'))
+                const hasValidRepo = project.slug && !project.slug.includes(' ')
+                const projectUrl = project.url || (hasValidRepo ? `https://github.com/muhamadrofii/${project.slug}` : (project.writeup || '#'))
+
                 return (
                   <div className="card" key={`hightlight-${project.slug}`}>
                     <time>{project.date}</time>
                     <a
-                      href={project.url || `https://github.com/muhamadrofii/${project.slug}`}
+                      href={projectUrl}
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -214,12 +218,23 @@ export default function Index({ data }) {
                     <p>{project.tagline}</p>
                     <div className="card-links">
                       {project.writeup && (
-                        <Link
-                          className="button secondary small"
-                          to={project.writeup.startsWith('/blog/') ? project.writeup : `/blog${project.writeup}`}
-                        >
-                          Article
-                        </Link>
+                        isExternalWriteup ? (
+                          <a
+                            className="button secondary small"
+                            href={project.writeup}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Article
+                          </a>
+                        ) : (
+                          <Link
+                            className="button secondary small"
+                            to={project.writeup.startsWith('/blog/') ? project.writeup : `/blog${project.writeup}`}
+                          >
+                            Article
+                          </Link>
+                        )
                       )}
                       {project.url && (
                         <a
@@ -231,14 +246,16 @@ export default function Index({ data }) {
                           Demo
                         </a>
                       )}
-                      <a
-                        className="button secondary small"
-                        href={`https://github.com/muhamadrofii/${project.slug}`}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        Source
-                      </a>
+                      {hasValidRepo && (
+                        <a
+                          className="button secondary small"
+                          href={`https://github.com/muhamadrofii/${project.slug}`}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Source
+                        </a>
+                      )}
                     </div>
                   </div>
                 )
