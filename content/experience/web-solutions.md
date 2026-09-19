@@ -5,7 +5,7 @@ role: Backend Developer & Technical Documentation Intern
 date_range: 2025 - 2025
 order: 2
 company_logo: /thumbnails/pasted-image-1789790854882.png
-attachment_pdf: /thumbnails/arsitektur_backend___integrasi_payment_gateway_wisma_migas (1).pptx
+attachment_pdf: /thumbnails/arsitektur_backend___integrasi_payment_gateway_wisma_migas (1).pdf
 ---
 
 Bertanggung jawab atas perancangan arsitektur backend, integrasi payment gateway, sistem keamanan, serta penyusunan dokumentasi teknis standar pada Sistem Reservasi Wisma & Hotel berbasis Laravel 12 dan Livewire Volt.
