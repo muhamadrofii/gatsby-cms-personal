@@ -297,7 +297,7 @@ export const pageQuery = graphql`
         node {
           frontmatter {
             name
-            date
+            date(formatString: "MMMM YYYY")
             slug
             tagline
             url

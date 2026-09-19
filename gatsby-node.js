@@ -188,8 +188,45 @@ const onCreateWebpackConfig = ({ stage, actions }) => {
   }
 }
 
+const createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type MarkdownRemark implements Node {
+      frontmatter: MarkdownRemarkFrontmatter
+    }
+    type MarkdownRemarkFrontmatter {
+      date: Date @dateformat
+      title: String
+      name: String
+      template: String
+      slug: String
+      tagline: String
+      url: String
+      writeup: String
+      highlight: Boolean
+      company: String
+      role: String
+      date_range: String
+      order: Int
+      company_logo: String
+      attachment_pdf: String
+      notes_title: String
+      notes_description: String
+      projects_title: String
+      projects_description: String
+      about_me_link: String
+      newsletter_link: String
+      extra_description: String
+      image: String
+      tags: [String]
+    }
+  `
+  createTypes(typeDefs)
+}
+
 exports.createPages = createPages
 exports.onCreateNode = createNode
+exports.createSchemaCustomization = createSchemaCustomization
 exports.onCreateDevServer = onCreateDevServer
 exports.onCreateWebpackConfig = onCreateWebpackConfig
 

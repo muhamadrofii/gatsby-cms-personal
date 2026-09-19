@@ -1,7 +1,7 @@
 ---
 template: project
 name: Undergraduated Thesis
-date: 'April 2026'
+date: '2026-04-27'
 slug: Implementation of SMOTE and GridSearchCV for Imbalanced Sentiment Classification on the Cabinet Reshuffle Issue
 tagline: Classification, Data Science,  Machine Learning, Sentiment, SMOTE
 url: ''

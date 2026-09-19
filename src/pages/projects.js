@@ -29,7 +29,7 @@ export default function Projects() {
           node {
             frontmatter {
               name
-              date
+              date(formatString: "MMMM YYYY")
               slug
               tagline
               url
