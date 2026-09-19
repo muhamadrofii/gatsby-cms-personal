@@ -210,10 +210,18 @@ const createSchemaCustomization = ({ actions }) => {
       order: Int
       company_logo: String
       attachment_pdf: String
+      issuer: String
+      issue_date: String
+      credential_id: String
+      credential_url: String
+      certificate_pdf: String
+      certificate_image: String
       notes_title: String
       notes_description: String
       projects_title: String
       projects_description: String
+      certificates_title: String
+      certificates_description: String
       about_me_link: String
       newsletter_link: String
       extra_description: String

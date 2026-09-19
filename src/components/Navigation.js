@@ -19,7 +19,8 @@ const links = [
   { url: '/blog', label: 'Blog', image: blog },
   { url: '/notes', label: 'Notes', image: projects },
   { url: '/projects', label: 'Projects', image: github },
-  { url: '/me', label: 'About Me', image: floppy },
+  { url: '/certificates', label: 'Certificates', image: floppy },
+  { url: '/me', label: 'About Me', image: floppyLogo },
 ]
 
 const socialLinks = [{ url: 'https://www.instagram.com/em.rofii/' }]

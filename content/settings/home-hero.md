@@ -16,4 +16,6 @@ notes_title: My Notes
 notes_description: Koleksi catatan seputar programming.
 projects_title: Projects
 projects_description: Koleksi project open-source yang telah saya buat.
+certificates_title: Certifications
+certificates_description: Licenses, certificates, and verified professional credentials.
 ---

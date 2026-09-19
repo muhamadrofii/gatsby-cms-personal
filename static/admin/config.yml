@@ -77,6 +77,23 @@ collections:
       - { label: "Attachment (PDF)", name: "attachment_pdf", widget: "file", required: false }
       - { label: "Description", name: "body", widget: "markdown" }
 
+  - name: "certificates"
+    label: "Certificates"
+    folder: "content/certificates"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Template", name: "template", widget: "hidden", default: "certificate" }
+      - { label: "Certificate Title", name: "title", widget: "string" }
+      - { label: "Issuer / Organization", name: "issuer", widget: "string", hint: "e.g. Dicoding, Coursera, BNSP, AWS" }
+      - { label: "Issue Date", name: "issue_date", widget: "string", hint: "e.g. 2025 or Jan 2025" }
+      - { label: "Credential ID", name: "credential_id", widget: "string", required: false }
+      - { label: "Credential URL (Verify Link)", name: "credential_url", widget: "string", required: false }
+      - { label: "Certificate (PDF)", name: "certificate_pdf", widget: "file", required: false }
+      - { label: "Certificate Image", name: "certificate_image", widget: "image", required: false }
+      - { label: "Order (for sorting)", name: "order", widget: "number", default: 1 }
+      - { label: "Description / Skills", name: "body", widget: "markdown", required: false }
+
   - name: "pages"
     label: "Pages"
     folder: "content"
@@ -119,5 +136,8 @@ collections:
       - { label: "Notes Page Description", name: "notes_description", widget: "text" }
       - { label: "Projects Page Title", name: "projects_title", widget: "string", default: "Projects" }
       - { label: "Projects Page Description", name: "projects_description", widget: "text" }
+      - { label: "Certificates Page Title", name: "certificates_title", widget: "string", default: "Certifications" }
+      - { label: "Certificates Page Description", name: "certificates_description", widget: "text" }
+
 
 
