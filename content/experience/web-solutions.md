@@ -2,7 +2,7 @@
 template: experience
 company: PPSDM MIGAS CEPU
 role: Backend Developer & Technical Documentation Intern
-date_range: 2025 - 2025
+date_range: 'Jan 2025 - Feb 2025'
 order: 2
 company_logo: /thumbnails/pasted-image-1789790854882.png
 attachment_pdf: /thumbnails/arsitektur_backend___integrasi_payment_gateway_wisma_migas (1).pdf
