@@ -8,7 +8,7 @@ import { Hero } from '../components/Hero'
 import { PageLayout } from '../components/PageLayout'
 import { PdfViewer } from '../components/PdfViewer'
 import config from '../utils/config'
-import floppy from '../assets/floppylogo.png'
+import floppy from '../assets/nav-floppy.png'
 
 const CertificateCard = ({ cert }) => {
   const [showPdf, setShowPdf] = useState(false)

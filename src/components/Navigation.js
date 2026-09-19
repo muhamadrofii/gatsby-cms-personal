@@ -3,7 +3,6 @@ import { Link } from 'gatsby'
 import { SocialIcon } from 'react-social-icons'
 import { useLocation } from '@reach/router'
 
-import floppy from '../assets/floppylogo.png'
 import floppyLogo from '../assets/nav-floppy.png'
 import blog from '../assets/nav-blog.png'
 import projects from '../assets/nav-projects.png'
@@ -19,7 +18,7 @@ const links = [
   { url: '/blog', label: 'Blog', image: blog },
   { url: '/notes', label: 'Notes', image: projects },
   { url: '/projects', label: 'Projects', image: github },
-  { url: '/certificates', label: 'Certificates', image: floppy },
+  { url: '/certificates', label: 'Certificates', image: floppyLogo },
   { url: '/me', label: 'About Me', image: floppyLogo },
 ]
 

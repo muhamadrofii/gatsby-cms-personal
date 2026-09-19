@@ -16,7 +16,7 @@ import config from '../utils/config'
 import blog from '../assets/nav-blog.png'
 import projectsIcon from '../assets/nav-projects.png'
 import github from '../assets/nav-github.png'
-import floppy from '../assets/floppylogo.png'
+import floppy from '../assets/nav-floppy.png'
 
 const CertificateCard = ({ cert }) => {
   const [showPdf, setShowPdf] = useState(false)
