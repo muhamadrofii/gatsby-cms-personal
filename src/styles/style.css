@@ -1983,3 +1983,51 @@ a.footer-link {
 .gatsby-resp-image-wrapper {
   margin: 2rem 0;
 }
+
+/* ==========================================================================
+   Experience Section Styles
+   ========================================================================== */
+.experience-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.experience-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-elevated);
+}
+
+.experience-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin-top: 0.75rem;
+}
+
+.experience-description p {
+  margin-bottom: 0.75rem;
+}
+
+.experience-description ul {
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.experience-description li {
+  margin-bottom: 0.4rem;
+}
+
+.experience-description pre,
+.experience-description code {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+  overflow-x: hidden;
+}
+
+@media (max-width: 640px) {
+  .experience-card {
+    padding: 1rem !important;
+  }
+}
+
