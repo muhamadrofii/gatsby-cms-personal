@@ -1,12 +1,11 @@
 ---
 template: organization
-organization: Himpunan Mahasiswa Informatika
-role: Staff Divisi Riset & Teknologi
-date_range: 2023 - 2024
+organization: BEM Fakultas Sains & Teknologi
+role: Staff Internal
+date_range: 2024 - 2025
 order: 1
 organization_logo: ''
-attachment_pdf: ''
+attachment_pdf: /thumbnails/IMG_8388_248354_merged.pdf
 ---
 
-- Mengkoordinasikan workshop pengembangan web dan pemrograman backend untuk mahasiswa baru.
-- Berkolaborasi dalam tim teknis untuk memfasilitasi kegiatan kompetisi dan hackathon internal kampus.
+Memimpin pelaksanaan LKMTD gabungan BEM FST & FIK UNUGIRI pada Januari 2025. Bertanggung jawab mengoordinasikan panitia, menyatukan komunikasi lintas fakultas, serta menyelesaikan kendala selama persiapan dan pelaksanaan. Pengalaman ini memperkuat kemampuan kepemimpinan, komunikasi, koordinasi, dan problem solving.
