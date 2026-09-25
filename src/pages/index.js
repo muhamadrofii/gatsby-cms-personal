@@ -11,6 +11,7 @@ import { Heading } from '../components/Heading'
 import { Hero } from '../components/Hero'
 import { PageLayout } from '../components/PageLayout'
 import { PdfViewer } from '../components/PdfViewer'
+import { CvFormatGenerator } from '../components/CvFormatGenerator'
 import { getSimplifiedPosts } from '../utils/helpers'
 import config from '../utils/config'
 import blog from '../assets/nav-blog.png'
@@ -425,6 +426,8 @@ export default function Index({ data }) {
               })}
           </div>
         </section>
+
+        <CvFormatGenerator />
       </PageLayout>
     </>
   )
