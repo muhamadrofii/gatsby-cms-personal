@@ -123,6 +123,7 @@ export default function Index({ data }) {
   const experiences = useMemo(
     () => data.experiences?.edges.map((edge) => ({
       html: edge.node.html,
+      rawMarkdownBody: edge.node.rawMarkdownBody,
       ...edge.node.frontmatter
     })) || [],
     [data.experiences]
@@ -131,6 +132,7 @@ export default function Index({ data }) {
   const organizations = useMemo(
     () => data.organizations?.edges.map((edge) => ({
       html: edge.node.html,
+      rawMarkdownBody: edge.node.rawMarkdownBody,
       ...edge.node.frontmatter
     })) || [],
     [data.organizations]
@@ -139,6 +141,7 @@ export default function Index({ data }) {
   const certificates = useMemo(
     () => data.certificates?.edges.map((edge) => ({
       html: edge.node.html,
+      rawMarkdownBody: edge.node.rawMarkdownBody,
       ...edge.node.frontmatter
     })) || [],
     [data.certificates]
@@ -427,7 +430,13 @@ export default function Index({ data }) {
           </div>
         </section>
 
-        <CvFormatGenerator />
+        <CvFormatGenerator
+          experiences={experiences}
+          organizations={organizations}
+          certificates={certificates}
+          projects={projects}
+          aboutMe={data.aboutMe}
+        />
       </PageLayout>
     </>
   )
@@ -437,6 +446,16 @@ Index.Layout = Layout
 
 export const pageQuery = graphql`
   query IndexQuery {
+    aboutMe: markdownRemark(frontmatter: { slug: { eq: "me" } }) {
+      rawMarkdownBody
+      frontmatter {
+        title
+        email_link
+        github_link
+        instagram_link
+        linktree_link
+      }
+    }
     experiences: allMarkdownRemark(
       filter: { frontmatter: { template: { eq: "experience" } } }
       sort: { frontmatter: { order: ASC } }
@@ -444,6 +463,7 @@ export const pageQuery = graphql`
       edges {
         node {
           html
+          rawMarkdownBody
           frontmatter {
             company
             role
@@ -462,6 +482,7 @@ export const pageQuery = graphql`
       edges {
         node {
           html
+          rawMarkdownBody
           frontmatter {
             organization
             role
@@ -480,6 +501,7 @@ export const pageQuery = graphql`
       edges {
         node {
           html
+          rawMarkdownBody
           frontmatter {
             title
             issuer

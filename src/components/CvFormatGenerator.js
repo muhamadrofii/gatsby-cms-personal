@@ -1,84 +1,150 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
-const FILLED_CV_CONTENT = `### 1. Data Diri & Kontak
-- Nama Lengkap: Muhamad Rofii
-- Domisili / Lokasi: Bojonegoro, Jawa Timur, Indonesia
-- Nomor HP / WhatsApp: -
-- Email: rofii@example.com
-- LinkedIn: https://linkedin.com/in/muhamadrofii
-- GitHub / Portfolio: https://github.com/muhamadrofii
-- Status Saat Ini: Fresh Graduate / Open to Work (Backend Developer & Software Engineer)
+export const generateDynamicCvContent = ({
+  experiences = [],
+  organizations = [],
+  certificates = [],
+  projects = [],
+  aboutMe = {},
+}) => {
+  const nama = 'Muhamad Rofii'
+  const domisili = 'Bojonegoro, Jawa Timur, Indonesia'
+  const hp = '-'
+  const email = aboutMe?.frontmatter?.email_link || 'rofii@example.com'
+  const linkedin = 'https://linkedin.com/in/muhamadrofii'
+  const github = aboutMe?.frontmatter?.github_link || 'https://github.com/muhamadrofii'
+  const status = 'Fresh Graduate / Open to Work (Backend Developer & Software Engineer)'
 
-### 2. Bahasa
+  const bahasa = `### 2. Bahasa
 - Bahasa Indonesia: Penutur Asli / Native
 - Bahasa Inggris: Tingkat Menengah / Pasif-Aktif
-- Bahasa Lainnya: -
+- Bahasa Lainnya: -`
 
-### 3. Pendidikan
+  const thesisProject = projects.find(
+    (p) =>
+      p.name &&
+      (p.name.toLowerCase().includes('thesis') ||
+        p.name.toLowerCase().includes('skripsi'))
+  )
+  const thesisTitle = thesisProject
+    ? thesisProject.tagline || thesisProject.name
+    : 'Implementation of SMOTE and GridSearchCV for Imbalanced Sentiment Classification on the Cabinet Reshuffle Issue'
+
+  const pendidikan = `### 3. Pendidikan
 - Jenjang & Jurusan: S1 Teknik Informatika (Fakultas Sains & Teknologi)
 - Nama Institusi / Sekolah: Universitas Nahdlatul Ulama Sunan Giri (UNUGIRI)
 - Periode Tahun: 2022 - 2026
 - Nilai / IPK: -
-- Judul Skripsi / Tugas Akhir / Fokus: Implementation of SMOTE and GridSearchCV for Imbalanced Sentiment Classification on the Cabinet Reshuffle Issue
+- Judul Skripsi / Tugas Akhir / Fokus: ${thesisTitle}`
 
-### 4. Pengalaman Kerja / Magang / Organisasi
-- Posisi / Jabatan: Fullstack Developer
-  - Nama Perusahaan / Tempat: Freelance
+  const pengalamanList = []
+
+  experiences.forEach((exp) => {
+    const bullets = []
+    if (exp.rawMarkdownBody) {
+      const lines = exp.rawMarkdownBody.split('\n')
+      lines.forEach((l) => {
+        const trimmed = l.trim()
+        if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+          if (
+            !trimmed.toLowerCase().startsWith('- **skills') &&
+            !trimmed.toLowerCase().startsWith('* **skills')
+          ) {
+            bullets.push(`    * ${trimmed.replace(/^[-*]\s+/, '')}`)
+          }
+        }
+      })
+    }
+
+    if (bullets.length === 0) {
+      bullets.push(
+        `    * Bertanggung jawab atas pengembangan dan perancangan teknis pada posisi ${exp.role || ''}.`
+      )
+    }
+
+    pengalamanList.push(`- Posisi / Jabatan: ${exp.role || '-'}
+  - Nama Perusahaan / Tempat: ${exp.company || '-'}
   - Lokasi: Remote / Indonesia
-  - Periode: Jan 2026 - Present
+  - Periode: ${exp.date_range || '-'}
   - Tanggung Jawab & Pencapaian:
-    * Merancang dan membangun aplikasi web responsif end-to-end terintegrasi backend dan database.
-    * Mengembangkan arsitektur database relasional MySQL teroptimasi dan RESTful API aman.
-    * Mengimplementasikan Role-Based Access Control (RBAC), pipeline autentikasi, serta validasi data.
+${bullets.join('\n')}`)
+  })
 
-- Posisi / Jabatan: Cloud DevOps & Backend Engineer
-  - Nama Perusahaan / Tempat: Kemdikti Saintek "Pemberdayaan Desa Binaan" (SIMKODES)
+  organizations.forEach((org) => {
+    const bullets = []
+    if (org.rawMarkdownBody) {
+      const lines = org.rawMarkdownBody.split('\n')
+      lines.forEach((l) => {
+        const trimmed = l.trim()
+        if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+          bullets.push(`    * ${trimmed.replace(/^[-*]\s+/, '')}`)
+        }
+      })
+    }
+    if (bullets.length === 0) {
+      bullets.push(
+        `    * Mengoordinasikan program kerja dan aktivitas organisasi.`
+      )
+    }
+
+    pengalamanList.push(`- Posisi / Jabatan: ${org.role || '-'}
+  - Nama Perusahaan / Tempat: ${org.organization || '-'}
   - Lokasi: Bojonegoro, Indonesia
-  - Periode: 2026
+  - Periode: ${org.date_range || '-'}
   - Tanggung Jawab & Pencapaian:
-    * Merancang arsitektur multi-container Docker Compose (PHP 8.2-FPM, Nginx Alpine, MySQL 8.0) untuk standarisasi environment.
-    * Mengonfigurasi Nginx reverse proxy dengan OPcache bytecode caching sehingga latency respon server < 45ms.
-    * Membangun otomasi script deployment CI/CD (hosting-setup.sh), memangkas siklus rilis manual hingga 75%.
+${bullets.join('\n')}`)
+  })
 
-- Posisi / Jabatan: Backend Developer & Technical Documentation Intern
-  - Nama Perusahaan / Tempat: PPSDM MIGAS CEPU
-  - Lokasi: Cepu, Jawa Tengah, Indonesia
-  - Periode: Jan 2025 - Feb 2025
-  - Tanggung Jawab & Pencapaian:
-    * Merancang arsitektur backend sistem reservasi berbasis Laravel 12, Livewire Volt, dan database relasional UUID.
-    * Mengintegrasikan Xendit Payment Gateway V2 (VA, QRIS, E-Wallet) dan webhook listener asynchronous secara real-time.
-    * Menerapkan 3-tier RBAC, brute-force rate limiting, anti-bot reCAPTCHA v2, dokumentasi OpenAPI 3.0, serta automated E2E testing Playwright.
+  const pengalamanSection = `### 4. Pengalaman Kerja / Magang / Organisasi
+${pengalamanList.join('\n\n')}`
 
-- Posisi / Jabatan: Backend Engineer
-  - Nama Perusahaan / Tempat: MSIB (SmartBeez Platform)
-  - Lokasi: Remote / Indonesia
-  - Periode: Aug 2024 - Dec 2024
-  - Tanggung Jawab & Pencapaian:
-    * Memimpin tim 5 orang lintas fungsi (UI/UX, Frontend, Backend) dengan metodologi Agile/Scrum.
-    * Mengintegrasikan Midtrans Snap API (QRIS & Virtual Account) dan webhook signature verification.
-    * Membangun sistem autentikasi Google OAuth2, Django Allauth, route protection decorator, serta automated data seeding script.
-
-- Posisi / Jabatan: Staff Urusan Internal
-  - Nama Perusahaan / Tempat: Badan Eksekutif Mahasiswa (BEM) Fakultas Sains & Teknologi
-  - Lokasi: Bojonegoro, Indonesia
-  - Periode: 2024 - 2025
-  - Tanggung Jawab & Pencapaian:
-    * Memimpin pelaksanaan Latihan Keterampilan Manajemen Tingkat Dasar (LKMTD) gabungan FST dan FIK.
-    * Mengoordinasikan komunikasi dan problem-solving operasional lintas panitia fakultas.
-
-### 5. Keterampilan & Keahlian (Skills)
+  const skills = `### 5. Keterampilan & Keahlian (Skills)
 - Keahlian Utama (Hard Skills): Backend Development, RESTful API Design, Relational Database Architecture, Cloud & Containerization, System Security, Payment Gateway Integration
 - Software / Tools: PHP, Laravel 12, Python, Django, Java, Spring Boot, MySQL, PostgreSQL, Docker, Docker Compose, Nginx, Git, Playwright, Linux, VS Code
-- Keahlian Tambahan / Soft Skills: Leadership, Problem Solving, Technical Documentation, Agile/Scrum, Team Collaboration
+- Keahlian Tambahan / Soft Skills: Leadership, Problem Solving, Technical Documentation, Agile/Scrum, Team Collaboration`
 
-### 6. Sertifikasi / Pelatihan (Opsional)
-- Nama Sertifikat / Pelatihan: Backend Developer & Cloud Practitioner - Dicoding Indonesia (Jan 2025)
+  const certList = []
+  certificates.forEach((c) => {
+    certList.push(
+      `- Nama Sertifikat / Pelatihan: ${c.title || '-'} - ${c.issuer || ''} (${c.issue_date || '-'})`
+    )
+  })
+  if (certList.length === 0) {
+    certList.push(
+      '- Nama Sertifikat / Pelatihan: Backend Developer & Cloud Practitioner - Dicoding Indonesia (Jan 2025)'
+    )
+  }
 
-### 7. Target Lowongan & Batasan
+  const sertifikasiSection = `### 6. Sertifikasi / Pelatihan (Opsional)
+${certList.join('\n')}`
+
+  const targetSection = `### 7. Target Lowongan & Batasan
 - Posisi yang Ditargetkan: Backend Developer / Software Engineer / Fullstack Developer / Cloud DevOps Engineer
 - Industri yang Dituju: Information Technology (IT), Software House, FinTech, Tech Startup, Enterprise
-- Batasan / Deal-breakers: Terbuka untuk Remote, On-site, maupun Hybrid
+- Batasan / Deal-breakers: Terbuka untuk Remote, On-site, maupun Hybrid`
+
+  return `### 1. Data Diri & Kontak
+- Nama Lengkap: ${nama}
+- Domisili / Lokasi: ${domisili}
+- Nomor HP / WhatsApp: ${hp}
+- Email: ${email}
+- LinkedIn: ${linkedin}
+- GitHub / Portfolio: ${github}
+- Status Saat Ini: ${status}
+
+${bahasa}
+
+${pendidikan}
+
+${pengalamanSection}
+
+${skills}
+
+${sertifikasiSection}
+
+${targetSection}
 `
+}
 
 const BLANK_TEMPLATE_CONTENT = `### 1. Data Diri & Kontak
 - Nama Lengkap: 
@@ -126,9 +192,25 @@ const BLANK_TEMPLATE_CONTENT = `### 1. Data Diri & Kontak
 - Batasan / Deal-breakers: (contoh: Bersedia shift / Tidak bisa kerja luar kota / Hanya area Jabodetabek)
 `
 
-export const CvFormatGenerator = () => {
+export const CvFormatGenerator = ({
+  experiences = [],
+  organizations = [],
+  certificates = [],
+  projects = [],
+  aboutMe = {},
+}) => {
   const [copiedType, setCopiedType] = useState(null)
-  const [activePreview, setActivePreview] = useState(null) // 'filled' | 'blank' | null
+  const [activePreview, setActivePreview] = useState(null)
+
+  const filledContent = useMemo(() => {
+    return generateDynamicCvContent({
+      experiences,
+      organizations,
+      certificates,
+      projects,
+      aboutMe,
+    })
+  }, [experiences, organizations, certificates, projects, aboutMe])
 
   const downloadFile = (content, filename) => {
     try {
@@ -168,7 +250,11 @@ export const CvFormatGenerator = () => {
   }
 
   return (
-    <section className="section-index" id="cv-format-template" style={{ marginTop: '3.5rem', marginBottom: '2rem' }}>
+    <section
+      className="section-index"
+      id="cv-format-template"
+      style={{ marginTop: '3.5rem', marginBottom: '2rem' }}
+    >
       <div
         className="card"
         style={{
@@ -178,18 +264,39 @@ export const CvFormatGenerator = () => {
           background: 'var(--color-background-card)',
         }}
       >
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.25rem' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexWrap: 'wrap',
+            gap: '1rem',
+            marginBottom: '1.25rem',
+          }}
+        >
           <div>
             <h3 style={{ margin: 0, fontSize: '1.25rem' }}>
               📝 Download Format Data Diri & CV (.md)
             </h3>
-            <p style={{ margin: '0.4rem 0 0 0', color: 'var(--color-text-muted)', fontSize: '0.95rem' }}>
-              Pilih format terisi otomatis dengan data profil atau unduh template kosong.
+            <p
+              style={{
+                margin: '0.4rem 0 0 0',
+                color: 'var(--color-text-muted)',
+                fontSize: '0.95rem',
+              }}
+            >
+              Terisi otomatis dan tersinkronisasi langsung saat Anda menambah atau mengubah riwayat di website.
             </p>
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1rem',
+          }}
+        >
           {/* Card 1: Otomatis Terisi */}
           <div
             style={{
@@ -203,18 +310,32 @@ export const CvFormatGenerator = () => {
             }}
           >
             <div>
-              <div style={{ fontWeight: 600, fontSize: '1.05rem', marginBottom: '0.35rem' }}>
-                ⚡ Format Terisi Otomatis (Auto-Filled)
+              <div
+                style={{
+                  fontWeight: 600,
+                  fontSize: '1.05rem',
+                  marginBottom: '0.35rem',
+                }}
+              >
+                ⚡ Format Terisi Otomatis ({experiences.length + organizations.length} Pengalaman)
               </div>
-              <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', margin: '0 0 1rem 0' }}>
-                Berisi data diri lengkap Muhamad Rofii: kontak, riwayat pekerjaan, organisasi, skill, dan pendidikan.
+              <p
+                style={{
+                  fontSize: '0.85rem',
+                  color: 'var(--color-text-muted)',
+                  margin: '0 0 1rem 0',
+                }}
+              >
+                Otomatis memuat seluruh data pengalaman kerja, organisasi, sertifikasi, dan pendidikan terbaru Anda.
               </p>
             </div>
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
               <button
                 type="button"
                 className="button small"
-                onClick={() => downloadFile(FILLED_CV_CONTENT, 'data-diri-cv-muhamad-rofii.md')}
+                onClick={() =>
+                  downloadFile(filledContent, 'data-diri-cv-muhamad-rofii.md')
+                }
                 style={{ cursor: 'pointer', fontWeight: 600 }}
               >
                 💾 Download File (.md)
@@ -222,7 +343,7 @@ export const CvFormatGenerator = () => {
               <button
                 type="button"
                 className="button secondary small"
-                onClick={() => copyToClipboard(FILLED_CV_CONTENT, 'filled')}
+                onClick={() => copyToClipboard(filledContent, 'filled')}
                 style={{ cursor: 'pointer' }}
               >
                 {copiedType === 'filled' ? '✅ Disalin!' : '📋 Salin'}
@@ -230,7 +351,9 @@ export const CvFormatGenerator = () => {
               <button
                 type="button"
                 className="button secondary small"
-                onClick={() => setActivePreview(activePreview === 'filled' ? null : 'filled')}
+                onClick={() =>
+                  setActivePreview(activePreview === 'filled' ? null : 'filled')
+                }
                 style={{ cursor: 'pointer' }}
               >
                 {activePreview === 'filled' ? '▲ Tutup' : '👁️ Preview'}
@@ -251,10 +374,22 @@ export const CvFormatGenerator = () => {
             }}
           >
             <div>
-              <div style={{ fontWeight: 600, fontSize: '1.05rem', marginBottom: '0.35rem' }}>
+              <div
+                style={{
+                  fontWeight: 600,
+                  fontSize: '1.05rem',
+                  marginBottom: '0.35rem',
+                }}
+              >
                 📄 Template Kosong (Blank Format)
               </div>
-              <p style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', margin: '0 0 1rem 0' }}>
+              <p
+                style={{
+                  fontSize: '0.85rem',
+                  color: 'var(--color-text-muted)',
+                  margin: '0 0 1rem 0',
+                }}
+              >
                 Formulir kosong berisi struktur 7 poin utama data diri untuk diisi manual.
               </p>
             </div>
@@ -262,7 +397,12 @@ export const CvFormatGenerator = () => {
               <button
                 type="button"
                 className="button secondary small"
-                onClick={() => downloadFile(BLANK_TEMPLATE_CONTENT, 'template-data-diri-cv-kosong.md')}
+                onClick={() =>
+                  downloadFile(
+                    BLANK_TEMPLATE_CONTENT,
+                    'template-data-diri-cv-kosong.md'
+                  )
+                }
                 style={{ cursor: 'pointer' }}
               >
                 💾 Download (.md)
@@ -278,7 +418,9 @@ export const CvFormatGenerator = () => {
               <button
                 type="button"
                 className="button secondary small"
-                onClick={() => setActivePreview(activePreview === 'blank' ? null : 'blank')}
+                onClick={() =>
+                  setActivePreview(activePreview === 'blank' ? null : 'blank')
+                }
                 style={{ cursor: 'pointer' }}
               >
                 {activePreview === 'blank' ? '▲ Tutup' : '👁️ Preview'}
@@ -289,9 +431,19 @@ export const CvFormatGenerator = () => {
 
         {activePreview && (
           <div style={{ marginTop: '1.5rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.5rem' }}>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginBottom: '0.5rem',
+              }}
+            >
               <strong style={{ fontSize: '0.9rem' }}>
-                Preview: {activePreview === 'filled' ? 'Data Diri & CV Terisi Otomatis' : 'Template Kosong'}
+                Preview:{' '}
+                {activePreview === 'filled'
+                  ? 'Data Diri & CV Terisi Otomatis'
+                  : 'Template Kosong'}
               </strong>
               <button
                 type="button"
@@ -316,7 +468,11 @@ export const CvFormatGenerator = () => {
                 maxHeight: '400px',
               }}
             >
-              <code>{activePreview === 'filled' ? FILLED_CV_CONTENT : BLANK_TEMPLATE_CONTENT}</code>
+              <code>
+                {activePreview === 'filled'
+                  ? filledContent
+                  : BLANK_TEMPLATE_CONTENT}
+              </code>
             </pre>
           </div>
         )}
