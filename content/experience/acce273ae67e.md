@@ -1,17 +1,20 @@
 ---
 template: experience
 company: Kemdikti Saintek "Pemberdayaan Desa Binaan"
-role: Cloud DevOps & Backend
+role: Cloud DevOps & Backend Engineer
 date_range: '2026'
 order: 1
 company_logo: ''
 attachment_pdf: /thumbnails/simkodes_cloud_devops___containerized_infrastructure.pdf
 ---
 
-• Multi-Container Dockerization: Merancang dan mengimplementasikan arsitektur multi-container (PHP 8.2-FPM, Nginx Alpine, MySQL 8.0) menggunakan Docker Compose, menciptakan environment lokal, staging, dan produksi yang 100% konsisten serta reproducible.
+Architected and implemented containerized cloud infrastructure, reverse proxy gateways, and automated CI/CD deployment pipelines for the SIMKODES platform.
 
-• Server & Gateway Optimization: Mengonfigurasi Nginx reverse proxy dengan FastCGI pass-through, security headers (X-Frame-Options, CSP), dan OPcache bytecode caching (128MB shared memory) yang memangkas latensi respon server hingga < 45ms.
+**Key Responsibilities & Achievements:**
+- **Multi-Container Dockerization**: Designed and deployed a multi-container architecture (PHP 8.2-FPM, Nginx Alpine, MySQL 8.0) using Docker Compose, establishing 100% consistent and reproducible local, staging, and production environments.
+- **Server & Gateway Optimization**: Configured Nginx reverse proxy with FastCGI pass-through, security headers (X-Frame-Options, CSP), and OPcache bytecode caching (128MB shared memory) to reduce server response latency to < 45ms.
+- **Automated CI/CD Pipeline**: Authored automated deployment scripts (`hosting-setup.sh`) to execute Vite asset compilation, database migrations, and application cache clearing, reducing manual deployment cycle time by 75%.
+- **Data Security & Reliability**: Secured data workflows with internal bridge network isolation, HTTPS SSL/TLS termination, and persistent Docker volume management for high availability and disaster recovery.
 
-• Automated CI/CD Pipeline: Membangun skrip deployment otomatis (hosting-setup.sh) untuk eksekusi build assets Vite, migrasi database, dan cache clearing otomatis, memangkas waktu siklus deployment manual hingga 75%.
+**Skills:** Docker · Docker Compose · Nginx · PHP 8.2-FPM · MySQL 8.0 · Bash Scripting · CI/CD · Vite · Linux Administration · OPcache
 
-• Data Security & Reliability: Mengamankan transaksi data dengan isolasi jaringan internal bridge non-root, HTTPS SSL/TLS termination, serta manajemen persistent Docker volume untuk menjamin integritas data dan kesiapan disaster recovery.
