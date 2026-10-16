@@ -9,9 +9,18 @@ export const generateDynamicCvContent = ({
 }) => {
   const nama = 'Muhamad Rofii'
   const domisili = 'Bojonegoro, Jawa Timur, Indonesia'
-  const hp = '+6285755818010'
-  const email = 'muhamadrofii911@gmail.com'
-  const linkedin = 'https://www.linkedin.com/in/muhamad-rofi-i-80a125176'
+  const rawHp = aboutMe?.frontmatter?.phone || '+6285755818010'
+  let strHp = String(rawHp).trim()
+  if (!strHp.startsWith('+') && !strHp.startsWith('http')) {
+    strHp = `+${strHp}`
+  }
+  const digits = strHp.replace(/\D/g, '')
+  const hp = strHp.includes('https://wa.me/')
+    ? strHp
+    : `${strHp} (https://wa.me/${digits})`
+  const email = aboutMe?.frontmatter?.email_link || 'muhamadrofii911@gmail.com'
+  const website = 'https://0xmuhamadrofii.my.id'
+  const linkedin = aboutMe?.frontmatter?.linkedin_link || 'https://www.linkedin.com/in/muhamad-rofi-i-80a125176'
   const github = aboutMe?.frontmatter?.github_link || 'https://github.com/muhamadrofii'
   const status = 'Fresh Graduate / Open to Work (Backend Developer & Software Engineer)'
 
@@ -29,17 +38,28 @@ export const generateDynamicCvContent = ({
   const thesisTitle = thesisProject
     ? thesisProject.tagline || thesisProject.name
     : 'Implementation of SMOTE and GridSearchCV for Imbalanced Sentiment Classification on the Cabinet Reshuffle Issue'
+  const thesisLink =
+    thesisProject?.writeup ||
+    thesisProject?.url ||
+    'https://ojs.aknacehbarat.ac.id/index.php/vocatech/article/view/305'
+  const thesisLinkLine = thesisLink
+    ? `\n- Dokumen Bukti / Link Publikasi: ${thesisLink}`
+    : ''
 
   const pendidikan = `### 3. Pendidikan
 - Jenjang & Jurusan: S1 Teknik Informatika (Fakultas Sains & Teknologi)
 - Nama Institusi / Sekolah: Universitas Nahdlatul Ulama Sunan Giri (UNUGIRI)
 - Periode Tahun: 2022 - 2026
 - Nilai / IPK: -
-- Judul Skripsi / Tugas Akhir / Fokus: ${thesisTitle}`
+- Judul Skripsi / Tugas Akhir / Fokus: ${thesisTitle}${thesisLinkLine}`
 
   const pengalamanList = []
 
-  experiences.forEach((exp) => {
+  const sortedExperiences = [...experiences].sort(
+    (a, b) => (Number(a.order) || 99) - (Number(b.order) || 99)
+  )
+
+  sortedExperiences.forEach((exp) => {
     const bullets = []
     if (exp.rawMarkdownBody) {
       const lines = exp.rawMarkdownBody.split('\n')
@@ -64,19 +84,23 @@ export const generateDynamicCvContent = ({
 
     const docBukti = exp.catbox_url
       ? `\n  - Dokumen Bukti / Portofolio: ${exp.catbox_url}`
-      : exp.attachment_pdf
+      : exp.attachment_pdf && exp.attachment_pdf.startsWith('http')
       ? `\n  - Dokumen Bukti / Portofolio: ${exp.attachment_pdf}`
       : ''
 
     pengalamanList.push(`- Posisi / Jabatan: ${exp.role || '-'}
   - Nama Perusahaan / Tempat: ${exp.company || '-'}
-  - Lokasi: Remote / Indonesia
+  - Lokasi: ${exp.location || 'Remote / Indonesia'}
   - Periode: ${exp.date_range || '-'}${docBukti}
   - Tanggung Jawab & Pencapaian:
 ${bullets.join('\n')}`)
   })
 
-  organizations.forEach((org) => {
+  const sortedOrganizations = [...organizations].sort(
+    (a, b) => (Number(a.order) || 99) - (Number(b.order) || 99)
+  )
+
+  sortedOrganizations.forEach((org) => {
     const bullets = []
     if (org.rawMarkdownBody) {
       const lines = org.rawMarkdownBody.split('\n')
@@ -93,10 +117,14 @@ ${bullets.join('\n')}`)
       )
     }
 
+    const docBukti = org.catbox_url
+      ? `\n  - Dokumen Bukti / Portofolio: ${org.catbox_url}`
+      : ''
+
     pengalamanList.push(`- Posisi / Jabatan: ${org.role || '-'}
   - Nama Perusahaan / Tempat: ${org.organization || '-'}
-  - Lokasi: Bojonegoro, Indonesia
-  - Periode: ${org.date_range || '-'}
+  - Lokasi: ${org.location || 'Bojonegoro, Indonesia'}
+  - Periode: ${org.date_range || '-'}${docBukti}
   - Tanggung Jawab & Pencapaian:
 ${bullets.join('\n')}`)
   })
@@ -109,12 +137,16 @@ ${pengalamanList.join('\n\n')}`
 - Software / Tools: PHP, Laravel 12, Python, Django, Java, Spring Boot, MySQL, PostgreSQL, Docker, Docker Compose, Nginx, Git, Playwright, Linux, VS Code
 - Keahlian Tambahan / Soft Skills: Leadership, Problem Solving, Technical Documentation, Agile/Scrum, Team Collaboration`
 
+  const sortedCertificates = [...certificates].sort(
+    (a, b) => (Number(a.order) || 99) - (Number(b.order) || 99)
+  )
+
   const certList = []
-  certificates.forEach((c) => {
+  sortedCertificates.forEach((c) => {
     const credId = c.credential_id ? ` | ID: ${c.credential_id}` : ''
     const docLink = c.catbox_url
       ? ` | Dokumen Catbox: ${c.catbox_url}`
-      : (c.attachment_pdf || c.certificate_pdf)
+      : (c.attachment_pdf || c.certificate_pdf) && (c.attachment_pdf || c.certificate_pdf).startsWith('http')
       ? ` | Dokumen: ${c.attachment_pdf || c.certificate_pdf}`
       : ''
     const verifyLink = c.credential_url ? ` | Verifikasi: ${c.credential_url}` : ''
@@ -141,6 +173,7 @@ ${certList.join('\n')}`
 - Domisili / Lokasi: ${domisili}
 - Nomor HP / WhatsApp: ${hp}
 - Email: ${email}
+- Website Personal: ${website}
 - LinkedIn: ${linkedin}
 - GitHub / Portfolio: ${github}
 - Status Saat Ini: ${status}
@@ -164,6 +197,7 @@ const BLANK_TEMPLATE_CONTENT = `### 1. Data Diri & Kontak
 - Domisili / Lokasi: (contoh: Jakarta Selatan, Indonesia)
 - Nomor HP / WhatsApp: 
 - Email: 
+- Website Personal: (opsional)
 - LinkedIn: (opsional)
 - GitHub / Portfolio: (opsional)
 - Status Saat Ini: (contoh: Fresh Graduate / Open to Work / Sedang Bekerja)
@@ -179,6 +213,7 @@ const BLANK_TEMPLATE_CONTENT = `### 1. Data Diri & Kontak
 - Periode Tahun: (contoh: 2020 - 2024)
 - Nilai / IPK: (opsional)
 - Judul Skripsi / Tugas Akhir / Fokus: (opsional)
+- Dokumen Bukti / Link Publikasi: (opsional link jurnal / publikasi ilmiah)
 
 ### 4. Pengalaman Kerja / Magang / Organisasi
 (Bisa dibuat lebih dari satu jika ada)

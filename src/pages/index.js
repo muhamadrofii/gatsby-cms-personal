@@ -473,6 +473,8 @@ export const pageQuery = graphql`
       frontmatter {
         title
         email_link
+        phone
+        linkedin_link
         github_link
         instagram_link
         linktree_link
@@ -494,6 +496,7 @@ export const pageQuery = graphql`
             company_logo
             attachment_pdf
             catbox_url
+            location
           }
         }
       }

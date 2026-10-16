@@ -3,10 +3,11 @@ template: experience
 company: Kemdikti Saintek "Pemberdayaan Desa Binaan"
 role: Cloud DevOps & Backend Engineer
 date_range: '2026'
-order: 1
+order: 2
 company_logo: ''
 attachment_pdf: /thumbnails/simkodes_cloud_devops___containerized_infrastructure.pdf
 catbox_url: https://files.catbox.moe/uo8p40.pdf
+location: Sranak, Bojonegoro, Indonesia (Paruh Waktu)
 ---
 
 Architected and implemented containerized cloud infrastructure, reverse proxy gateways, and automated CI/CD deployment pipelines for the SIMKODES platform.
