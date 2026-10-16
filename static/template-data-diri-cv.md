@@ -70,7 +70,12 @@
 - Keahlian Tambahan / Soft Skills: Leadership, Problem Solving, Technical Documentation, Agile/Scrum, Team Collaboration
 
 ### 6. Sertifikasi / Pelatihan (Opsional)
-- Nama Sertifikat / Pelatihan: Backend Developer & Cloud Practitioner - Dicoding Indonesia (Jan 2025)
+- Belajar Dasar Cloud dan Gen AI di AWS - Dicoding Indonesia & AWS (Nov 2023 - Nov 2026) | ID: 81P2VQ53QPOY | https://www.dicoding.com/certificates/81P2VQ53QPOY
+- Belajar Back-End Pemula dengan JavaScript - Dicoding Indonesia & AWS (Nov 2023 - Nov 2026) | ID: 1RXY0581QZVM | https://www.dicoding.com/certificates/1RXY0581QZVM
+- Belajar Dasar-Dasar DevOps - Dicoding Indonesia (Dec 2022 - Dec 2025) | ID: 81P28NVD8POY | https://www.dicoding.com/certificates/81P28NVD8POY
+- Memulai Pemrograman Dengan Java - Dicoding Indonesia (Oct 2022 - Oct 2025) | ID: ERZR0MG6OXYV | https://www.dicoding.com/certificates/ERZR0MG6OXYV
+- Belajar Dasar Pemrograman JavaScript - Dicoding Indonesia & AWS (Oct 2022 - Oct 2025) | ID: 6RPN68129P2M | https://www.dicoding.com/certificates/6RPN68129P2M
+- Belajar Dasar Pemrograman Web - Dicoding Indonesia (Oct 2022 - Oct 2025) | ID: 1RXYOMMD9PVM | https://www.dicoding.com/certificates/1RXYOMMD9PVM
 
 ### 7. Target Lowongan & Batasan
 - Posisi yang Ditargetkan: Backend Developer / Software Engineer / Fullstack Developer / Cloud DevOps Engineer
