@@ -5,7 +5,8 @@ issuer: Dicoding Indonesia
 issue_date: Oct 2022
 credential_id: 1RXYOMMD9PVM
 credential_url: https://www.dicoding.com/certificates/1RXYOMMD9PVM
-certificate_pdf: ''
+certificate_pdf: /thumbnails/dicoding_pemrograman_web.pdf
+catbox_url: https://files.catbox.moe/nywefb.pdf
 certificate_image: 'https://d17ivq9b7rppb3.cloudfront.net/original/academy/belajar_dasar_pemrograman_web_logo_230421141544.jpg'
 order: 6
 ---

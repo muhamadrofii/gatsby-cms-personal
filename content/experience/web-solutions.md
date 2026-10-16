@@ -6,6 +6,7 @@ date_range: 'Jan 2025 - Feb 2025'
 order: 2
 company_logo: /thumbnails/pasted-image-1789790854882.png
 attachment_pdf: /thumbnails/arsitektur_backend___integrasi_payment_gateway_wisma_migas (1).pdf
+catbox_url: https://files.catbox.moe/xmz4mb.pdf
 ---
 
 Responsible for backend architecture design, payment gateway integration, multi-layer security systems, and standardized technical documentation for a Hotel & Reservation Management System built with Laravel 12 and Livewire Volt.

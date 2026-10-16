@@ -83,6 +83,15 @@ const CertificateCard = ({ cert }) => {
           >
             Verify ↗
           </a>
+        {cert.catbox_url && (
+          <a
+            className="button secondary small"
+            href={cert.catbox_url}
+            target="_blank"
+            rel="noreferrer"
+          >
+            File Asli (Catbox) ↗
+          </a>
         )}
         {cert.attachment_pdf && (
           <a
@@ -287,6 +296,18 @@ export default function Index({ data }) {
                         <PdfViewer src={exp.attachment_pdf} title={`Dokumen PDF - ${exp.company}`} />
                       </div>
                     )}
+                    {exp.catbox_url && (
+                      <div style={{ marginTop: '0.5rem' }}>
+                        <a
+                          className="button secondary small"
+                          href={exp.catbox_url}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          📄 Lihat Dokumen Bukti (Catbox) ↗
+                        </a>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -471,6 +492,7 @@ export const pageQuery = graphql`
             order
             company_logo
             attachment_pdf
+            catbox_url
           }
         }
       }
@@ -509,6 +531,7 @@ export const pageQuery = graphql`
             credential_id
             credential_url
             attachment_pdf: certificate_pdf
+            catbox_url
             certificate_image
             order
           }

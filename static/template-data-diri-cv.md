@@ -24,6 +24,7 @@
   - Nama Perusahaan / Tempat: Freelance
   - Lokasi: Remote / Indonesia
   - Periode: Jan 2026 - Present
+  - Dokumen Bukti / Portofolio: https://files.catbox.moe/kefqjk.pdf
   - Tanggung Jawab & Pencapaian:
     * Merancang dan membangun aplikasi web responsif end-to-end terintegrasi backend dan database.
     * Mengembangkan arsitektur database relasional MySQL teroptimasi dan RESTful API aman.
@@ -33,6 +34,7 @@
   - Nama Perusahaan / Tempat: Kemdikti Saintek "Pemberdayaan Desa Binaan" (SIMKODES)
   - Lokasi: Bojonegoro, Indonesia
   - Periode: 2026
+  - Dokumen Bukti / Portofolio: https://files.catbox.moe/uo8p40.pdf
   - Tanggung Jawab & Pencapaian:
     * Merancang arsitektur multi-container Docker Compose (PHP 8.2-FPM, Nginx Alpine, MySQL 8.0) untuk standarisasi environment.
     * Mengonfigurasi Nginx reverse proxy dengan OPcache bytecode caching sehingga latency respon server < 45ms.
@@ -42,6 +44,7 @@
   - Nama Perusahaan / Tempat: PPSDM MIGAS CEPU
   - Lokasi: Cepu, Jawa Tengah, Indonesia
   - Periode: Jan 2025 - Feb 2025
+  - Dokumen Bukti / Portofolio: https://files.catbox.moe/xmz4mb.pdf
   - Tanggung Jawab & Pencapaian:
     * Merancang arsitektur backend sistem reservasi berbasis Laravel 12, Livewire Volt, dan database relasional UUID.
     * Mengintegrasikan Xendit Payment Gateway V2 (VA, QRIS, E-Wallet) dan webhook listener asynchronous secara real-time.
@@ -51,6 +54,7 @@
   - Nama Perusahaan / Tempat: MSIB (SmartBeez Platform)
   - Lokasi: Remote / Indonesia
   - Periode: Aug 2024 - Dec 2024
+  - Dokumen Bukti / Portofolio: https://files.catbox.moe/lbozom.pdf
   - Tanggung Jawab & Pencapaian:
     * Memimpin tim 5 orang lintas fungsi (UI/UX, Frontend, Backend) dengan metodologi Agile/Scrum.
     * Mengintegrasikan Midtrans Snap API (QRIS & Virtual Account) dan webhook signature verification.
@@ -70,12 +74,12 @@
 - Keahlian Tambahan / Soft Skills: Leadership, Problem Solving, Technical Documentation, Agile/Scrum, Team Collaboration
 
 ### 6. Sertifikasi / Pelatihan (Opsional)
-- Belajar Dasar Cloud dan Gen AI di AWS - Dicoding Indonesia & AWS (Nov 2023 - Nov 2026) | ID: 81P2VQ53QPOY | https://www.dicoding.com/certificates/81P2VQ53QPOY
-- Belajar Back-End Pemula dengan JavaScript - Dicoding Indonesia & AWS (Nov 2023 - Nov 2026) | ID: 1RXY0581QZVM | https://www.dicoding.com/certificates/1RXY0581QZVM
-- Belajar Dasar-Dasar DevOps - Dicoding Indonesia (Dec 2022 - Dec 2025) | ID: 81P28NVD8POY | https://www.dicoding.com/certificates/81P28NVD8POY
-- Memulai Pemrograman Dengan Java - Dicoding Indonesia (Oct 2022 - Oct 2025) | ID: ERZR0MG6OXYV | https://www.dicoding.com/certificates/ERZR0MG6OXYV
-- Belajar Dasar Pemrograman JavaScript - Dicoding Indonesia & AWS (Oct 2022 - Oct 2025) | ID: 6RPN68129P2M | https://www.dicoding.com/certificates/6RPN68129P2M
-- Belajar Dasar Pemrograman Web - Dicoding Indonesia (Oct 2022 - Oct 2025) | ID: 1RXYOMMD9PVM | https://www.dicoding.com/certificates/1RXYOMMD9PVM
+- Belajar Dasar Cloud dan Gen AI di AWS - Dicoding Indonesia & AWS (Nov 2023 - Nov 2026) | ID: 81P2VQ53QPOY | Dokumen Catbox: https://files.catbox.moe/noq69w.pdf | Verifikasi: https://www.dicoding.com/certificates/81P2VQ53QPOY
+- Belajar Back-End Pemula dengan JavaScript - Dicoding Indonesia & AWS (Nov 2023 - Nov 2026) | ID: 1RXY0581QZVM | Dokumen Catbox: https://files.catbox.moe/licx4v.pdf | Verifikasi: https://www.dicoding.com/certificates/1RXY0581QZVM
+- Belajar Dasar-Dasar DevOps - Dicoding Indonesia (Dec 2022 - Dec 2025) | ID: 81P28NVD8POY | Dokumen Catbox: https://files.catbox.moe/52dvkt.pdf | Verifikasi: https://www.dicoding.com/certificates/81P28NVD8POY
+- Memulai Pemrograman Dengan Java - Dicoding Indonesia (Oct 2022 - Oct 2025) | ID: ERZR0MG6OXYV | Dokumen Catbox: https://files.catbox.moe/vhl0i7.pdf | Verifikasi: https://www.dicoding.com/certificates/ERZR0MG6OXYV
+- Belajar Dasar Pemrograman JavaScript - Dicoding Indonesia & AWS (Oct 2022 - Oct 2025) | ID: 6RPN68129P2M | Dokumen Catbox: https://files.catbox.moe/g063be.pdf | Verifikasi: https://www.dicoding.com/certificates/6RPN68129P2M
+- Belajar Dasar Pemrograman Web - Dicoding Indonesia (Oct 2022 - Oct 2025) | ID: 1RXYOMMD9PVM | Dokumen Catbox: https://files.catbox.moe/nywefb.pdf | Verifikasi: https://www.dicoding.com/certificates/1RXYOMMD9PVM
 
 ### 7. Target Lowongan & Batasan
 - Posisi yang Ditargetkan: Backend Developer / Software Engineer / Fullstack Developer / Cloud DevOps Engineer

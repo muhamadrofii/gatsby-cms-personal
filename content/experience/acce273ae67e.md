@@ -6,6 +6,7 @@ date_range: '2026'
 order: 1
 company_logo: ''
 attachment_pdf: /thumbnails/simkodes_cloud_devops___containerized_infrastructure.pdf
+catbox_url: https://files.catbox.moe/uo8p40.pdf
 ---
 
 Architected and implemented containerized cloud infrastructure, reverse proxy gateways, and automated CI/CD deployment pipelines for the SIMKODES platform.

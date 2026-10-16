@@ -89,6 +89,16 @@ const CertificateCard = ({ cert }) => {
             Verify ↗
           </a>
         )}
+        {cert.catbox_url && (
+          <a
+            className="button secondary small"
+            href={cert.catbox_url}
+            target="_blank"
+            rel="noreferrer"
+          >
+            File Asli (Catbox) ↗
+          </a>
+        )}
         {cert.certificate_pdf && (
           <a
             className="button secondary small"
@@ -128,6 +138,7 @@ export default function Certificates() {
               credential_id
               credential_url
               certificate_pdf
+              catbox_url
               certificate_image
               order
             }

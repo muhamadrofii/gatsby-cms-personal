@@ -62,10 +62,16 @@ export const generateDynamicCvContent = ({
       )
     }
 
+    const docBukti = exp.catbox_url
+      ? `\n  - Dokumen Bukti / Portofolio: ${exp.catbox_url}`
+      : exp.attachment_pdf
+      ? `\n  - Dokumen Bukti / Portofolio: ${exp.attachment_pdf}`
+      : ''
+
     pengalamanList.push(`- Posisi / Jabatan: ${exp.role || '-'}
   - Nama Perusahaan / Tempat: ${exp.company || '-'}
   - Lokasi: Remote / Indonesia
-  - Periode: ${exp.date_range || '-'}
+  - Periode: ${exp.date_range || '-'}${docBukti}
   - Tanggung Jawab & Pencapaian:
 ${bullets.join('\n')}`)
   })
@@ -105,8 +111,15 @@ ${pengalamanList.join('\n\n')}`
 
   const certList = []
   certificates.forEach((c) => {
+    const credId = c.credential_id ? ` | ID: ${c.credential_id}` : ''
+    const docLink = c.catbox_url
+      ? ` | Dokumen Catbox: ${c.catbox_url}`
+      : (c.attachment_pdf || c.certificate_pdf)
+      ? ` | Dokumen: ${c.attachment_pdf || c.certificate_pdf}`
+      : ''
+    const verifyLink = c.credential_url ? ` | Verifikasi: ${c.credential_url}` : ''
     certList.push(
-      `- Nama Sertifikat / Pelatihan: ${c.title || '-'} - ${c.issuer || ''} (${c.issue_date || '-'})`
+      `- Nama Sertifikat / Pelatihan: ${c.title || '-'} - ${c.issuer || ''} (${c.issue_date || '-'})${credId}${docLink}${verifyLink}`
     )
   })
   if (certList.length === 0) {
@@ -173,6 +186,7 @@ const BLANK_TEMPLATE_CONTENT = `### 1. Data Diri & Kontak
 - Nama Perusahaan / Tempat: 
 - Lokasi: 
 - Periode: (contoh: Jan 2023 - Des 2023)
+- Dokumen Bukti / Portofolio: (opsional link Catbox / file asli)
 - Tanggung Jawab & Pencapaian:
   * Melakukan ...
   * Bertanggung jawab atas ...

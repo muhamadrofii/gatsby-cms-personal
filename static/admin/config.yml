@@ -75,6 +75,7 @@ collections:
       - { label: "Order (for sorting)", name: "order", widget: "number", default: 1 }
       - { label: "Company Logo", name: "company_logo", widget: "image", required: false }
       - { label: "Attachment (PDF)", name: "attachment_pdf", widget: "file", required: false }
+      - { label: "Catbox PDF URL (Public Link)", name: "catbox_url", widget: "string", required: false }
       - { label: "Description", name: "body", widget: "markdown" }
 
   - name: "certificates"
@@ -90,6 +91,7 @@ collections:
       - { label: "Credential ID", name: "credential_id", widget: "string", required: false }
       - { label: "Credential URL (Verify Link)", name: "credential_url", widget: "string", required: false }
       - { label: "Certificate (PDF)", name: "certificate_pdf", widget: "file", required: false }
+      - { label: "Catbox PDF URL (Public Link)", name: "catbox_url", widget: "string", required: false }
       - { label: "Certificate Image", name: "certificate_image", widget: "image", required: false }
       - { label: "Order (for sorting)", name: "order", widget: "number", default: 1 }
       - { label: "Description / Skills", name: "body", widget: "markdown", required: false }
