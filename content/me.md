@@ -10,6 +10,7 @@ categories: Meta
 linktree_link: https://linktr.ee/muhamadrofii
 linkedin_link: https://www.linkedin.com/in/muhamad-rofi-i-80a125176
 email_link: muhamadrofii911@gmail.com
+phone: '+6285755818010'
 github_link: https://github.com/muhamadrofii
 instagram_link: https://instagram.com/em.rofii
 thumbnail: /thumbnails/profil.png
