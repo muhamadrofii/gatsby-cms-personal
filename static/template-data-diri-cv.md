@@ -2,7 +2,7 @@
 - Nama Lengkap: Muhamad Rofii
 - Domisili / Lokasi: Bojonegoro, Jawa Timur, Indonesia
 - Nomor HP / WhatsApp: -
-- Email: rofii@example.com
+- Email: muhamadrofii911@gmail.com
 - LinkedIn: https://www.linkedin.com/in/muhamad-rofi-i-80a125176
 - GitHub / Portfolio: https://github.com/muhamadrofii
 - Status Saat Ini: Fresh Graduate / Open to Work (Backend Developer & Software Engineer)
