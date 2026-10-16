@@ -83,6 +83,7 @@ const CertificateCard = ({ cert }) => {
           >
             Verify ↗
           </a>
+        )}
         {cert.catbox_url && (
           <a
             className="button secondary small"
