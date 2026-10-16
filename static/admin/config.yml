@@ -109,6 +109,7 @@ collections:
       - { label: "Tags", name: "tags", widget: "list" }
       - { label: "Categories", name: "categories", widget: "select", options: ["Technical", "Personal", "Highlight", "Meta"], default: "Meta" }
       - { label: "Linktree Link", name: "linktree_link", widget: "string", required: false }
+      - { label: "LinkedIn Link", name: "linkedin_link", widget: "string", required: false }
       - { label: "Email Address", name: "email_link", widget: "string", required: false }
       - { label: "GitHub Link", name: "github_link", widget: "string", required: false }
       - { label: "Instagram Link", name: "instagram_link", widget: "string", required: false }

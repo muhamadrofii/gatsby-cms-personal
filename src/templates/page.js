@@ -10,7 +10,7 @@ import config from '../utils/config'
 
 export default function PageTemplate({ data }) {
   const post = data.markdownRemark
-  const { title, description, thumbnail, linktree_link, email_link, github_link, instagram_link } = post.frontmatter
+  const { title, description, thumbnail, linktree_link, linkedin_link, email_link, github_link, instagram_link } = post.frontmatter
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function PageTemplate({ data }) {
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
 
-        {(linktree_link || email_link || github_link || instagram_link) && (
+        {(linktree_link || linkedin_link || email_link || github_link || instagram_link) && (
           <div className="contact-section" id="contact" style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '1px solid var(--color-border)' }}>
             <h3 id="contact-heading" style={{ marginBottom: '0.5rem', position: 'relative' }} className="anchor-heading">
               <a href="#contact" aria-label="contact permalink" className="anchor before" style={{ position: 'absolute', top: '0', left: '0', transform: 'translateX(-100%)', paddingRight: '4px' }}>
@@ -47,6 +47,17 @@ export default function PageTemplate({ data }) {
                   style={{ textDecoration: 'none', fontSize: '0.95rem', padding: '0.5rem 1rem' }}
                 >
                   <span style={{ fontSize: '1.1rem' }}>🌳</span> Linktree
+                </a>
+              )}
+              {linkedin_link && (
+                <a
+                  href={linkedin_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="button secondary flex-align-center gap"
+                  style={{ textDecoration: 'none', fontSize: '0.95rem', padding: '0.5rem 1rem' }}
+                >
+                  <span style={{ fontSize: '1.1rem' }}>💼</span> LinkedIn
                 </a>
               )}
               {email_link && (
@@ -98,6 +109,7 @@ export const pageQuery = graphql`
         title
         slug
         linktree_link
+        linkedin_link
         email_link
         github_link
         instagram_link

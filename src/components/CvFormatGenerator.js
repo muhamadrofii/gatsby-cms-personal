@@ -11,7 +11,7 @@ export const generateDynamicCvContent = ({
   const domisili = 'Bojonegoro, Jawa Timur, Indonesia'
   const hp = '-'
   const email = aboutMe?.frontmatter?.email_link || 'rofii@example.com'
-  const linkedin = 'https://linkedin.com/in/muhamadrofii'
+  const linkedin = 'https://www.linkedin.com/in/muhamad-rofi-i-80a125176'
   const github = aboutMe?.frontmatter?.github_link || 'https://github.com/muhamadrofii'
   const status = 'Fresh Graduate / Open to Work (Backend Developer & Software Engineer)'
 

@@ -3,7 +3,7 @@
 - Domisili / Lokasi: Bojonegoro, Jawa Timur, Indonesia
 - Nomor HP / WhatsApp: -
 - Email: rofii@example.com
-- LinkedIn: https://linkedin.com/in/muhamadrofii
+- LinkedIn: https://www.linkedin.com/in/muhamad-rofi-i-80a125176
 - GitHub / Portfolio: https://github.com/muhamadrofii
 - Status Saat Ini: Fresh Graduate / Open to Work (Backend Developer & Software Engineer)
 
