@@ -8,7 +8,7 @@ credential_url: https://www.dicoding.com/certificates/81P2VQ53QPOY
 certificate_pdf: /thumbnails/dicoding_aws_cloud_gen_ai.pdf
 catbox_url: https://files.catbox.moe/noq69w.pdf
 certificate_image: 'https://d17ivq9b7rppb3.cloudfront.net/original/academy/cloud_practitioner_essentials_belajar_dasar_aws_cloud_logo_230421133823.jpg'
-order: 1
+order: 4
 ---
 
 Memahami konsep dasar cloud computing berstandar industri AWS dan penerapan Generative AI. Mencakup infrastruktur global AWS, komputasi (Amazon EC2, Elastic Load Balancing), jaringan (VPC, Direct Connect), penyimpanan & database (Amazon S3, EBS, DynamoDB, RDS), serta arsitektur keamanan dan kepatuhan (AWS IAM, Shared Responsibility Model, AWS Well-Architected Framework).

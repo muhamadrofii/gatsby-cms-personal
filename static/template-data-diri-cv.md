@@ -36,8 +36,8 @@
 - Posisi / Jabatan: Cloud DevOps & Backend Engineer
   - Nama Perusahaan / Tempat: Kemdikti Saintek "Pemberdayaan Desa Binaan"
   - Lokasi: Sranak, Bojonegoro, Indonesia (Paruh Waktu)
-  - Periode: 2026
-  - Dokumen Bukti / Portofolio: https://files.catbox.moe/uo8p40.pdf
+  - Periode: 2025 - 2026
+  - Dokumen Bukti / Portofolio: https://files.catbox.moe/a3s4nv.pdf (Surat Pencatatan HKI) | https://files.catbox.moe/uo8p40.pdf (Portofolio Proyek)
   - Tanggung Jawab & Pencapaian:
     * **Multi-Container Dockerization**: Designed and deployed a multi-container architecture (PHP 8.2-FPM, Nginx Alpine, MySQL 8.0) using Docker Compose, establishing 100% consistent and reproducible local, staging, and production environments.
     * **Server & Gateway Optimization**: Configured Nginx reverse proxy with FastCGI pass-through, security headers (X-Frame-Options, CSP), and OPcache bytecode caching (128MB shared memory) to reduce server response latency to < 45ms.
@@ -45,10 +45,10 @@
     * **Data Security & Reliability**: Secured data workflows with internal bridge network isolation, HTTPS SSL/TLS termination, and persistent Docker volume management for high availability and disaster recovery.
 
 - Posisi / Jabatan: Backend Developer & Technical Documentation Intern
-  - Nama Perusahaan / Tempat: PPSDM MIGAS CEPU
+  - Nama Perusahaan / Tempat: PPSDM MIGAS CEPU (Kementerian ESDM RI)
   - Lokasi: Remote / Indonesia
-  - Periode: Jan 2025 - Feb 2025
-  - Dokumen Bukti / Portofolio: https://files.catbox.moe/xmz4mb.pdf
+  - Periode: Apr 2025 - May 2025
+  - Dokumen Bukti / Portofolio: https://files.catbox.moe/y3sj2u.pdf (Surat Keterangan) | https://files.catbox.moe/xmz4mb.pdf (Portofolio Proyek)
   - Tanggung Jawab & Pencapaian:
     * **Backend & Database Architecture**: Designed optimized relational MySQL database schemas using UUIDs, Eloquent ORM relationships, and custom service providers to handle atomic room booking transactions.
     * **Payment Gateway & Webhook Integration**: Integrated Xendit Payment Gateway V2 (Bank Virtual Accounts, QRIS, E-Wallets, Retail Outlets) with automated asynchronous webhook listeners for real-time payment reconciliation.
@@ -58,10 +58,10 @@
     * **Testing & QA Automation**: Developed End-to-End (E2E) automated browser testing suites using Playwright to validate critical checkout and authentication user flows.
 
 - Posisi / Jabatan: Backend Engineer (Program Magang MSIB)
-  - Nama Perusahaan / Tempat: MSIB
+  - Nama Perusahaan / Tempat: MSIB - PT Maleo Edukasi Teknologi (Educourse.id)
   - Lokasi: Remote, Tangerang, Indonesia (Penuh Waktu)
   - Periode: Aug 2024 - Dec 2024
-  - Dokumen Bukti / Portofolio: https://files.catbox.moe/lbozom.pdf
+  - Dokumen Bukti / Portofolio: https://files.catbox.moe/dtqp7k.pdf (Sertifikat) | https://files.catbox.moe/lbozom.pdf (Portofolio Proyek)
   - Tanggung Jawab & Pencapaian:
     * **Team Leadership & Project Management**: Coordinated a 5-member cross-functional team using Agile/Scrum methodologies, facilitated sprint planning sessions, and managed the project roadmap to ensure 100% on-time milestone delivery.
     * **Automated Payment & Subscription Gateway**: Integrated Midtrans Snap API (QRIS & Virtual Account) and developed secure Webhook Listener endpoints with signature key verification to automate real-time subscription lifecycle management.
@@ -69,6 +69,15 @@
     * **Access Control & Route Protection**: Built custom view decorators (`@subscription_required`) to restrict access to educational videos and exclusive parenting content to active subscribers.
     * **Learning & Quiz Engine**: Designed relational database schemas using Django ORM and built business logic for automated interactive quiz scoring.
     * **Developer Productivity & Seeding**: Authored automated data seeding scripts (`manage.py seed_data`) to standardize and expedite local testing workflows across the engineering team.
+
+- Posisi / Jabatan: Media & Publication Staff
+  - Nama Perusahaan / Tempat: Student Executive Board (BEM) Faculty of Science & Technology
+  - Lokasi: Bojonegoro, Indonesia
+  - Periode: Jan 2026
+  - Tanggung Jawab & Pencapaian:
+    * Directed creative media publication strategies and managed official social media communication channels for student outreach.
+    * Designed digital promotional assets, informative banners, and publication content for faculty-wide programs.
+    * Spearheaded live event documentation and post-event media recaps, ensuring consistent institutional branding.
 
 - Posisi / Jabatan: Internal Affairs Staff
   - Nama Perusahaan / Tempat: Student Executive Board (BEM) Faculty of Science & Technology
@@ -85,6 +94,9 @@
 - Keahlian Tambahan / Soft Skills: Leadership, Problem Solving, Technical Documentation, Agile/Scrum, Team Collaboration
 
 ### 6. Sertifikasi / Pelatihan (Opsional)
+- Nama Sertifikat / Pelatihan: Surat Pencatatan Ciptaan (HKI Hak Cipta Kemenkumham RI) - Digitalisasi Tata Kelola Koperasi Desa Merah Putih (Nov 2025) | No: 001015965 | Permohonan: EC002025175705 | Dokumen Catbox: https://files.catbox.moe/a3s4nv.pdf
+- Nama Sertifikat / Pelatihan: Surat Keterangan Praktik Kerja Lapangan (Digitalisasi Wisma Migas) - PPSDM MIGAS KESDM RI (May 2025) | No: 040 /Ket.pkl/TU.05.01/BPM/2025 | Dokumen Catbox: https://files.catbox.moe/y3sj2u.pdf
+- Nama Sertifikat / Pelatihan: Platform and Web Developer (Specialist Education Platform) - Kampus Merdeka x Educourse.id (Dec 2024) | ID: EDU-066/SI-MSIB-7/XII/2024/10801806 | Dokumen Catbox: https://files.catbox.moe/dtqp7k.pdf | STEM ID: #129212996
 - Nama Sertifikat / Pelatihan: Belajar Dasar Cloud dan Gen AI di AWS - Dicoding Indonesia & AWS (Nov 2023) | ID: 81P2VQ53QPOY | Dokumen Catbox: https://files.catbox.moe/noq69w.pdf | Verifikasi: https://www.dicoding.com/certificates/81P2VQ53QPOY
 - Nama Sertifikat / Pelatihan: Belajar Back-End Pemula dengan JavaScript - Dicoding Indonesia & AWS (Nov 2023) | ID: 1RXY0581QZVM | Dokumen Catbox: https://files.catbox.moe/licx4v.pdf | Verifikasi: https://www.dicoding.com/certificates/1RXY0581QZVM
 - Nama Sertifikat / Pelatihan: Belajar Dasar-Dasar DevOps - Dicoding Indonesia (Dec 2022) | ID: 81P28NVD8POY | Dokumen Catbox: https://files.catbox.moe/52dvkt.pdf | Verifikasi: https://www.dicoding.com/certificates/81P28NVD8POY

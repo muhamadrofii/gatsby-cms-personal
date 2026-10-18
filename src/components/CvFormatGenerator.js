@@ -66,9 +66,14 @@ export const generateDynamicCvContent = ({
       lines.forEach((l) => {
         const trimmed = l.trim()
         if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+          const lower = trimmed.toLowerCase()
           if (
-            !trimmed.toLowerCase().startsWith('- **skills') &&
-            !trimmed.toLowerCase().startsWith('* **skills')
+            !lower.startsWith('- **skills') &&
+            !lower.startsWith('* **skills') &&
+            !lower.includes('**credentials') &&
+            !trimmed.startsWith('- 📜') &&
+            !trimmed.startsWith('- 📊') &&
+            !trimmed.startsWith('- 🎓')
           ) {
             bullets.push(`    * ${trimmed.replace(/^[-*]\s+/, '')}`)
           }

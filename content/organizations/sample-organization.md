@@ -3,7 +3,7 @@ template: organization
 organization: Student Executive Board (BEM) Faculty of Science & Technology
 role: Internal Affairs Staff
 date_range: 2024 - 2025
-order: 1
+order: 2
 organization_logo: ''
 attachment_pdf: /thumbnails/IMG_8388_248354_merged.pdf
 ---
