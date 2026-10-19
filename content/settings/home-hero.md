@@ -1,6 +1,6 @@
 ---
 template: home-hero
-title: Halo, Saya Rofii!.
+title: "Halo, Saya Rofi'i!."
 description: |-
   I am an aspiring Backend Developer and Software Engineer with a strong interest in building scalable, secure, and maintainable applications. I enjoy solving problems through clean code and continuously improving my technical skills.
 
@@ -11,7 +11,7 @@ extra_description: Everything on this site is written by me, not AI.
 image: /profil.png
 about_me_link: /me
 newsletter_link: https://instagram.com/em.rofii
-sidebar_about: I'm Rofii, a web developer based in Indonesia. This is my digital garden.
+sidebar_about: "I'm Rofi'i, a web developer based in Indonesia. This is my digital garden."
 notes_title: My Notes
 notes_description: Koleksi catatan seputar programming.
 projects_title: Projects

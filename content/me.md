@@ -19,13 +19,13 @@ comments_off: true
 
 <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap-reverse; gap: 1.5rem; margin-bottom: 2rem; margin-top: 1rem;">
   <div style="flex: 1; min-width: 260px;">
-    <h2 style="margin-top: 0; margin-bottom: 1rem;">Hi, I'm Rofii! 👋</h2>
+    <h2 style="margin-top: 0; margin-bottom: 1rem;">Hi, I'm Rofi'i! 👋</h2>
     <p style="margin: 0; line-height: 1.6;">
       I am an aspiring Backend Developer and Software Engineer with a strong interest in building scalable, secure, and maintainable applications. I enjoy solving problems through clean code and continuously improving my technical skills.
     </p>
   </div>
   <div style="flex-shrink: 0;">
-    <img src="/profil.png" alt="Rofii" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--color-primary); object-fit: cover; object-position: center center; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); display: block;" />
+    <img src="/profil.png" alt="Rofi'i" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--color-primary); object-fit: cover; object-position: center center; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); display: block;" />
   </div>
 </div>
 

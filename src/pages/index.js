@@ -425,6 +425,16 @@ export default function Index({ data }) {
                           </Link>
                         )
                       )}
+                      {project.attachment_pdf && (
+                        <a
+                          className="button secondary small"
+                          href={project.attachment_pdf}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          LoA (PDF)
+                        </a>
+                      )}
                       {project.url && (
                         <a
                           className="button secondary small"
@@ -556,6 +566,7 @@ export const pageQuery = graphql`
             url
             writeup
             highlight
+            attachment_pdf
           }
         }
       }

@@ -60,6 +60,7 @@ collections:
       - { label: "Tagline", name: "tagline", widget: "string" }
       - { label: "Demo URL", name: "url", widget: "string", required: false }
       - { label: "Writeup URL Path", name: "writeup", widget: "string", required: false }
+      - { label: "Attachment (PDF / LoA)", name: "attachment_pdf", widget: "file", required: false }
       - { label: "Highlight on Home Page", name: "highlight", widget: "boolean", default: false }
 
   - name: "experience"

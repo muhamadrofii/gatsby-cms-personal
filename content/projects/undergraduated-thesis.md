@@ -6,5 +6,6 @@ slug: Classification, Data Science,  Machine Learning, Sentiment, SMOTE
 tagline: Implementation of SMOTE and GridSearchCV for Imbalanced Sentiment Classification on the Cabinet Reshuffle Issue
 url: ''
 writeup: https://ojs.aknacehbarat.ac.id/index.php/vocatech/article/view/305
+attachment_pdf: /thumbnails/loa010.pdf
 highlight: true
 ---

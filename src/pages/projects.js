@@ -35,6 +35,7 @@ export default function Projects() {
               url
               writeup
               highlight
+              attachment_pdf
             }
           }
         }
@@ -136,6 +137,16 @@ export default function Projects() {
                         Article
                       </Link>
                     )
+                  )}
+                  {project.attachment_pdf && (
+                    <a
+                      className="button secondary small"
+                      href={project.attachment_pdf}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      LoA (PDF)
+                    </a>
                   )}
                   {project.url && (
                     <a

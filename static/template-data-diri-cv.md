@@ -1,5 +1,5 @@
 ### 1. Data Diri & Kontak
-- Nama Lengkap: Muhamad Rofii
+- Nama Lengkap: Muhamad Rofi'i
 - Domisili / Lokasi: Bojonegoro, Jawa Timur, Indonesia
 - Nomor HP / WhatsApp: +6285755818010 (https://wa.me/6285755818010)
 - Email: muhamadrofii911@gmail.com
@@ -19,7 +19,7 @@
 - Periode Tahun: 2022 - 2026
 - Nilai / IPK: -
 - Judul Skripsi / Tugas Akhir / Fokus: Implementation of SMOTE and GridSearchCV for Imbalanced Sentiment Classification on the Cabinet Reshuffle Issue
-- Dokumen Bukti / Link Publikasi: https://ojs.aknacehbarat.ac.id/index.php/vocatech/article/view/305
+- Dokumen Bukti / Link Publikasi: https://ojs.aknacehbarat.ac.id/index.php/vocatech/article/view/305 | Dokumen LoA: /thumbnails/loa010.pdf
 
 ### 4. Pengalaman Kerja / Magang / Organisasi
 - Posisi / Jabatan: Fullstack Developer
@@ -73,7 +73,7 @@
 - Posisi / Jabatan: Media & Publication Staff
   - Nama Perusahaan / Tempat: Student Executive Board (BEM) Faculty of Science & Technology
   - Lokasi: Bojonegoro, Indonesia
-  - Periode: Jan 2026
+  - Periode: 2025 - 2026
   - Tanggung Jawab & Pencapaian:
     * Directed creative media publication strategies and managed official social media communication channels for student outreach.
     * Designed digital promotional assets, informative banners, and publication content for faculty-wide programs.

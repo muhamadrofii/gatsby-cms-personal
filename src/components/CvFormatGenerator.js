@@ -7,7 +7,7 @@ export const generateDynamicCvContent = ({
   projects = [],
   aboutMe = {},
 }) => {
-  const nama = 'Muhamad Rofii'
+  const nama = "Muhamad Rofi'i"
   const domisili = 'Bojonegoro, Jawa Timur, Indonesia'
   const rawHp = aboutMe?.frontmatter?.phone || '+6285755818010'
   let strHp = String(rawHp).trim()
@@ -42,8 +42,9 @@ export const generateDynamicCvContent = ({
     thesisProject?.writeup ||
     thesisProject?.url ||
     'https://ojs.aknacehbarat.ac.id/index.php/vocatech/article/view/305'
+  const loaDoc = thesisProject?.attachment_pdf || '/thumbnails/loa010.pdf'
   const thesisLinkLine = thesisLink
-    ? `\n- Dokumen Bukti / Link Publikasi: ${thesisLink}`
+    ? `\n- Dokumen Bukti / Link Publikasi: ${thesisLink}${loaDoc ? ` | Dokumen LoA: ${loaDoc}` : ''}`
     : ''
 
   const pendidikan = `### 3. Pendidikan
