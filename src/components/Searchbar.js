@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { navigate } from 'gatsby'
+import { useTranslation } from 'react-i18next'
 
 import searchIcon from '../assets/nav-search.png'
 
@@ -11,6 +12,7 @@ export const Searchbar = ({
   isLocal = true,
   ...props
 }) => {
+  const { t } = useTranslation()
   const searchRef = useRef(null)
 
   return (
@@ -35,7 +37,9 @@ export const Searchbar = ({
           type="search"
           className={`searchbar ${isLocal ? 'with-icon' : ''}`}
           placeholder={
-            isLocal ? `Search ${count} posts...` : 'Search posts...'
+            isLocal
+              ? t('nav.search_count', { count, defaultValue: `Search ${count} posts...` })
+              : t('nav.search_posts', { defaultValue: 'Search posts...' })
           }
           value={query}
           autoComplete="off"

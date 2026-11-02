@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
+import { useTranslation } from 'react-i18next'
 
 import { ColorDropdown } from './ColorDropdown'
 import floppyLogo from '../assets/nav-floppy.png'
@@ -15,6 +16,7 @@ export const Sidebar = ({
   currentColor,
   setCurrentColor,
 }) => {
+  const { t, i18n } = useTranslation()
   const data = useStaticQuery(graphql`
     query SidebarQuery {
       homeHero: markdownRemark(frontmatter: { template: { eq: "home-hero" } }) {
@@ -26,6 +28,16 @@ export const Sidebar = ({
   `)
 
   const sidebarText = data.homeHero?.frontmatter?.sidebar_about || "I'm Tania, software engineer and open-source creator. This is my digital garden. 🌱"
+
+  const currentLang = (i18n.language || 'id').startsWith('en') ? 'en' : 'id'
+
+  const handleToggleLanguage = () => {
+    const nextLang = currentLang === 'id' ? 'en' : 'id'
+    i18n.changeLanguage(nextLang)
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('i18nextLng', nextLang)
+    }
+  }
 
   const renderSidebarContent = (text) => {
     if (!text.includes('Tania')) {
@@ -42,14 +54,14 @@ export const Sidebar = ({
   }
 
   const links = [
-    { url: '/blog', label: 'Blog', image: blog },
-    { url: '/notes', label: 'Notes', image: projects },
-    { url: '/projects', label: 'Projects', image: github },
-    { url: '/certificates', label: 'Certificates', emoji: '📜' },
-    { url: '/#experience', label: 'Experience', emoji: '💼' },
-    { url: '/#organizations', label: 'Organizations', emoji: '🏛️' },
-    { url: '/me', label: 'About Me', emoji: '👤' },
-    { url: '/me#contact', label: 'Contact', emoji: '📬' },
+    { url: '/blog', key: 'blog', label: 'Blog', image: blog },
+    { url: '/notes', key: 'notes', label: 'Notes', image: projects },
+    { url: '/projects', key: 'projects', label: 'Projects', image: github },
+    { url: '/certificates', key: 'certificates', label: 'Certificates', emoji: '📜' },
+    { url: '/#experience', key: 'experience', label: 'Experience', emoji: '💼' },
+    { url: '/#organizations', key: 'organizations', label: 'Organizations', emoji: '🏛️' },
+    { url: '/me', key: 'about_me', label: 'About Me', emoji: '👤' },
+    { url: '/me#contact', key: 'contact', label: 'Contact', emoji: '📬' },
   ]
 
   return (
@@ -87,12 +99,32 @@ export const Sidebar = ({
               </button>
               <div className="tooltip">Theme</div>
             </div>
+            <div className="tooltip-container">
+              <button
+                className="navbar-button"
+                onClick={handleToggleLanguage}
+                style={{
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  padding: '0 6px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '2px',
+                  cursor: 'pointer',
+                }}
+                aria-label="Toggle language"
+              >
+                <span>🌐</span>
+                <span>{currentLang === 'id' ? 'ID' : 'EN'}</span>
+              </button>
+              <div className="tooltip">{currentLang === 'id' ? 'Ganti ke EN' : 'Switch to ID'}</div>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="sidebar-section">
-        <h2>About Me</h2>
+        <h2>{t('sidebar.about_me', { defaultValue: 'About Me' })}</h2>
         <div className="sidebar-content">
           <p>{renderSidebarContent(sidebarText)}</p>
         </div>
@@ -122,7 +154,7 @@ export const Sidebar = ({
                   {link.emoji}
                 </span>
               )}
-              {link.label}
+              {t(`nav.${link.key}`, { defaultValue: link.label })}
             </Link>
           ))}
         </nav>

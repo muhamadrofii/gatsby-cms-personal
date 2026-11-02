@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
-import { SocialIcon } from 'react-social-icons'
+import { useTranslation } from 'react-i18next'
 import { useLocation } from '@reach/router'
 
 import floppyLogo from '../assets/nav-floppy.png'
@@ -15,11 +15,11 @@ import { Searchbar } from './Searchbar'
 import { ColorDropdown } from './ColorDropdown'
 
 const links = [
-  { url: '/blog', label: 'Blog', image: blog },
-  { url: '/notes', label: 'Notes', image: projects },
-  { url: '/projects', label: 'Projects', image: github },
-  { url: '/certificates', label: 'Certificates', image: floppyLogo },
-  { url: '/me', label: 'About Me', image: floppyLogo },
+  { url: '/blog', key: 'blog', defaultLabel: 'Blog', image: blog },
+  { url: '/notes', key: 'notes', defaultLabel: 'Notes', image: projects },
+  { url: '/projects', key: 'projects', defaultLabel: 'Projects', image: github },
+  { url: '/certificates', key: 'certificates', defaultLabel: 'Certificates', image: floppyLogo },
+  { url: '/me', key: 'about_me', defaultLabel: 'About Me', image: floppyLogo },
 ]
 
 const socialLinks = [{ url: 'https://www.instagram.com/em.rofii/' }]
@@ -30,10 +30,21 @@ export const Navigation = ({
   currentColor,
   setCurrentColor,
 }) => {
+  const { t, i18n } = useTranslation()
   const location = useLocation()
   const currentPath = location.pathname
   const [navOpen, setNavOpen] = useState(false)
   const [query, setQuery] = useState('')
+
+  const currentLang = (i18n.language || 'id').startsWith('en') ? 'en' : 'id'
+
+  const handleToggleLanguage = () => {
+    const nextLang = currentLang === 'id' ? 'en' : 'id'
+    i18n.changeLanguage(nextLang)
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('i18nextLng', nextLang)
+    }
+  }
 
   const handleToggleMobileNav = () => {
     setNavOpen((prev) => !prev)
@@ -92,8 +103,8 @@ export const Navigation = ({
                 activeClassName="active"
                 onClick={handleCloseMobileNav}
               >
-                <img src={link.image} alt={link.label} />
-                {link.label}
+                <img src={link.image} alt={link.defaultLabel} />
+                {t(`nav.${link.key}`, { defaultValue: link.defaultLabel })}
               </Link>
             ))}
           </nav>
@@ -112,6 +123,27 @@ export const Navigation = ({
               currentColor={currentColor}
               setCurrentColor={setCurrentColor}
             />
+            <button
+              className="navbar-button"
+              onClick={handleToggleLanguage}
+              title={currentLang === 'id' ? 'Switch to English' : 'Ganti ke Bahasa Indonesia'}
+              style={{
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                padding: '0 8px',
+                height: '32px',
+                lineHeight: '32px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '4px',
+                cursor: 'pointer',
+              }}
+              aria-label="Toggle language"
+            >
+              <span style={{ fontSize: '0.85rem' }}>🌐</span>
+              <span>{currentLang === 'id' ? 'ID' : 'EN'}</span>
+            </button>
             {socialLinks.map((link) => (
               <a
                 key={link.url}

@@ -6,7 +6,7 @@
 - Website Personal: https://0xmuhamadrofii.my.id
 - LinkedIn: https://www.linkedin.com/in/muhamad-rofi-i-80a125176
 - GitHub / Portfolio: https://github.com/muhamadrofii
-- Status Saat Ini: Fresh Graduate / Open to Work (Backend Developer & Software Engineer)
+- Status Saat Ini: Fresh Graduate / Open to Work (Software Engineer, Fullstack Developer & DevOps)
 
 ### 2. Bahasa
 - Bahasa Indonesia: Penutur Asli / Native
@@ -89,8 +89,8 @@
     * Strengthened organizational leadership, cross-departmental coordination, and event management workflows.
 
 ### 5. Keterampilan & Keahlian (Skills)
-- Keahlian Utama (Hard Skills): Backend Development, RESTful API Design, Relational Database Architecture, Cloud & Containerization, System Security, Payment Gateway Integration
-- Software / Tools: PHP, Laravel 12, Python, Django, Java, Spring Boot, MySQL, PostgreSQL, Docker, Docker Compose, Nginx, Git, Playwright, Linux, VS Code
+- Keahlian Utama (Hard Skills): Software Engineering, Fullstack Web Development, DevOps & Containerization (Docker, CI/CD), RESTful API Design, Relational Database Architecture, System Security, Payment Gateway Integration
+- Software / Tools: PHP, Laravel 12, Python, Django, Java, Spring Boot, JavaScript, React, MySQL, PostgreSQL, Docker, Docker Compose, Nginx, Git, Playwright, Linux, VS Code
 - Keahlian Tambahan / Soft Skills: Leadership, Problem Solving, Technical Documentation, Agile/Scrum, Team Collaboration
 
 ### 6. Sertifikasi / Pelatihan (Opsional)
@@ -107,6 +107,6 @@
 - Nama Sertifikat / Pelatihan: Belajar Dasar Pemrograman Web - Dicoding Indonesia (Oct 2022) | ID: 1RXYOMMD9PVM | Dokumen Catbox: https://files.catbox.moe/nywefb.pdf | Verifikasi: https://www.dicoding.com/certificates/1RXYOMMD9PVM
 
 ### 7. Target Lowongan & Batasan
-- Posisi yang Ditargetkan: Backend Developer / Software Engineer / Fullstack Developer / Cloud DevOps Engineer
+- Posisi yang Ditargetkan: Software Engineer / Fullstack Developer / Cloud DevOps Engineer / Backend Developer
 - Industri yang Dituju: Information Technology (IT), Software House, FinTech, Tech Startup, Enterprise
 - Batasan / Deal-breakers: Terbuka untuk Remote, On-site, maupun Hybrid

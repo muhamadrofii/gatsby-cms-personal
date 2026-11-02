@@ -8,6 +8,7 @@ import { Sidebar } from './Sidebar'
 
 import '../styles/style.css'
 import '../styles/new-moon.css'
+import '../utils/i18n'
 
 export const Layout = ({ data, children }) => {
   const [theme, setTheme] = useState('dark')
