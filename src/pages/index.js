@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { Link, graphql } from 'gatsby'
+import { useTranslation } from 'react-i18next'
 
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Helmet from 'react-helmet'
@@ -20,6 +21,7 @@ import github from '../assets/nav-github.png'
 import floppy from '../assets/nav-floppy.png'
 
 const CertificateCard = ({ cert }) => {
+  const { t } = useTranslation()
   const [showPdf, setShowPdf] = useState(false)
 
   return (
@@ -71,7 +73,7 @@ const CertificateCard = ({ cert }) => {
             className="button secondary small"
             onClick={() => setShowPdf(!showPdf)}
           >
-            {showPdf ? '▲ Tutup Preview PDF' : '📄 Preview PDF'}
+            {showPdf ? t('buttons.close_pdf') : t('buttons.preview_pdf')}
           </button>
         )}
         {cert.credential_url && (
@@ -111,6 +113,9 @@ const CertificateCard = ({ cert }) => {
 }
 
 export default function Index({ data }) {
+  const { t, i18n } = useTranslation()
+  const currentLang = (i18n.language || 'id').startsWith('en') ? 'en' : 'id'
+
   const latestNotes = data.latestNotes?.edges || []
   const latestArticles = data.latestArticles?.edges || []
   const highlights = data.highlights?.edges || []
@@ -201,14 +206,14 @@ export default function Index({ data }) {
         <Hero type="index">
           <div className="hero-wrapper">
             <div>
-              <h1>{title}</h1>
-              <p className="hero-description">{description}</p>
+              <h1>{t('hero.greeting', { defaultValue: title })}</h1>
+              <p className="hero-description">{t("hero.description", { defaultValue: description })}</p>
               {extra_description && (
-                <p className="hero-description">{extra_description}</p>
+                <p className="hero-description">{t("hero.extra_description", { defaultValue: extra_description })}</p>
               )}
               <p className="large-links">
-                {renderLink(about_me_link, "About Me", "large-link")}
-                {renderLink(newsletter_link, "Email Newsletter", "large-link")}
+                {renderLink(about_me_link, t("hero.about_me"), "large-link")}
+                {renderLink(newsletter_link, t("hero.newsletter"), "large-link")}
               </p>
             </div>
             <div className="hero-image-container">
@@ -219,8 +224,8 @@ export default function Index({ data }) {
 
         <section className="section-index">
           <Heading
-            title="Blog"
-            description="Guides, references, and tutorials."
+            title={t('sections.blog_title')}
+            description={t('sections.blog_desc')}
             icon={blog}
           />
           <Posts data={articles} />
@@ -228,8 +233,8 @@ export default function Index({ data }) {
 
         <section className="section-index">
           <Heading
-            title={notes_title}
-            description={notes_description}
+            title={t('sections.notes_title')}
+            description={t('sections.notes_desc')}
             icon={projectsIcon}
           />
           <Posts data={notes} />
@@ -237,10 +242,10 @@ export default function Index({ data }) {
 
         <section className="section-index">
           <Heading
-            title="Deep Dives"
+            title={t('sections.deep_dives_title')}
             slug="/topics"
-            buttonText="All Topics"
-            description="Long-form tutorials on a variety of development topics."
+            buttonText={t('sections.all_topics')}
+            description={t('sections.deep_dives_desc')}
           />
           <div className="cards">
             {simplifiedHighlights.map((post) => {
@@ -262,8 +267,8 @@ export default function Index({ data }) {
 
         <section className="section-index" id="experience">
           <Heading
-            title="Experience"
-            description="My professional work history."
+            title={t('sections.experience_title')}
+            description={t('sections.experience_desc')}
           />
           <div className="experience-list">
             {experiences.map((exp, index) => (
@@ -305,7 +310,7 @@ export default function Index({ data }) {
                           target="_blank"
                           rel="noreferrer"
                         >
-                          📄 Lihat Dokumen Bukti (Catbox) ↗
+                          {t('buttons.view_proof')}
                         </a>
                       </div>
                     )}
@@ -318,8 +323,8 @@ export default function Index({ data }) {
 
         <section className="section-index" id="organizations">
           <Heading
-            title={organizations_title}
-            description={organizations_description}
+            title={t('sections.organizations_title')}
+            description={t('sections.organizations_desc')}
           />
           <div className="experience-list">
             {organizations.map((org, index) => (
@@ -364,10 +369,10 @@ export default function Index({ data }) {
 
         <section className="section-index" id="certificates">
           <Heading
-            title={certificates_title}
+            title={t('sections.certificates_title')}
             slug="/certificates"
-            buttonText="All Certificates"
-            description={certificates_description}
+            buttonText={t('sections.all_certificates')}
+            description={t('sections.certificates_desc')}
             icon={floppy}
           />
           <div className="certificates-grid">
@@ -379,10 +384,10 @@ export default function Index({ data }) {
 
         <section>
           <Heading
-            title={projects_title}
+            title={t('sections.projects_title')}
             slug="/projects"
-            buttonText="All Projects"
-            description={projects_description}
+            buttonText={t('sections.all_projects')}
+            description={t('sections.projects_desc')}
             icon={github}
           />
 
@@ -413,16 +418,12 @@ export default function Index({ data }) {
                             href={project.writeup}
                             target="_blank"
                             rel="noreferrer"
-                          >
-                            Article
-                          </a>
+                          >{t("buttons.article")}</a>
                         ) : (
                           <Link
                             className="button secondary small"
                             to={project.writeup.startsWith('/blog/') ? project.writeup : `/blog${project.writeup}`}
-                          >
-                            Article
-                          </Link>
+                          >{t("buttons.article")}</Link>
                         )
                       )}
                       {project.attachment_pdf && (
@@ -441,9 +442,7 @@ export default function Index({ data }) {
                           href={project.url}
                           target="_blank"
                           rel="noreferrer"
-                        >
-                          Demo
-                        </a>
+                        >{t("buttons.demo")}</a>
                       )}
                       {hasValidRepo && (
                         <a
@@ -451,9 +450,7 @@ export default function Index({ data }) {
                           href={`https://github.com/muhamadrofii/${project.slug}`}
                           target="_blank"
                           rel="noreferrer"
-                        >
-                          Source
-                        </a>
+                        >{t("buttons.source")}</a>
                       )}
                     </div>
                   </div>

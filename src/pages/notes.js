@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
@@ -12,14 +13,13 @@ import { getSimplifiedPosts } from '../utils/helpers'
 import config from '../utils/config'
 
 export default function Notes({ data }) {
+  const { t } = useTranslation()
   const posts = data.posts.edges
   const simplifiedPosts = useMemo(() => getSimplifiedPosts(posts), [posts])
   
   const notesSettings = data.homeHero?.frontmatter || {}
-  const title = notesSettings.notes_title || 'Notes'
-  const description =
-    notesSettings.notes_description ||
-    'Personal notes about life, music, projects, and everything else.'
+  const title = t('notes_page.title', { defaultValue: notesSettings.notes_title || 'Notes' })
+  const description = t('notes_page.description', { defaultValue: notesSettings.notes_description || 'Personal notes about life, music, projects, and everything else.' })
 
   return (
     <>

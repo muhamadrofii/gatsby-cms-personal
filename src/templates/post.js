@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 import { GatsbyImage } from 'gatsby-plugin-image'
@@ -12,6 +13,7 @@ import config from '../utils/config'
 import { slugify } from '../utils/helpers'
 
 export default function PostTemplate({ data }) {
+  const { t } = useTranslation()
   const post = data.markdownRemark
   const { title, date, comments_off, thumbnail, tags } = post.frontmatter
   const isNote = post.frontmatter.categories?.includes('Personal')
@@ -36,7 +38,7 @@ export default function PostTemplate({ data }) {
             <div className="small flex-align-center gap">
               <span>{date}</span>
               <div className="divider" />
-              <a href="#comments">Comments</a>
+              <a href="#comments">{t("post.comments", { defaultValue: "Comments" })}</a>
             </div>
           }
         >
@@ -65,7 +67,7 @@ export default function PostTemplate({ data }) {
         />
         {!comments_off && (
           <section id="comments" className="comments">
-            <h3>Comments</h3>
+            <h3>{t("post.comments", { defaultValue: "Comments" })}</h3>
             <Comments />
           </section>
         )}

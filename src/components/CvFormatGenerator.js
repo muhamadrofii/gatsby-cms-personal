@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 export const generateDynamicCvContent = ({
   experiences = [],
@@ -254,6 +255,7 @@ export const CvFormatGenerator = ({
   projects = [],
   aboutMe = {},
 }) => {
+  const { t } = useTranslation()
   const [copiedType, setCopiedType] = useState(null)
   const [activePreview, setActivePreview] = useState(null)
 
@@ -331,7 +333,7 @@ export const CvFormatGenerator = ({
         >
           <div>
             <h3 style={{ margin: 0, fontSize: '1.25rem' }}>
-              📝 Download Format Data Diri & CV (.md)
+              {t('cv_generator.title')}
             </h3>
             <p
               style={{
@@ -340,7 +342,7 @@ export const CvFormatGenerator = ({
                 fontSize: '0.95rem',
               }}
             >
-              Terisi otomatis dan tersinkronisasi langsung saat Anda menambah atau mengubah riwayat di website.
+              {t('cv_generator.description')}
             </p>
           </div>
         </div>
@@ -372,7 +374,7 @@ export const CvFormatGenerator = ({
                   marginBottom: '0.35rem',
                 }}
               >
-                ⚡ Format Terisi Otomatis ({experiences.length + organizations.length} Pengalaman)
+                ⚡ {t('cv_generator.filled_title')}
               </div>
               <p
                 style={{
@@ -381,7 +383,7 @@ export const CvFormatGenerator = ({
                   margin: '0 0 1rem 0',
                 }}
               >
-                Otomatis memuat seluruh data pengalaman kerja, organisasi, sertifikasi, dan pendidikan terbaru Anda.
+                {t('cv_generator.filled_desc')}
               </p>
             </div>
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
@@ -393,7 +395,7 @@ export const CvFormatGenerator = ({
                 }
                 style={{ cursor: 'pointer', fontWeight: 600 }}
               >
-                💾 Download File (.md)
+                {t('buttons.download')}
               </button>
               <button
                 type="button"
@@ -401,7 +403,7 @@ export const CvFormatGenerator = ({
                 onClick={() => copyToClipboard(filledContent, 'filled')}
                 style={{ cursor: 'pointer' }}
               >
-                {copiedType === 'filled' ? '✅ Disalin!' : '📋 Salin'}
+                {copiedType === 'filled' ? t('buttons.copied') : t('buttons.copy')}
               </button>
               <button
                 type="button"
@@ -411,7 +413,7 @@ export const CvFormatGenerator = ({
                 }
                 style={{ cursor: 'pointer' }}
               >
-                {activePreview === 'filled' ? '▲ Tutup' : '👁️ Preview'}
+                {activePreview === 'filled' ? t('buttons.close') : t('buttons.preview')}
               </button>
             </div>
           </div>
@@ -436,7 +438,7 @@ export const CvFormatGenerator = ({
                   marginBottom: '0.35rem',
                 }}
               >
-                📄 Template Kosong (Blank Format)
+                {t('cv_generator.blank_title')}
               </div>
               <p
                 style={{
@@ -445,7 +447,7 @@ export const CvFormatGenerator = ({
                   margin: '0 0 1rem 0',
                 }}
               >
-                Formulir kosong berisi struktur 7 poin utama data diri untuk diisi manual.
+                {t('cv_generator.blank_desc')}
               </p>
             </div>
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
@@ -460,7 +462,7 @@ export const CvFormatGenerator = ({
                 }
                 style={{ cursor: 'pointer' }}
               >
-                💾 Download (.md)
+                {t('buttons.download')}
               </button>
               <button
                 type="button"
@@ -468,7 +470,7 @@ export const CvFormatGenerator = ({
                 onClick={() => copyToClipboard(BLANK_TEMPLATE_CONTENT, 'blank')}
                 style={{ cursor: 'pointer' }}
               >
-                {copiedType === 'blank' ? '✅ Disalin!' : '📋 Salin'}
+                {copiedType === 'blank' ? t('buttons.copied') : t('buttons.copy')}
               </button>
               <button
                 type="button"
@@ -478,7 +480,7 @@ export const CvFormatGenerator = ({
                 }
                 style={{ cursor: 'pointer' }}
               >
-                {activePreview === 'blank' ? '▲ Tutup' : '👁️ Preview'}
+                {activePreview === 'blank' ? t('buttons.close') : t('buttons.preview')}
               </button>
             </div>
           </div>

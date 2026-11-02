@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link } from 'gatsby'
 
 import { isNewPost, getFormattedDate } from '../utils/helpers'
 
 export const Post = ({ node, prefix, includeYear, query }) => {
+  const { t } = useTranslation()
   let formattedDate
 
   if (node.date) {
@@ -47,7 +49,7 @@ export const Post = ({ node, prefix, includeYear, query }) => {
     >
       <time>{formattedDate}</time>
       <div>
-        {newPost && <div className="button x-small">✨ New</div>}{' '}
+        {newPost && <div className="button x-small">{t("post.new_badge", { defaultValue: "✨ New" })}</div>}{' '}
         {getTitle(node.title, query)}
       </div>
     </Link>

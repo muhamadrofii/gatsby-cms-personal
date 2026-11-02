@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
@@ -11,6 +12,7 @@ import config from '../utils/config'
 import floppy from '../assets/nav-floppy.png'
 
 const CertificateCard = ({ cert }) => {
+  const { t } = useTranslation()
   const [showPdf, setShowPdf] = useState(false)
 
   return (
@@ -76,7 +78,7 @@ const CertificateCard = ({ cert }) => {
             className="button secondary small"
             onClick={() => setShowPdf(!showPdf)}
           >
-            {showPdf ? '▲ Tutup Preview PDF' : '📄 Preview PDF'}
+            {showPdf ? t('buttons.close_pdf') : t('buttons.preview_pdf')}
           </button>
         )}
         {cert.credential_url && (
@@ -116,6 +118,7 @@ const CertificateCard = ({ cert }) => {
 }
 
 export default function Certificates() {
+  const { t } = useTranslation()
   const data = useStaticQuery(graphql`
     query CertificatesQuery {
       homeHero: markdownRemark(frontmatter: { template: { eq: "home-hero" } }) {

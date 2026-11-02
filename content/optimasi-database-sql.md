@@ -108,3 +108,4 @@ Pemilihan tipe data Primary Key berdampak langsung pada performa dan keamanan si
 ## Kesimpulan
 
 Optimasi basis data relasional bukan sekadar trik cepat (*silver bullet*), melainkan perpaduan antara desain skema yang disiplin, indeksasi yang tepat sasaran, pemahaman query execution plan, serta perlindungan konkurensi data transaksi melalui isolasi ACID yang tepat.
+

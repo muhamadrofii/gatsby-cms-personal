@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import Helmet from 'react-helmet'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
@@ -11,6 +12,7 @@ import config from '../utils/config'
 import github from '../assets/nav-github.png'
 
 export default function Projects() {
+  const { t } = useTranslation()
   const [repos, setRepos] = useState([])
   
   const data = useStaticQuery(graphql`
@@ -44,10 +46,8 @@ export default function Projects() {
   `)
 
   const projectSettings = data.homeHero?.frontmatter || {}
-  const title = projectSettings.projects_title || 'Projects'
-  const description =
-    projectSettings.projects_description ||
-    "Open-source projects I've made over the years, including this website, an emulator, and various games, apps, frameworks, and boilerplates."
+  const title = t('projects_page.title', { defaultValue: projectSettings.projects_title || 'Projects' })
+  const description = t('projects_page.description', { defaultValue: projectSettings.projects_description || "Open-source projects and software systems I've built over the years." })
 
   const projects = useMemo(
     () => data.projects?.edges.map((edge) => edge.node.frontmatter) || [],
@@ -126,16 +126,12 @@ export default function Projects() {
                         href={project.writeup}
                         target="_blank"
                         rel="noreferrer"
-                      >
-                        Article
-                      </a>
+                      >{t("buttons.article")}</a>
                     ) : (
                       <Link
                         className="button secondary small"
                         to={project.writeup.startsWith('/blog/') ? project.writeup : `/blog${project.writeup}`}
-                      >
-                        Article
-                      </Link>
+                      >{t("buttons.article")}</Link>
                     )
                   )}
                   {project.attachment_pdf && (
@@ -154,9 +150,7 @@ export default function Projects() {
                       href={project.url}
                       target="_blank"
                       rel="noreferrer"
-                    >
-                      Demo
-                    </a>
+                    >{t("buttons.demo")}</a>
                   )}
                   {hasValidRepo && (
                     <a
@@ -164,9 +158,7 @@ export default function Projects() {
                       href={`https://github.com/muhamadrofii/${project.slug}`}
                       target="_blank"
                       rel="noreferrer"
-                    >
-                      Source
-                    </a>
+                    >{t("buttons.source")}</a>
                   )}
                 </div>
               </div>

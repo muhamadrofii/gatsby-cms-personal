@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Helmet } from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import config from '../utils/config'
@@ -9,8 +10,9 @@ import { Layout } from '../components/Layout'
 import { Hero } from '../components/Hero'
 
 export default function Topics({ data }) {
+  const { t } = useTranslation()
   const tags = data.tags.group
-  const title = 'Topics'
+  const title = t('topics_page.title', { defaultValue: 'Topics' })
   const groupTags = useMemo(
     () =>
       tags.reduce((letterMap, tag) => {
@@ -28,7 +30,7 @@ export default function Topics({ data }) {
       <PageLayout>
         <Hero
           title={title}
-          description="All the topics I've covered. I write about front and backend software development, design, architecture, and personal topics."
+          description={t("topics_page.description", { defaultValue: "All the topics I've covered. I write about front and backend software development, design, architecture, and personal topics." })}
         />
         {Object.entries(groupTags).map(([key, value]) => {
           return (
@@ -46,7 +48,7 @@ export default function Topics({ data }) {
                       <span>{tag.name}</span>
                       <span className="chip">
                         <span className="chip-highlight">{tag.totalCount}</span>
-                        {tag.totalCount === 1 ? ' post' : ' posts'}
+                        {tag.totalCount === 1 ? t('topics_page.post_singular') : t('topics_page.post_plural')}
                       </span>
                     </Link>
                   )

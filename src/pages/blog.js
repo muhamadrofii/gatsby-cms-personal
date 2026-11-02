@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Link, graphql } from 'gatsby'
 import Helmet from 'react-helmet'
 
@@ -12,18 +13,17 @@ import blog from '../assets/nav-blog.png'
 import config from '../utils/config'
 
 export default function Blog({ data }) {
+  const { t } = useTranslation()
   const posts = data.posts.edges
   const simplifiedPosts = useMemo(() => getSimplifiedPosts(posts), [posts])
-  const title = 'Blog'
+  const title = t('blog_page.title', { defaultValue: 'Blog' })
 
   const description = (
     <div>
-      {
-        'Guides, references, and tutorials on programming, web development, and design. '
-      }
+      {t('blog_page.description', { defaultValue: 'Guides, references, and tutorials on programming, web development, and design.' })}
       <br />
       <br />
-      <Link to="/topics">All topics</Link>
+      <Link to="/topics">{t('blog_page.all_topics', { defaultValue: 'All topics' })}</Link>
     </div>
   )
 
