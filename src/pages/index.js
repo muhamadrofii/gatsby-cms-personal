@@ -115,6 +115,7 @@ const CertificateCard = ({ cert }) => {
 export default function Index({ data }) {
   const { t, i18n } = useTranslation()
   const currentLang = (i18n.language || 'id').startsWith('en') ? 'en' : 'id'
+  const [showCvPdf, setShowCvPdf] = useState(false)
 
   const latestNotes = data.latestNotes?.edges || []
   const latestArticles = data.latestArticles?.edges || []
@@ -213,13 +214,28 @@ export default function Index({ data }) {
               )}
               <p className="large-links">
                 {renderLink(about_me_link, t("hero.about_me"), "large-link")}
+                <button
+                  type="button"
+                  className="large-link"
+                  onClick={() => setShowCvPdf((prev) => !prev)}
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    font: 'inherit',
+                    cursor: 'pointer',
+                  }}
+                >
+                  📄 {showCvPdf ? (currentLang === 'id' ? 'Tutup Preview CV' : 'Close CV Preview') : (currentLang === 'id' ? 'Lihat CV (PDF)' : 'View CV (PDF)')}
+                </button>
                 <a
-                  href="/cv_maganghub_software_engineer.pdf"
+                  href="/cv.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="large-link"
+                  title={currentLang === 'id' ? 'Buka CV PDF di tab baru' : 'Open CV PDF in new tab'}
                 >
-                  📄 {t("hero.view_cv", { defaultValue: "Lihat CV" })}
+                  ↗ {currentLang === 'id' ? 'Tab Baru' : 'New Tab'}
                 </a>
                 {renderLink(newsletter_link, t("hero.newsletter"), "large-link")}
               </p>
@@ -229,6 +245,73 @@ export default function Index({ data }) {
             </div>
           </div>
         </Hero>
+
+        {showCvPdf && (
+          <section
+            className="section-index"
+            style={{ marginTop: '1.5rem', marginBottom: '2.5rem' }}
+          >
+            <div
+              className="card"
+              style={{
+                padding: '1.5rem',
+                borderRadius: '8px',
+                border: '1px solid var(--color-border)',
+                background: 'var(--color-background-card)',
+              }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: '0.75rem',
+                  marginBottom: '1.25rem',
+                }}
+              >
+                <div>
+                  <h3 style={{ margin: 0, fontSize: '1.2rem' }}>
+                    📄 Curriculum Vitae (CV) - Muhamad Rofi'i
+                  </h3>
+                  <p style={{ margin: '0.3rem 0 0 0', color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
+                    Software Engineer | Fullstack Developer & DevOps
+                  </p>
+                </div>
+                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                  <a
+                    href="/cv.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="button small"
+                  >
+                    ↗ {currentLang === 'id' ? 'Buka di Tab Baru' : 'Open in New Tab'}
+                  </a>
+                  <a
+                    href="/cv.pdf"
+                    download="CV-Muhamad-Rofii.pdf"
+                    className="button secondary small"
+                  >
+                    ⬇️ Download PDF
+                  </a>
+                  <button
+                    type="button"
+                    className="button secondary small"
+                    onClick={() => setShowCvPdf(false)}
+                  >
+                    ▲ {currentLang === 'id' ? 'Tutup' : 'Close'}
+                  </button>
+                </div>
+              </div>
+
+              <PdfViewer
+                src="/cv.pdf"
+                title="Curriculum Vitae - Muhamad Rofi'i"
+                height="650px"
+              />
+            </div>
+          </section>
+        )}
 
         <section className="section-index">
           <Heading

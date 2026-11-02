@@ -347,7 +347,7 @@ export const CvFormatGenerator = ({
           </div>
           <div>
             <a
-              href="/cv_maganghub_software_engineer.pdf"
+              href="/cv.pdf"
               target="_blank"
               rel="noreferrer"
               className="button"
