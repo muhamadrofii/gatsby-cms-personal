@@ -213,6 +213,9 @@ export default function Index({ data }) {
               )}
               <p className="large-links">
                 {renderLink(about_me_link, t("hero.about_me"), "large-link")}
+                <a href="#cv-format-template" className="large-link">
+                  📄 {t("hero.view_cv", { defaultValue: "Lihat CV" })}
+                </a>
                 {renderLink(newsletter_link, t("hero.newsletter"), "large-link")}
               </p>
             </div>
@@ -221,6 +224,14 @@ export default function Index({ data }) {
             </div>
           </div>
         </Hero>
+
+        <CvFormatGenerator
+          experiences={experiences}
+          organizations={organizations}
+          certificates={certificates}
+          projects={projects}
+          aboutMe={data.aboutMe}
+        />
 
         <section className="section-index">
           <Heading
@@ -459,13 +470,6 @@ export default function Index({ data }) {
           </div>
         </section>
 
-        <CvFormatGenerator
-          experiences={experiences}
-          organizations={organizations}
-          certificates={certificates}
-          projects={projects}
-          aboutMe={data.aboutMe}
-        />
       </PageLayout>
     </>
   )

@@ -23,6 +23,7 @@ const resources = {
         extra_description: 'Seluruh konten di situs ini ditulis langsung oleh saya, bukan AI.',
         about_me: 'Tentang Saya',
         newsletter: 'Newsletter Email',
+        view_cv: 'Lihat CV',
       },
       sidebar: {
         about_me: 'Tentang Saya',
@@ -60,8 +61,8 @@ const resources = {
         source: 'Kode Sumber',
         copy: '📋 Salin',
         copied: '✅ Disalin!',
-        close: '▲ Tutup',
-        preview: '👁️ Preview',
+        close: '▲ Tutup CV',
+        preview: '👁️ Lihat CV',
         download: '💾 Download File (.md)',
       },
       cv_generator: {
@@ -129,6 +130,7 @@ const resources = {
         extra_description: 'Everything on this site is written by me, not AI.',
         about_me: 'About Me',
         newsletter: 'Email Newsletter',
+        view_cv: 'View CV',
       },
       sidebar: {
         about_me: 'About Me',
@@ -166,8 +168,8 @@ const resources = {
         source: 'Source',
         copy: '📋 Copy',
         copied: '✅ Copied!',
-        close: '▲ Close',
-        preview: '👁️ Preview',
+        close: '▲ Close CV',
+        preview: '👁️ View CV',
         download: '💾 Download (.md)',
       },
       cv_generator: {

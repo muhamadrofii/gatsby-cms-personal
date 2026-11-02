@@ -310,7 +310,7 @@ export const CvFormatGenerator = ({
     <section
       className="section-index"
       id="cv-format-template"
-      style={{ marginTop: '3.5rem', marginBottom: '2rem' }}
+      style={{ marginTop: '1.5rem', marginBottom: '3rem' }}
     >
       <div
         className="card"
