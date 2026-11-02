@@ -313,7 +313,7 @@ export const CvFormatGenerator = ({
       style={{ marginTop: '1.5rem', marginBottom: '3rem' }}
     >
       <div
-        className="card"
+        className="card cv-format-card"
         style={{
           padding: '1.75rem',
           border: '1px solid var(--color-border)',
@@ -345,7 +345,7 @@ export const CvFormatGenerator = ({
               {t('cv_generator.description')}
             </p>
           </div>
-          <div>
+          <div className="cv-format-pdf-btn">
             <a
               href="/cv.pdf"
               target="_blank"
@@ -365,9 +365,10 @@ export const CvFormatGenerator = ({
         </div>
 
         <div
+          className="cv-format-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
             gap: '1rem',
           }}
         >

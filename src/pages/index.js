@@ -252,7 +252,7 @@ export default function Index({ data }) {
             style={{ marginTop: '1.5rem', marginBottom: '2.5rem' }}
           >
             <div
-              className="card"
+              className="card cv-preview-card"
               style={{
                 padding: '1.5rem',
                 borderRadius: '8px',
@@ -278,7 +278,7 @@ export default function Index({ data }) {
                     Software Engineer | Fullstack Developer & DevOps
                   </p>
                 </div>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                <div className="cv-preview-actions">
                   <a
                     href="/cv.pdf"
                     target="_blank"
@@ -307,7 +307,7 @@ export default function Index({ data }) {
               <PdfViewer
                 src="/cv.pdf"
                 title="Curriculum Vitae - Muhamad Rofi'i"
-                height="650px"
+                height="520px"
               />
             </div>
           </section>

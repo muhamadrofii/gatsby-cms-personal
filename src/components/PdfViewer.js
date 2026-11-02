@@ -58,7 +58,9 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
     return pdfDoc.getPage(pageNum).then((page) => {
       const containerWidth = containerRef.current?.clientWidth || 600
       const unscaledViewport = page.getViewport({ scale: 1.0 })
-      const targetWidth = Math.min(containerWidth - 24, 800)
+      const isMobile = typeof window !== 'undefined' && window.innerWidth <= 640
+      const paddingAllowance = isMobile ? 12 : 28
+      const targetWidth = Math.max(220, Math.min(containerWidth - paddingAllowance, 800))
       const scale = targetWidth / unscaledViewport.width
       const viewport = page.getViewport({ scale: scale > 0 ? scale : 1.0 })
 
@@ -200,6 +202,7 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
     >
       {/* ── Toolbar ─────────────────────────────────────────── */}
       <div
+        className="pdf-toolbar"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -212,9 +215,10 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
         }}
       >
         {/* Left: title + page count */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', minWidth: 0 }}>
+        <div className="pdf-toolbar-left" style={{ display: 'flex', alignItems: 'center', gap: '0.45rem', minWidth: 0 }}>
           <Icon name="file-text" size={14} />
           <span
+            className="pdf-toolbar-title"
             style={{
               fontWeight: 600,
               fontSize: '0.82rem',
@@ -245,7 +249,7 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
         </div>
 
         {/* Right: nav + action buttons */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', flexShrink: 0 }}>
+        <div className="pdf-toolbar-right" style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', flexShrink: 0 }}>
           {/* Prev */}
           <button
             onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
@@ -296,6 +300,7 @@ export const PdfViewer = ({ src, title = 'Dokumen PDF', height = '320px' }) => {
 
       {/* ── Canvas area ─────────────────────────────────────── */}
       <div
+        className="pdf-canvas-container"
         style={{
           background: '#0f172a',
           minHeight: height,

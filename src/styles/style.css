@@ -368,11 +368,14 @@ table tr:nth-child(even) {
 
 .large-links {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
 }
 
 .large-link,
-a.large-link {
+a.large-link,
+button.large-link {
   display: flex;
   align-items: center;
   gap: 0.25rem;
@@ -2171,3 +2174,175 @@ a.footer-link {
 }
 
 
+
+
+/* ===================================================================================
+   Mobile Responsiveness Improvements
+   =================================================================================== */
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+.cv-preview-card {
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-background-card);
+}
+
+.cv-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.cv-preview-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cv-format-card {
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-background-card);
+}
+
+.cv-format-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.cv-format-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 1rem;
+}
+
+@media screen and (max-width: 640px) {
+  :root {
+    --layout-padding-horizontal: 0.85rem;
+    --layout-padding-vertical: 1rem;
+  }
+
+  .navbar {
+    padding: 0 0.5rem 0 0.75rem !important;
+  }
+
+  .navbar-section {
+    gap: 0.2rem !important;
+  }
+
+  .navbar-menu.social {
+    gap: 0.2rem !important;
+  }
+
+  .navbar-button {
+    height: 34px !important;
+    width: 34px !important;
+    padding: 0 !important;
+  }
+
+  .language-toggle-btn {
+    width: auto !important;
+    padding: 0 6px !important;
+    font-size: 0.75rem !important;
+  }
+
+  .hero-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-image {
+    margin-left: 0 !important;
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  .large-links {
+    gap: 0.5rem 0.85rem;
+  }
+
+  .large-link,
+  a.large-link,
+  button.large-link {
+    font-size: 0.95rem;
+    text-underline-offset: 4px;
+  }
+
+  .cv-preview-card,
+  .cv-format-card {
+    padding: 0.85rem !important;
+  }
+
+  .cv-preview-header,
+  .cv-format-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+  }
+
+  .cv-preview-actions,
+  .cv-format-pdf-btn {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem !important;
+  }
+
+  .cv-preview-actions > a,
+  .cv-preview-actions > button,
+  .cv-format-pdf-btn > a {
+    flex: 1 1 calc(50% - 0.4rem);
+    text-align: center;
+    justify-content: center;
+    font-size: 0.78rem !important;
+    padding: 0.45rem 0.5rem !important;
+    box-sizing: border-box;
+  }
+
+  .pdf-toolbar {
+    padding: 0.45rem 0.6rem !important;
+    gap: 0.35rem !important;
+  }
+
+  .pdf-toolbar-left {
+    max-width: 100%;
+  }
+
+  .pdf-toolbar-title {
+    max-width: 130px !important;
+    font-size: 0.76rem !important;
+  }
+
+  .pdf-toolbar-right {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .pdf-canvas-container {
+    padding: 0.4rem !important;
+    min-height: 320px !important;
+  }
+
+  .cv-format-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .card {
+    padding: 0.85rem !important;
+  }
+}
