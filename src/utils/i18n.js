@@ -68,6 +68,7 @@ const resources = {
       cv_generator: {
         title: 'Generator Format CV (Data Diri Markdown)',
         description: 'Gunakan fitur ini untuk mengekspor data profil, pengalaman, organisasi, sertifikasi, dan pendidikan secara otomatis ke format Markdown yang siap disinkronkan ke AI Job Search atau CV ATS.',
+        view_pdf: 'Lihat CV (PDF)',
         filled_title: '📁 Data Diri Lengkap Terisi (Auto-Generated)',
         filled_desc: 'Otomatis memuat seluruh data pengalaman kerja, organisasi, sertifikasi, dan pendidikan terbaru Anda.',
         blank_title: '📄 Template Kosong (Blank Format)',
@@ -175,6 +176,7 @@ const resources = {
       cv_generator: {
         title: 'CV Format Generator (Profile Markdown)',
         description: 'Use this tool to automatically export your profile, experience, organizations, certificates, and education into structured Markdown ready for AI Job Search or ATS CV tailoring.',
+        view_pdf: 'View CV (PDF)',
         filled_title: '📁 Complete Profile Data (Auto-Generated)',
         filled_desc: 'Automatically loads all your latest work experience, organizations, certifications, and education.',
         blank_title: '📄 Blank Template (Blank Format)',

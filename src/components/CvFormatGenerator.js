@@ -345,6 +345,23 @@ export const CvFormatGenerator = ({
               {t('cv_generator.description')}
             </p>
           </div>
+          <div>
+            <a
+              href="/cv_maganghub_software_engineer.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="button"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.4rem',
+                textDecoration: 'none',
+                fontWeight: 600,
+              }}
+            >
+              📄 {t('cv_generator.view_pdf', { defaultValue: 'Lihat CV (PDF)' })} ↗
+            </a>
+          </div>
         </div>
 
         <div
