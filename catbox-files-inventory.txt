@@ -115,13 +115,14 @@ DAFTAR FILE, CHECKSUM MD5, DAN PEMETAAN PATH STATIC LOKAL:
      - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
      - Referensi        : content/experience/8db9ed1485c7.md
 
-[12] Portofolio Proyek: SIMKODES Cloud DevOps & Infrastructure Deck (Kemdikti Saintek)
-     - Deskripsi        : Slide Arsitektur Containerized Infrastructure (Docker, Nginx, CI/CD)
-     - Link Catbox      : https://files.catbox.moe/uo8p40.pdf
-     - File Lokal Static: /thumbnails/simkodes_cloud_devops___containerized_infrastructure.pdf
-     - Ukuran File      : 633.455 bytes
-     - Checksum MD5     : 46bc155a4ceadca7b91fe4ae331232ed
-     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+[12] Portofolio Proyek: SIMKODES Cloud DevOps & Automated CI/CD Pipeline Deck (Kemdikti Saintek)
+     - Deskripsi        : Slide Arsitektur Multi-Environment & CI/CD Pipeline (79 Tests PHPUnit, LiteSpeed, Zero Data Loss)
+     - Link Catbox Asli : https://files.catbox.moe/uo8p40.pdf (Versi Lama)
+     - File Lokal Static: /thumbnails/simkodes_cloud_devops_automated_cicd_pipeline.pdf
+                          (alias: /thumbnails/simkodes_cloud_devops___containerized_infrastructure.pdf)
+     - Ukuran File      : 934.944 bytes (Diperbarui 15 Nov 2026)
+     - Checksum MD5     : 54f32c5aca7fd645d90ab86e5ea9e1c9
+     - Status           : SUDAH TERSEDIA DI STATIC & DIPERBARUI KE SLIDE DECK TERBARU
      - Referensi        : content/experience/acce273ae67e.md
 
 [13] Portofolio Proyek: Wisma Migas Backend Architecture & Documentation Deck (PPSDM Migas)

@@ -37,12 +37,12 @@
   - Nama Perusahaan / Tempat: Kemdikti Saintek "Pemberdayaan Desa Binaan"
   - Lokasi: Sranak, Bojonegoro, Indonesia (Paruh Waktu)
   - Periode: 2025 - 2026
-  - Dokumen Bukti / Portofolio: /thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf (Surat Pencatatan HKI) | /thumbnails/simkodes_cloud_devops___containerized_infrastructure.pdf (Portofolio Proyek)
+  - Dokumen Bukti / Portofolio: /thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf (Surat Pencatatan HKI) | /thumbnails/simkodes_cloud_devops_automated_cicd_pipeline.pdf (Portofolio Proyek)
   - Tanggung Jawab & Pencapaian:
-    * **Multi-Container Dockerization**: Designed and deployed a multi-container architecture (PHP 8.2-FPM, Nginx Alpine, MySQL 8.0) using Docker Compose, establishing 100% consistent and reproducible local, staging, and production environments.
-    * **Server & Gateway Optimization**: Configured Nginx reverse proxy with FastCGI pass-through, security headers (X-Frame-Options, CSP), and OPcache bytecode caching (128MB shared memory) to reduce server response latency to < 45ms.
-    * **Automated CI/CD Pipeline**: Authored automated deployment scripts (`hosting-setup.sh`) to execute Vite asset compilation, database migrations, and application cache clearing, reducing manual deployment cycle time by 75%.
-    * **Data Security & Reliability**: Secured data workflows with internal bridge network isolation, HTTPS SSL/TLS termination, and persistent Docker volume management for high availability and disaster recovery.
+    * **Automated CI & Test Suite Pipeline**: Engineered automated CI testing pipeline running 79 PHPUnit test suites (468 assertions) and Playwright E2E browser automation using in-memory SQLite runner, ensuring 100% reliable test-driven releases.
+    * **Multi-Environment Topology & Security**: Established isolated dual-environment topology (Staging & Live Production) on LiteSpeed Enterprise Server; secured staging subdomain with dynamic OpenSSL HTTP Basic Auth to restrict public access.
+    * **Zero Data Loss Continuous Deployment**: Implemented automated gated production releases requiring explicit "DEPLOY" confirmation, automated pre-deployment compressed MySQL snapshots (mysqldump .sql.gz), and selective Rsync transfers preserving user storage and .env.
+    * **Hosting Workarounds & High Availability**: Bypassed shared hosting PHP symlink restrictions via Linux native shell automation, configured SSH port 65002 with key fallbacks, and designed self-healing .env recovery routines and HTTP 503 maintenance mode.
 
 - Posisi / Jabatan: Backend Developer & Technical Documentation Intern
   - Nama Perusahaan / Tempat: PPSDM MIGAS CEPU (Kementerian ESDM RI)
