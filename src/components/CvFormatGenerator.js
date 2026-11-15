@@ -44,8 +44,9 @@ export const generateDynamicCvContent = ({
     thesisProject?.url ||
     'https://ojs.aknacehbarat.ac.id/index.php/vocatech/article/view/305'
   const loaDoc = thesisProject?.attachment_pdf || '/thumbnails/loa010.pdf'
+  const fullLoaDoc = loaDoc.startsWith('http') ? loaDoc : `${website}${loaDoc}`
   const thesisLinkLine = thesisLink
-    ? `\n- Dokumen Bukti / Link Publikasi: ${thesisLink}${loaDoc ? ` | Dokumen LoA: ${loaDoc}` : ''}`
+    ? `\n- Dokumen Bukti / Link Publikasi: ${thesisLink}${loaDoc ? ` | Dokumen LoA: ${fullLoaDoc}` : ''}`
     : ''
 
   const pendidikan = `### 3. Pendidikan
@@ -89,7 +90,12 @@ export const generateDynamicCvContent = ({
       )
     }
 
-    const docBuktiUrl = exp.attachment_pdf || exp.catbox_url
+    const rawExpDoc = exp.attachment_pdf || exp.catbox_url
+    const docBuktiUrl = rawExpDoc
+      ? rawExpDoc.startsWith('http')
+        ? rawExpDoc
+        : `${website}${rawExpDoc}`
+      : ''
     const docBukti = docBuktiUrl
       ? `\n  - Dokumen Bukti / Portofolio: ${docBuktiUrl}`
       : ''
@@ -123,7 +129,12 @@ ${bullets.join('\n')}`)
       )
     }
 
-    const docBuktiUrl = org.attachment_pdf || org.catbox_url
+    const rawOrgDoc = org.attachment_pdf || org.catbox_url
+    const docBuktiUrl = rawOrgDoc
+      ? rawOrgDoc.startsWith('http')
+        ? rawOrgDoc
+        : `${website}${rawOrgDoc}`
+      : ''
     const docBukti = docBuktiUrl
       ? `\n  - Dokumen Bukti / Portofolio: ${docBuktiUrl}`
       : ''
@@ -151,7 +162,12 @@ ${pengalamanList.join('\n\n')}`
   const certList = []
   sortedCertificates.forEach((c) => {
     const credId = c.credential_id ? ` | ID: ${c.credential_id}` : ''
-    const docPath = c.certificate_pdf || c.attachment_pdf || c.catbox_url
+    const rawCertDoc = c.certificate_pdf || c.attachment_pdf || c.catbox_url
+    const docPath = rawCertDoc
+      ? rawCertDoc.startsWith('http')
+        ? rawCertDoc
+        : `${website}${rawCertDoc}`
+      : ''
     const docLink = docPath ? ` | Dokumen: ${docPath}` : ''
     const verifyLink = c.credential_url ? ` | Verifikasi: ${c.credential_url}` : ''
     certList.push(

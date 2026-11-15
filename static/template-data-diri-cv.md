@@ -19,14 +19,14 @@
 - Periode Tahun: 2022 - 2026
 - Nilai / IPK: -
 - Judul Skripsi / Tugas Akhir / Fokus: Implementation of SMOTE and GridSearchCV for Imbalanced Sentiment Classification on the Cabinet Reshuffle Issue
-- Dokumen Bukti / Link Publikasi: https://ojs.aknacehbarat.ac.id/index.php/vocatech/article/view/305 | Dokumen LoA: /thumbnails/loa010.pdf
+- Dokumen Bukti / Link Publikasi: https://ojs.aknacehbarat.ac.id/index.php/vocatech/article/view/305 | Dokumen LoA: https://0xmuhamadrofii.my.id/thumbnails/loa010.pdf
 
 ### 4. Pengalaman Kerja / Magang / Organisasi
 - Posisi / Jabatan: Fullstack Developer
   - Nama Perusahaan / Tempat: Freelance
   - Lokasi: Remote / Indonesia
   - Periode: Jan 2026 - Present
-  - Dokumen Bukti / Portofolio: /thumbnails/portofolio_aplikasi_terapis_pijat_express.pdf
+  - Dokumen Bukti / Portofolio: https://0xmuhamadrofii.my.id/thumbnails/portofolio_aplikasi_terapis_pijat_express.pdf
   - Tanggung Jawab & Pencapaian:
     * **Fullstack Web Development**: Designed and built responsive web applications tailored to client requirements, integrating intuitive frontend interfaces with robust backend architectures.
     * **Database & API Design**: Architected optimized relational database schemas and developed secure RESTful APIs to handle core transactional workflows.
@@ -37,7 +37,7 @@
   - Nama Perusahaan / Tempat: Kemdikti Saintek "Pemberdayaan Desa Binaan"
   - Lokasi: Sranak, Bojonegoro, Indonesia (Paruh Waktu)
   - Periode: 2025 - 2026
-  - Dokumen Bukti / Portofolio: /thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf (Surat Pencatatan HKI) | /thumbnails/simkodes_cloud_devops_automated_cicd_pipeline.pdf (Portofolio Proyek)
+  - Dokumen Bukti / Portofolio: https://0xmuhamadrofii.my.id/thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf (Surat Pencatatan HKI) | https://0xmuhamadrofii.my.id/thumbnails/simkodes_cloud_devops_automated_cicd_pipeline.pdf (Portofolio Proyek)
   - Tanggung Jawab & Pencapaian:
     * **Automated CI & Test Suite Pipeline**: Engineered automated CI testing pipeline running 79 PHPUnit test suites (468 assertions) and Playwright E2E browser automation using in-memory SQLite runner, ensuring 100% reliable test-driven releases.
     * **Multi-Environment Topology & Security**: Established isolated dual-environment topology (Staging & Live Production) on LiteSpeed Enterprise Server; secured staging subdomain with dynamic OpenSSL HTTP Basic Auth to restrict public access.
@@ -48,7 +48,7 @@
   - Nama Perusahaan / Tempat: PPSDM MIGAS CEPU (Kementerian ESDM RI)
   - Lokasi: Remote / Indonesia
   - Periode: Apr 2025 - May 2025
-  - Dokumen Bukti / Portofolio: /thumbnails/surat_keterangan_pkl_ppsdm_migas.pdf (Surat Keterangan) | /thumbnails/arsitektur_backend_wisma_migas.pdf (Portofolio Proyek)
+  - Dokumen Bukti / Portofolio: https://0xmuhamadrofii.my.id/thumbnails/surat_keterangan_pkl_ppsdm_migas.pdf (Surat Keterangan) | https://0xmuhamadrofii.my.id/thumbnails/arsitektur_backend_wisma_migas.pdf (Portofolio Proyek)
   - Tanggung Jawab & Pencapaian:
     * **Backend & Database Architecture**: Designed optimized relational MySQL database schemas using UUIDs, Eloquent ORM relationships, and custom service providers to handle atomic room booking transactions.
     * **Payment Gateway & Webhook Integration**: Integrated Xendit Payment Gateway V2 (Bank Virtual Accounts, QRIS, E-Wallets, Retail Outlets) with automated asynchronous webhook listeners for real-time payment reconciliation.
@@ -61,7 +61,7 @@
   - Nama Perusahaan / Tempat: MSIB - PT Maleo Edukasi Teknologi (Educourse.id)
   - Lokasi: Remote, Tangerang, Indonesia (Penuh Waktu)
   - Periode: Aug 2024 - Dec 2024
-  - Dokumen Bukti / Portofolio: /thumbnails/sertifikat_msib_educourse.pdf (Sertifikat) | /thumbnails/smartbeez___interactive_child_education___parenting_platform.pdf (Portofolio Proyek)
+  - Dokumen Bukti / Portofolio: https://0xmuhamadrofii.my.id/thumbnails/sertifikat_msib_educourse.pdf (Sertifikat) | https://0xmuhamadrofii.my.id/thumbnails/smartbeez___interactive_child_education___parenting_platform.pdf (Portofolio Proyek)
   - Tanggung Jawab & Pencapaian:
     * **Team Leadership & Project Management**: Coordinated a 5-member cross-functional team using Agile/Scrum methodologies, facilitated sprint planning sessions, and managed the project roadmap to ensure 100% on-time milestone delivery.
     * **Automated Payment & Subscription Gateway**: Integrated Midtrans Snap API (QRIS & Virtual Account) and developed secure Webhook Listener endpoints with signature key verification to automate real-time subscription lifecycle management.
@@ -94,18 +94,18 @@
 - Keahlian Tambahan / Soft Skills: Leadership, Problem Solving, Technical Documentation, Agile/Scrum, Team Collaboration
 
 ### 6. Sertifikasi / Pelatihan (Opsional)
-- Nama Sertifikat / Pelatihan: Surat Pencatatan Ciptaan (HKI Hak Cipta Kemenkumham RI) - Digitalisasi Tata Kelola Koperasi Desa Merah Putih (Nov 2025) | No: 001015965 | Permohonan: EC002025175705 | Dokumen: /thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf
-- Nama Sertifikat / Pelatihan: Surat Keterangan Praktik Kerja Lapangan (Digitalisasi Wisma Migas) - PPSDM MIGAS KESDM RI (May 2025) | No: 040 /Ket.pkl/TU.05.01/BPM/2025 | Dokumen: /thumbnails/surat_keterangan_pkl_ppsdm_migas.pdf
-- Nama Sertifikat / Pelatihan: Platform and Web Developer (Specialist Education Platform) - Kampus Merdeka x Educourse.id (Dec 2024) | ID: EDU-066/SI-MSIB-7/XII/2024/10801806 | Dokumen: /thumbnails/sertifikat_msib_educourse.pdf | STEM ID: #129212996
-- Nama Sertifikat / Pelatihan: Introduction to DevOps - IBM & Coursera (Nov 2026) | ID: A6AIZE01M4HY | Dokumen: /thumbnails/coursera_ibm_introduction_to_devops.pdf | Verifikasi: https://coursera.org/verify/A6AIZE01M4HY
-- Nama Sertifikat / Pelatihan: SQL (Intermediate) - HackerRank (Oct 2026) | ID: 328740E3B540 | Dokumen: /thumbnails/hackerrank_sql_intermediate.pdf | Verifikasi: https://www.hackerrank.com/certificates/328740e3b540
-- Nama Sertifikat / Pelatihan: SQL (Basic) - HackerRank (Oct 2026) | ID: EE1CC0EB577F | Dokumen: /thumbnails/hackerrank_sql_basic.pdf | Verifikasi: https://www.hackerrank.com/certificates/ee1cc0eb577f
-- Nama Sertifikat / Pelatihan: Belajar Dasar Cloud dan Gen AI di AWS - Dicoding Indonesia & AWS (Nov 2023) | ID: 81P2VQ53QPOY | Dokumen: /thumbnails/dicoding_aws_cloud_gen_ai.pdf | Verifikasi: https://www.dicoding.com/certificates/81P2VQ53QPOY
-- Nama Sertifikat / Pelatihan: Belajar Back-End Pemula dengan JavaScript - Dicoding Indonesia & AWS (Nov 2023) | ID: 1RXY0581QZVM | Dokumen: /thumbnails/dicoding_backend_pemula_js.pdf | Verifikasi: https://www.dicoding.com/certificates/1RXY0581QZVM
-- Nama Sertifikat / Pelatihan: Belajar Dasar-Dasar DevOps - Dicoding Indonesia (Dec 2022) | ID: 81P28NVD8POY | Dokumen: /thumbnails/dicoding_dasar_devops.pdf | Verifikasi: https://www.dicoding.com/certificates/81P28NVD8POY
-- Nama Sertifikat / Pelatihan: Memulai Pemrograman Dengan Java - Dicoding Indonesia (Oct 2022) | ID: ERZR0MG6OXYV | Dokumen: /thumbnails/dicoding_java_programming.pdf | Verifikasi: https://www.dicoding.com/certificates/ERZR0MG6OXYV
-- Nama Sertifikat / Pelatihan: Belajar Dasar Pemrograman JavaScript - Dicoding Indonesia & AWS (Oct 2022) | ID: 6RPN68129P2M | Dokumen: /thumbnails/dicoding_pemrograman_javascript.pdf | Verifikasi: https://www.dicoding.com/certificates/6RPN68129P2M
-- Nama Sertifikat / Pelatihan: Belajar Dasar Pemrograman Web - Dicoding Indonesia (Oct 2022) | ID: 1RXYOMMD9PVM | Dokumen: /thumbnails/dicoding_pemrograman_web.pdf | Verifikasi: https://www.dicoding.com/certificates/1RXYOMMD9PVM
+- Nama Sertifikat / Pelatihan: Surat Pencatatan Ciptaan (HKI Hak Cipta Kemenkumham RI) - Digitalisasi Tata Kelola Koperasi Desa Merah Putih (Nov 2025) | No: 001015965 | Permohonan: EC002025175705 | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf
+- Nama Sertifikat / Pelatihan: Surat Keterangan Praktik Kerja Lapangan (Digitalisasi Wisma Migas) - PPSDM MIGAS KESDM RI (May 2025) | No: 040 /Ket.pkl/TU.05.01/BPM/2025 | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/surat_keterangan_pkl_ppsdm_migas.pdf
+- Nama Sertifikat / Pelatihan: Platform and Web Developer (Specialist Education Platform) - Kampus Merdeka x Educourse.id (Dec 2024) | ID: EDU-066/SI-MSIB-7/XII/2024/10801806 | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/sertifikat_msib_educourse.pdf | STEM ID: #129212996
+- Nama Sertifikat / Pelatihan: Introduction to DevOps - IBM & Coursera (Nov 2026) | ID: A6AIZE01M4HY | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/coursera_ibm_introduction_to_devops.pdf | Verifikasi: https://coursera.org/verify/A6AIZE01M4HY
+- Nama Sertifikat / Pelatihan: SQL (Intermediate) - HackerRank (Oct 2026) | ID: 328740E3B540 | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/hackerrank_sql_intermediate.pdf | Verifikasi: https://www.hackerrank.com/certificates/328740e3b540
+- Nama Sertifikat / Pelatihan: SQL (Basic) - HackerRank (Oct 2026) | ID: EE1CC0EB577F | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/hackerrank_sql_basic.pdf | Verifikasi: https://www.hackerrank.com/certificates/ee1cc0eb577f
+- Nama Sertifikat / Pelatihan: Belajar Dasar Cloud dan Gen AI di AWS - Dicoding Indonesia & AWS (Nov 2023) | ID: 81P2VQ53QPOY | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/dicoding_aws_cloud_gen_ai.pdf | Verifikasi: https://www.dicoding.com/certificates/81P2VQ53QPOY
+- Nama Sertifikat / Pelatihan: Belajar Back-End Pemula dengan JavaScript - Dicoding Indonesia & AWS (Nov 2023) | ID: 1RXY0581QZVM | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/dicoding_backend_pemula_js.pdf | Verifikasi: https://www.dicoding.com/certificates/1RXY0581QZVM
+- Nama Sertifikat / Pelatihan: Belajar Dasar-Dasar DevOps - Dicoding Indonesia (Dec 2022) | ID: 81P28NVD8POY | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/dicoding_dasar_devops.pdf | Verifikasi: https://www.dicoding.com/certificates/81P28NVD8POY
+- Nama Sertifikat / Pelatihan: Memulai Pemrograman Dengan Java - Dicoding Indonesia (Oct 2022) | ID: ERZR0MG6OXYV | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/dicoding_java_programming.pdf | Verifikasi: https://www.dicoding.com/certificates/ERZR0MG6OXYV
+- Nama Sertifikat / Pelatihan: Belajar Dasar Pemrograman JavaScript - Dicoding Indonesia & AWS (Oct 2022) | ID: 6RPN68129P2M | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/dicoding_pemrograman_javascript.pdf | Verifikasi: https://www.dicoding.com/certificates/6RPN68129P2M
+- Nama Sertifikat / Pelatihan: Belajar Dasar Pemrograman Web - Dicoding Indonesia (Oct 2022) | ID: 1RXYOMMD9PVM | Dokumen: https://0xmuhamadrofii.my.id/thumbnails/dicoding_pemrograman_web.pdf | Verifikasi: https://www.dicoding.com/certificates/1RXYOMMD9PVM
 
 ### 7. Target Lowongan & Batasan
 - Posisi yang Ditargetkan: Software Engineer / Fullstack Developer / Cloud DevOps Engineer / Backend Developer
