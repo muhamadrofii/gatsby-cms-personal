@@ -6,7 +6,7 @@ date_range: '2025 - 2026'
 order: 2
 company_logo: ''
 attachment_pdf: /thumbnails/simkodes_cloud_devops___containerized_infrastructure.pdf
-catbox_url: https://files.catbox.moe/a3s4nv.pdf
+catbox_url: /thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf
 location: Sranak, Bojonegoro, Indonesia (Paruh Waktu)
 ---
 
@@ -19,8 +19,8 @@ Architected and implemented containerized cloud infrastructure, reverse proxy ga
 - **Data Security & Reliability**: Secured data workflows with internal bridge network isolation, HTTPS SSL/TLS termination, and persistent Docker volume management for high availability and disaster recovery.
 
 **Credentials & Documents:**
-- 📜 **Official HKI Copyright Certificate (Kemenkumham DJKI)**: [Surat Pencatatan Hak Cipta (Catbox)](https://files.catbox.moe/a3s4nv.pdf) · No: `001015965` / `EC002025175705` (Digitalisasi Tata Kelola Koperasi Desa Merah Putih - Model Desa Binaan Sranak)
-- 📊 **SIMKODES Cloud DevOps & Infrastructure Deck**: [Slide Arsitektur Containerized Infrastructure (Catbox)](https://files.catbox.moe/uo8p40.pdf)
+- 📜 **Official HKI Copyright Certificate (Kemenkumham DJKI)**: [Surat Pencatatan Hak Cipta](/thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf) · No: `001015965` / `EC002025175705` (Digitalisasi Tata Kelola Koperasi Desa Merah Putih - Model Desa Binaan Sranak)
+- 📊 **SIMKODES Cloud DevOps & Infrastructure Deck**: [Slide Arsitektur Containerized Infrastructure](/thumbnails/simkodes_cloud_devops___containerized_infrastructure.pdf)
 
 **Skills:** Docker · Docker Compose · Nginx · PHP 8.2-FPM · MySQL 8.0 · Bash Scripting · CI/CD · Vite · Linux Administration · OPcache
 

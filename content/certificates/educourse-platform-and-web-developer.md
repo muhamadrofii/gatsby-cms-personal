@@ -6,7 +6,7 @@ issue_date: Dec 2024
 credential_id: EDU-066/SI-MSIB-7/XII/2024/10801806
 credential_url: ''
 certificate_pdf: /thumbnails/sertifikat_msib_educourse.pdf
-catbox_url: https://files.catbox.moe/dtqp7k.pdf
+catbox_url: /thumbnails/sertifikat_msib_educourse.pdf
 certificate_image: /thumbnails/sertifikat_msib_educourse.png
 order: 3
 ---

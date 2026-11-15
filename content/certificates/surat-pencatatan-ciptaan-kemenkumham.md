@@ -6,7 +6,7 @@ issue_date: Nov 2025
 credential_id: 001015965
 credential_url: ''
 certificate_pdf: /thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf
-catbox_url: https://files.catbox.moe/a3s4nv.pdf
+catbox_url: /thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf
 certificate_image: /thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.png
 order: 1
 ---

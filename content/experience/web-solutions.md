@@ -5,8 +5,8 @@ role: Backend Developer & Technical Documentation Intern
 date_range: 'Apr 2025 - May 2025'
 order: 3
 company_logo: /thumbnails/pasted-image-1789790854882.png
-attachment_pdf: /thumbnails/arsitektur_backend___integrasi_payment_gateway_wisma_migas (1).pdf
-catbox_url: https://files.catbox.moe/y3sj2u.pdf
+attachment_pdf: /thumbnails/arsitektur_backend_wisma_migas.pdf
+catbox_url: /thumbnails/surat_keterangan_pkl_ppsdm_migas.pdf
 ---
 
 Responsible for backend architecture design, payment gateway integration, multi-layer security systems, and standardized technical documentation for a Hotel & Reservation Management System built with Laravel 12 and Livewire Volt.
@@ -20,8 +20,8 @@ Responsible for backend architecture design, payment gateway integration, multi-
 - **Testing & QA Automation**: Developed End-to-End (E2E) automated browser testing suites using Playwright to validate critical checkout and authentication user flows.
 
 **Credentials & Documents:**
-- 📜 **Official Surat Keterangan PKL**: [Surat Keterangan Selesai PKL (Catbox)](https://files.catbox.moe/y3sj2u.pdf) · No: `040 /Ket.pkl/TU.05.01/BPM/2025` (Pusat Pengembangan Sumber Daya Manusia Minyak dan Gas Bumi - KESDM RI)
-- 📊 **Wisma Migas Architecture & Documentation Deck**: [Laporan Arsitektur Backend & Dokumentasi API (Catbox)](https://files.catbox.moe/xmz4mb.pdf)
+- 📜 **Official Surat Keterangan PKL**: [Surat Keterangan Selesai PKL](/thumbnails/surat_keterangan_pkl_ppsdm_migas.pdf) · No: `040 /Ket.pkl/TU.05.01/BPM/2025` (Pusat Pengembangan Sumber Daya Manusia Minyak dan Gas Bumi - KESDM RI)
+- 📊 **Wisma Migas Architecture & Documentation Deck**: [Laporan Arsitektur Backend & Dokumentasi API](/thumbnails/arsitektur_backend_wisma_migas.pdf)
 
 **Skills:** PHP · Laravel 12 · Livewire Volt · MySQL · Xendit API · Webhooks · REST APIs · OpenAPI 3.0 · Technical Writing · Google reCAPTCHA · Playwright · ImageKit CDN
 

@@ -98,7 +98,7 @@ const CertificateCard = ({ cert }) => {
             target="_blank"
             rel="noreferrer"
           >
-            File Asli (Catbox) ↗
+            {t('buttons.original_file')}
           </a>
         )}
         {cert.certificate_pdf && (

@@ -89,10 +89,9 @@ export const generateDynamicCvContent = ({
       )
     }
 
-    const docBukti = exp.catbox_url
-      ? `\n  - Dokumen Bukti / Portofolio: ${exp.catbox_url}`
-      : exp.attachment_pdf && exp.attachment_pdf.startsWith('http')
-      ? `\n  - Dokumen Bukti / Portofolio: ${exp.attachment_pdf}`
+    const docBuktiUrl = exp.attachment_pdf || exp.catbox_url
+    const docBukti = docBuktiUrl
+      ? `\n  - Dokumen Bukti / Portofolio: ${docBuktiUrl}`
       : ''
 
     pengalamanList.push(`- Posisi / Jabatan: ${exp.role || '-'}
@@ -124,8 +123,9 @@ ${bullets.join('\n')}`)
       )
     }
 
-    const docBukti = org.catbox_url
-      ? `\n  - Dokumen Bukti / Portofolio: ${org.catbox_url}`
+    const docBuktiUrl = org.attachment_pdf || org.catbox_url
+    const docBukti = docBuktiUrl
+      ? `\n  - Dokumen Bukti / Portofolio: ${docBuktiUrl}`
       : ''
 
     pengalamanList.push(`- Posisi / Jabatan: ${org.role || '-'}
@@ -151,11 +151,8 @@ ${pengalamanList.join('\n\n')}`
   const certList = []
   sortedCertificates.forEach((c) => {
     const credId = c.credential_id ? ` | ID: ${c.credential_id}` : ''
-    const docLink = c.catbox_url
-      ? ` | Dokumen Catbox: ${c.catbox_url}`
-      : (c.attachment_pdf || c.certificate_pdf) && (c.attachment_pdf || c.certificate_pdf).startsWith('http')
-      ? ` | Dokumen: ${c.attachment_pdf || c.certificate_pdf}`
-      : ''
+    const docPath = c.certificate_pdf || c.attachment_pdf || c.catbox_url
+    const docLink = docPath ? ` | Dokumen: ${docPath}` : ''
     const verifyLink = c.credential_url ? ` | Verifikasi: ${c.credential_url}` : ''
     certList.push(
       `- Nama Sertifikat / Pelatihan: ${c.title || '-'} - ${c.issuer || ''} (${c.issue_date || '-'})${credId}${docLink}${verifyLink}`
@@ -228,7 +225,7 @@ const BLANK_TEMPLATE_CONTENT = `### 1. Data Diri & Kontak
 - Nama Perusahaan / Tempat: 
 - Lokasi: 
 - Periode: (contoh: Jan 2023 - Des 2023)
-- Dokumen Bukti / Portofolio: (opsional link Catbox / file asli)
+- Dokumen Bukti / Portofolio: (opsional link file PDF / dokumen bukti)
 - Tanggung Jawab & Pencapaian:
   * Melakukan ...
   * Bertanggung jawab atas ...

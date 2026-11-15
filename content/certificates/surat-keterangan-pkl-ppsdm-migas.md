@@ -6,7 +6,7 @@ issue_date: May 2025
 credential_id: 040 /Ket.pkl/TU.05.01/BPM/2025
 credential_url: ''
 certificate_pdf: /thumbnails/surat_keterangan_pkl_ppsdm_migas.pdf
-catbox_url: https://files.catbox.moe/y3sj2u.pdf
+catbox_url: /thumbnails/surat_keterangan_pkl_ppsdm_migas.pdf
 certificate_image: /thumbnails/surat_keterangan_pkl_ppsdm_migas.png
 order: 2
 ---

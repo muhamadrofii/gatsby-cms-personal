@@ -1,0 +1,159 @@
+================================================================================
+INVENTARISASI & LOG MIGRASI FILE CATBOX (files.catbox.moe) KE STATIC LOKAL
+================================================================================
+Tanggal Inventarisasi : 15 November 2026
+Tujuan                : Migrasi seluruh dokumen/sertifikat eksternal dari Catbox ke
+                        penyimpanan lokal website (`/static/thumbnails/`) agar mandiri,
+                        cepat, permanen, dan tidak bergantung pada pihak ketiga.
+Total File Catbox     : 13 File PDF
+Status Verifikasi     : 100% Terverifikasi Identik (MD5 Checksum Match)
+================================================================================
+
+DAFTAR FILE, CHECKSUM MD5, DAN PEMETAAN PATH STATIC LOKAL:
+--------------------------------------------------------------------------------
+
+[01] Sertifikat: Belajar Back-End Pemula dengan JavaScript (Dicoding & AWS)
+     - Credential ID    : 1RXY0581QZVM
+     - Link Catbox      : https://files.catbox.moe/licx4v.pdf
+     - File Lokal Static: /thumbnails/dicoding_backend_pemula_js.pdf
+     - Ukuran File      : 927.114 bytes
+     - Checksum MD5     : c1f9eda8d4709657cc554e2c77837ec1
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/certificates/belajar-back-end-pemula-dengan-javascript.md
+
+[02] Sertifikat: Belajar Dasar Cloud dan Gen AI di AWS (Dicoding & AWS)
+     - Credential ID    : 81P2VQ53QPOY
+     - Link Catbox      : https://files.catbox.moe/noq69w.pdf
+     - File Lokal Static: /thumbnails/dicoding_aws_cloud_gen_ai.pdf
+     - Ukuran File      : 929.560 bytes
+     - Checksum MD5     : 5da1fd5c8232585e33105b2f1f68f097
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/certificates/belajar-dasar-cloud-dan-gen-ai-di-aws.md
+
+[03] Sertifikat: Belajar Dasar-Dasar DevOps (Dicoding Indonesia)
+     - Credential ID    : 81P28NVD8POY
+     - Link Catbox      : https://files.catbox.moe/52dvkt.pdf
+     - File Lokal Static: /thumbnails/dicoding_dasar_devops.pdf
+     - Ukuran File      : 925.818 bytes
+     - Checksum MD5     : a00a4847db79625df4c3d1d1a384561b
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/certificates/belajar-dasar-dasar-devops.md
+
+[04] Sertifikat: Belajar Dasar Pemrograman JavaScript (Dicoding & AWS)
+     - Credential ID    : 6RPN68129P2M
+     - Link Catbox      : https://files.catbox.moe/g063be.pdf
+     - File Lokal Static: /thumbnails/dicoding_pemrograman_javascript.pdf
+     - Ukuran File      : 924.846 bytes
+     - Checksum MD5     : 3000d89b477dbcf9c269e6d90229d267
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/certificates/belajar-dasar-pemrograman-javascript.md
+
+[05] Sertifikat: Belajar Dasar Pemrograman Web (Dicoding Indonesia)
+     - Credential ID    : 1RXYOMMD9PVM
+     - Link Catbox      : https://files.catbox.moe/nywefb.pdf
+     - File Lokal Static: /thumbnails/dicoding_pemrograman_web.pdf
+     - Ukuran File      : 927.458 bytes
+     - Checksum MD5     : 0cb5f351af46d2da3f390f1771d406bb
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/certificates/belajar-dasar-pemrograman-web.md
+
+[06] Sertifikat: Memulai Pemrograman Dengan Java (Dicoding Indonesia)
+     - Credential ID    : ERZR0MG6OXYV
+     - Link Catbox      : https://files.catbox.moe/vhl0i7.pdf
+     - File Lokal Static: /thumbnails/dicoding_java_programming.pdf
+     - Ukuran File      : 921.804 bytes
+     - Checksum MD5     : 81be0dbb7fe6e6bb749bb3ac1e88706f
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/certificates/memulai-pemrograman-dengan-java.md
+
+[07] Sertifikat: Platform and Web Developer (Educourse.id x MSIB Batch 7)
+     - Credential ID    : EDU-066/SI-MSIB-7/XII/2024/10801806 · STEM ID: #129212996
+     - Link Catbox      : https://files.catbox.moe/dtqp7k.pdf
+     - File Lokal Static: /thumbnails/sertifikat_msib_educourse.pdf
+     - Ukuran File      : 876.204 bytes
+     - Checksum MD5     : 6307ff351b15457aa886207541b5aa7d
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/certificates/educourse-platform-and-web-developer.md
+                          content/experience/8db9ed1485c7.md
+
+[08] Dokumen Bukti: Surat Keterangan Praktik Kerja Lapangan (PPSDM MIGAS KESDM RI)
+     - Nomor Surat      : 040 /Ket.pkl/TU.05.01/BPM/2025
+     - Link Catbox      : https://files.catbox.moe/y3sj2u.pdf
+     - File Lokal Static: /thumbnails/surat_keterangan_pkl_ppsdm_migas.pdf
+     - Ukuran File      : 105.927 bytes
+     - Checksum MD5     : 742557c92362d8dc0da43b1b15b3a67d
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/certificates/surat-keterangan-pkl-ppsdm-migas.md
+                          content/experience/web-solutions.md
+
+[09] Dokumen HKI: Surat Pencatatan Ciptaan (Kemenkumham DJKI) - SIMKODES
+     - Nomor Ciptaan    : 001015965 / EC002025175705
+     - Link Catbox      : https://files.catbox.moe/a3s4nv.pdf
+     - File Lokal Static: /thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf
+     - Ukuran File      : 3.258.073 bytes
+     - Checksum MD5     : 4a97b461f267b042f873bf5b82fd0d36
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/certificates/surat-pencatatan-ciptaan-kemenkumham.md
+                          content/experience/acce273ae67e.md
+
+[10] Portofolio Proyek: Freelance Web Application (Terapis Pijat Express)
+     - Deskripsi        : Slide & Presentasi Portofolio Proyek Freelance
+     - Link Catbox      : https://files.catbox.moe/kefqjk.pdf
+     - File Lokal Static: /thumbnails/portofolio_aplikasi_terapis_pijat_express.pdf
+                          (alias: /thumbnails/FIX TERAPIS PPT (1).pdf)
+     - Ukuran File      : 3.656.769 bytes
+     - Checksum MD5     : 02690467a4f7511d6b21692056bb3a37
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/experience/815a9f18d22e.md
+
+[11] Portofolio Proyek: SmartBeez Capstone Project Deck (Educourse.id)
+     - Deskripsi        : Slide Presentasi & Portofolio Arsitektur SmartBeez
+     - Link Catbox      : https://files.catbox.moe/lbozom.pdf
+     - File Lokal Static: /thumbnails/smartbeez___interactive_child_education___parenting_platform.pdf
+     - Ukuran File      : 3.052.280 bytes
+     - Checksum MD5     : 06e38f3eef399a30c327d044920ed9cd
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/experience/8db9ed1485c7.md
+
+[12] Portofolio Proyek: SIMKODES Cloud DevOps & Infrastructure Deck (Kemdikti Saintek)
+     - Deskripsi        : Slide Arsitektur Containerized Infrastructure (Docker, Nginx, CI/CD)
+     - Link Catbox      : https://files.catbox.moe/uo8p40.pdf
+     - File Lokal Static: /thumbnails/simkodes_cloud_devops___containerized_infrastructure.pdf
+     - Ukuran File      : 633.455 bytes
+     - Checksum MD5     : 46bc155a4ceadca7b91fe4ae331232ed
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/experience/acce273ae67e.md
+
+[13] Portofolio Proyek: Wisma Migas Backend Architecture & Documentation Deck (PPSDM Migas)
+     - Deskripsi        : Laporan Arsitektur Backend & Dokumentasi API Wisma Migas
+     - Link Catbox      : https://files.catbox.moe/xmz4mb.pdf
+     - File Lokal Static: /thumbnails/arsitektur_backend_wisma_migas.pdf
+                          (alias: /thumbnails/arsitektur_backend___integrasi_payment_gateway_wisma_migas (1).pdf)
+     - Ukuran File      : 946.084 bytes
+     - Checksum MD5     : b248ededb7d6e8915fa047efbbc93810
+     - Status           : SUDAH TERSEDIA DI STATIC & IDENTIK 1:1
+     - Referensi        : content/experience/web-solutions.md
+
+================================================================================
+DOKUMEN STATIC TAMBAHAN (YANG SUDAH ADA DI STATIC SEBELUMNYA):
+================================================================================
+[14] Introduction to DevOps - IBM & Coursera
+     - Path: /thumbnails/coursera_ibm_introduction_to_devops.pdf (315.994 bytes)
+     - Checksum MD5: e025c3a407f545ca0538a3398fe28c3f
+[15] SQL (Basic) Certificate - HackerRank
+     - Path: /thumbnails/hackerrank_sql_basic.pdf (75.392 bytes)
+     - Checksum MD5: 8865976dfad2fe35836228897bff4f85
+[16] SQL (Intermediate) Certificate - HackerRank
+     - Path: /thumbnails/hackerrank_sql_intermediate.pdf (76.433 bytes)
+     - Checksum MD5: 489a278d49ecef1f07bb3beee23c5968
+[17] Letter of Acceptance (LoA) Vocatech Jurnal - Publikasi Skripsi
+     - Path: /thumbnails/loa010.pdf (194.549 bytes)
+     - Checksum MD5: 8a96d2b79f80accf2cd7bf0bd96cf95a
+
+================================================================================
+KESIMPULAN:
+Seluruh 13 file yang sebelumnya di-upload ke Catbox sudah 100% tersimpan secara
+lokal dan identik di direktori `static/thumbnails/`. Website kini dapat diarahkan
+sepenuhnya ke domain mandiri tanpa ketergantungan pada Catbox.
+================================================================================
+

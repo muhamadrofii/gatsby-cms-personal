@@ -6,7 +6,7 @@ issue_date: Dec 2022
 credential_id: 81P28NVD8POY
 credential_url: https://www.dicoding.com/certificates/81P28NVD8POY
 certificate_pdf: /thumbnails/dicoding_dasar_devops.pdf
-catbox_url: https://files.catbox.moe/52dvkt.pdf
+catbox_url: /thumbnails/dicoding_dasar_devops.pdf
 certificate_image: 'https://dicoding-web-img.sgp1.digitaloceanspaces.com/original/academy/dos:belajar_dasar_dasar_devops_logo_110522181432.png'
 order: 9
 ---
