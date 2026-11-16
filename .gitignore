@@ -69,3 +69,6 @@ yarn-error.log
 .yarn-integrity
 
 taniarascia-content
+
+# Local Document Archive (Do not push)
+arsip-dokumen/
