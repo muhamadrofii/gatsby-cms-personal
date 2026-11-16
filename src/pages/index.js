@@ -6,16 +6,15 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import Helmet from 'react-helmet'
 
 import { Layout } from '../components/Layout'
-import { Posts } from '../components/Posts'
 import { SEO } from '../components/SEO'
 import { Heading } from '../components/Heading'
 import { Hero } from '../components/Hero'
 import { PageLayout } from '../components/PageLayout'
 import { PdfViewer } from '../components/PdfViewer'
 import { CvFormatGenerator } from '../components/CvFormatGenerator'
+import { SkillsSection } from '../components/SkillsSection'
 import { getSimplifiedPosts } from '../utils/helpers'
 import config from '../utils/config'
-import blog from '../assets/nav-blog.png'
 import projectsIcon from '../assets/nav-projects.png'
 import github from '../assets/nav-github.png'
 import floppy from '../assets/nav-floppy.png'
@@ -313,48 +312,7 @@ export default function Index({ data }) {
           </section>
         )}
 
-        <section className="section-index">
-          <Heading
-            title={t('sections.blog_title')}
-            description={t('sections.blog_desc')}
-            icon={blog}
-          />
-          <Posts data={articles} />
-        </section>
-
-        <section className="section-index">
-          <Heading
-            title={t('sections.notes_title')}
-            description={t('sections.notes_desc')}
-            icon={projectsIcon}
-          />
-          <Posts data={notes} />
-        </section>
-
-        <section className="section-index">
-          <Heading
-            title={t('sections.deep_dives_title')}
-            slug="/topics"
-            buttonText={t('sections.all_topics')}
-            description={t('sections.deep_dives_desc')}
-          />
-          <div className="cards">
-            {simplifiedHighlights.map((post) => {
-              return (
-                <Link
-                  to={post.slug}
-                  className="card card-highlight"
-                  key={`popular-${post.slug}`}
-                >
-                  {post.thumbnail && (
-                    <GatsbyImage image={post.thumbnail} alt="Thumbnail" />
-                  )}
-                  <div>{post.title}</div>
-                </Link>
-              )
-            })}
-          </div>
-        </section>
+        <SkillsSection />
 
         <section className="section-index" id="experience">
           <Heading

@@ -31,6 +31,9 @@ const resources = {
         sidebar_bio: "Saya Rofi'i, Software Engineer dengan minat pada Fullstack & DevOps di Indonesia. Ini adalah digital garden saya. 🌱",
       },
       sections: {
+        skills_title: 'Keahlian & Alat (Skills & Tools)',
+        skills_desc:
+          'Ringkasan teknologi, kerangka kerja, basis data, dan otomasi infrastruktur dari seluruh pengalaman profesional saya.',
         blog_title: 'Blog',
         blog_desc: 'Panduan, referensi, dan tutorial rekayasa perangkat lunak.',
         notes_title: 'Catatan Saya',
@@ -139,6 +142,9 @@ const resources = {
         sidebar_bio: "I'm Rofi'i, a Software Engineer, Fullstack & DevOps enthusiast based in Indonesia. This is my digital garden. 🌱",
       },
       sections: {
+        skills_title: 'Skills & Tools',
+        skills_desc:
+          'Comprehensive engineering stack synthesized from hands-on software development, cloud infrastructure, and DevOps experiences.',
         blog_title: 'Blog',
         blog_desc: 'Guides, references, and tutorials on software engineering.',
         notes_title: 'My Notes',
