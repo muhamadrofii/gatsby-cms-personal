@@ -40,9 +40,9 @@
   - Dokumen Bukti / Portofolio: https://0xmuhamadrofii.my.id/thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf (Surat Pencatatan HKI) | https://0xmuhamadrofii.my.id/thumbnails/simkodes_cloud_devops_automated_cicd_pipeline.pdf (Portofolio Proyek)
   - Tanggung Jawab & Pencapaian:
     * **Automated CI & Test Suite Pipeline**: Engineered automated CI testing pipeline running 79 PHPUnit test suites (468 assertions) and Playwright E2E browser automation using in-memory SQLite runner, ensuring 100% reliable test-driven releases.
-    * **Multi-Environment Topology & Security**: Established isolated dual-environment topology (Staging & Live Production) on LiteSpeed Enterprise Server; secured staging subdomain with dynamic OpenSSL HTTP Basic Auth to restrict public access.
-    * **Zero Data Loss Continuous Deployment**: Implemented automated gated production releases requiring explicit "DEPLOY" confirmation, automated pre-deployment compressed MySQL snapshots (mysqldump .sql.gz), and selective Rsync transfers preserving user storage and .env.
-    * **Hosting Workarounds & High Availability**: Bypassed shared hosting PHP symlink restrictions via Linux native shell automation, configured SSH port 65002 with key fallbacks, and designed self-healing .env recovery routines and HTTP 503 maintenance mode.
+    * **Multi-Environment Topology & Security**: Established isolated dual-environment topology (Staging on `simkodes-staging.sranak.com` & Live Production on `simkodes.sranak.com`) on LiteSpeed Enterprise Server; secured staging subdomain with dynamic OpenSSL HTTP Basic Auth to restrict public access.
+    * **Zero Data Loss Continuous Deployment**: Implemented automated gated production releases requiring explicit "DEPLOY" confirmation, automated pre-deployment compressed MySQL snapshots (`mysqldump .sql.gz`), and selective Rsync transfers preserving user storage (`member_files/`, `officer_files/`, `storage/`) and `.env`.
+    * **Hosting Workarounds & High Availability**: Bypassed shared hosting PHP symlink restrictions via Linux native shell automation (`ln -sfn`), configured SSH port 65002 with key fallbacks, and designed self-healing `.env` recovery routines and HTTP 503 maintenance mode.
 
 - Posisi / Jabatan: Backend Developer & Technical Documentation Intern
   - Nama Perusahaan / Tempat: PPSDM MIGAS CEPU (Kementerian ESDM RI)
@@ -90,7 +90,7 @@
 
 ### 5. Keterampilan & Keahlian (Skills)
 - Keahlian Utama (Hard Skills): Software Engineering, Fullstack Web Development, DevOps & Containerization (Docker, CI/CD), RESTful API Design, Relational Database Architecture, System Security, Payment Gateway Integration
-- Software / Tools: PHP, Laravel 12, Python, Django, Java, Spring Boot, JavaScript, React, MySQL, PostgreSQL, Docker, Docker Compose, Nginx, Git, Playwright, Linux, VS Code
+- Software / Tools: PHP, Laravel 12, Python, Django, Java, Spring Boot, JavaScript, React, MySQL, PostgreSQL, SQLite, Docker, Docker Compose, LiteSpeed, Nginx, GitHub Actions, CI/CD, Git, PHPUnit, Playwright, Linux, VS Code
 - Keahlian Tambahan / Soft Skills: Leadership, Problem Solving, Technical Documentation, Agile/Scrum, Team Collaboration
 
 ### 6. Sertifikasi / Pelatihan (Opsional)

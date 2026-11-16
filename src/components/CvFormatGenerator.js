@@ -152,7 +152,7 @@ ${pengalamanList.join('\n\n')}`
 
   const skills = `### 5. Keterampilan & Keahlian (Skills)
 - Keahlian Utama (Hard Skills): Software Engineering, Fullstack Web Development, DevOps & Containerization (Docker, CI/CD), RESTful API Design, Relational Database Architecture, System Security, Payment Gateway Integration
-- Software / Tools: PHP, Laravel 12, Python, Django, Java, Spring Boot, JavaScript, React, MySQL, PostgreSQL, Docker, Docker Compose, Nginx, Git, Playwright, Linux, VS Code
+- Software / Tools: PHP, Laravel 12, Python, Django, Java, Spring Boot, JavaScript, React, MySQL, PostgreSQL, SQLite, Docker, Docker Compose, LiteSpeed, Nginx, GitHub Actions, CI/CD, Git, PHPUnit, Playwright, Linux, VS Code
 - Keahlian Tambahan / Soft Skills: Leadership, Problem Solving, Technical Documentation, Agile/Scrum, Team Collaboration`
 
   const sortedCertificates = [...certificates].sort(
