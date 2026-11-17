@@ -8,7 +8,7 @@ credential_url: https://www.dicoding.com/certificates/6RPN68129P2M
 certificate_pdf: /thumbnails/dicoding_pemrograman_javascript.pdf
 catbox_url: /thumbnails/dicoding_pemrograman_javascript.pdf
 certificate_image: 'https://d17ivq9b7rppb3.cloudfront.net/original/academy/belajar_dasar_pemrograman_javascript_logo_230421133231.jpg'
-order: 11
+order: 12
 ---
 
 Menguasai sintaks modern JavaScript (ES6+), struktur data kompleks, Object-Oriented Programming (OOP), Functional Programming, penanganan asinkron (Promise, async/await), modularisasi Node.js, pengelolaan package (NPM), serta automated testing.
