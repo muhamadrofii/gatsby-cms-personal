@@ -15,15 +15,16 @@ const SKILL_CATEGORIES = [
     summary_en:
       'Automated CI/CD, multi-environment architecture, high-performance web servers, and zero-data-loss releases.',
     skills: [
-      { name: 'GitHub Actions', desc: '7-Stage CI/CD Pipeline', tag: 'CI/CD' },
+      { name: 'GitHub Actions', desc: '8 Modular CI/CD Workflows', tag: 'CI/CD' },
       { name: 'Docker & Compose', desc: 'Containerization & Environments', tag: 'DevOps' },
       { name: 'LiteSpeed Enterprise', desc: 'High-Speed Web Server (.htaccess)', tag: 'Server' },
       { name: 'Nginx', desc: 'Reverse Proxy & Gateway', tag: 'Server' },
       { name: 'Linux Shell / Bash', desc: 'Deployment Scripting & Automation', tag: 'OS' },
       { name: 'SSH Port 65002', desc: 'Encrypted Remote Automation', tag: 'Security' },
       { name: 'Rsync Deployment', desc: 'Selective Code Transfer & Zero Data Loss', tag: 'DevOps' },
+      { name: 'Self-Healing & Ops', desc: 'Remote 503 Secret Bypass & Recovery', tag: 'Ops' },
       { name: 'AWS Cloud', desc: 'Cloud & Gen AI Practitioner', tag: 'Cloud' },
-      { name: 'OPcache & Caching', desc: 'Bytecode Cache & SQL Indexing', tag: 'Speed' },
+      { name: 'OPcache & Caching', desc: 'Bytecode Cache & Fast Lookup', tag: 'Speed' },
     ],
   },
   {
@@ -59,7 +60,7 @@ const SKILL_CATEGORIES = [
       { name: 'MySQL', desc: 'UUIDs, Relations & ACID Transactions', tag: 'RDBMS' },
       { name: 'PostgreSQL', desc: 'Relational Schemas & Foreign Keys', tag: 'RDBMS' },
       { name: 'SQLite', desc: 'In-Memory Test Runner for CI', tag: 'Testing' },
-      { name: 'Query Optimization', desc: 'B-tree Indexing & Low-Latency (<45ms)', tag: 'Tuning' },
+      { name: 'Query Optimization', desc: '81.8% N+1 Cut & Fast Lookup (1.2ms)', tag: 'Tuning' },
       { name: 'Automated Snapshot', desc: 'Pre-Deploy mysqldump .sql.gz', tag: 'Backup' },
       { name: 'Media CDN', desc: 'ImageKit & Cloudinary Decentralized Assets', tag: 'Storage' },
     ],
@@ -75,7 +76,8 @@ const SKILL_CATEGORIES = [
       'Automated unit/feature/E2E testing, multi-tier centralized authentication, anti-bot protection, and access isolation.',
     skills: [
       { name: 'PHPUnit', desc: '79 Automated Test Suites (468 Assertions)', tag: 'Testing' },
-      { name: 'Playwright', desc: 'End-to-End (E2E) Browser Automation', tag: 'QA' },
+      { name: 'Playwright POM', desc: '12 E2E Scenarios (Page Object Model)', tag: 'QA' },
+      { name: 'K6 Load Testing', desc: '100 VUs Stress Benchmark (P95 142.8ms)', tag: 'Benchmark' },
       { name: 'Role-Based Access (RBAC)', desc: '3-Tier Multi-Level Permission', tag: 'Auth' },
       { name: 'Google OAuth2', desc: 'Centralized SSO Authentication', tag: 'Auth' },
       { name: 'Anti-Bot Protection', desc: 'Google reCAPTCHA v2 & Rate Limiting', tag: 'Security' },
@@ -111,6 +113,15 @@ const RECAP_EXPERIENCES = [
       'GitHub Actions 7-Stage CI/CD · 79 Tests PHPUnit (468 Assertions) · LiteSpeed Enterprise · Zero Data Loss (mysqldump .sql.gz) · Playwright E2E · HKI Hak Cipta No. 001015965',
     highlight_en:
       'GitHub Actions 7-Stage CI/CD · 79 Tests PHPUnit (468 Assertions) · LiteSpeed Enterprise · Zero Data Loss (mysqldump .sql.gz) · Playwright E2E · Official Copyright HKI No. 001015965',
+  },
+  {
+    company: 'Kemdikti Saintek (SIMKODES)',
+    period: '2025 - 2026',
+    role: 'Maintenance & QA Automation Engineer',
+    highlight_id:
+      'Playwright POM (12 Scenarios) · 79 PHPUnit Tests · K6 Stress Testing (100 VUs, P95 142.8ms, 0% Error) · 81.8% N+1 Reduction · 8 GitHub Actions Workflows · Self-Healing Operations',
+    highlight_en:
+      'Playwright POM (12 Scenarios) · 79 PHPUnit Tests · K6 Stress Testing (100 VUs, P95 142.8ms, 0% Error) · 81.8% N+1 Reduction · 8 GitHub Actions Workflows · Self-Healing Operations',
   },
   {
     company: 'PPSDM MIGAS CEPU (KESDM RI)',
