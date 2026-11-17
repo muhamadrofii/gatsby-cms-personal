@@ -23,10 +23,10 @@
 
 ### 4. Pengalaman Kerja / Magang / Organisasi
 - Posisi / Jabatan: Maintenance & QA Automation Engineer
-  - Nama Perusahaan / Tempat: Kemdikti Saintek "Pemberdayaan Desa Binaan" (SIMKODES)
-  - Lokasi: Sranak, Bojonegoro, Indonesia (Paruh Waktu)
+  - Nama Perusahaan / Tempat: Freelance
+  - Lokasi: Remote / Indonesia
   - Periode: Nov 2026 - Present
-  - Dokumen Bukti / Portofolio: https://0xmuhamadrofii.my.id/thumbnails/simkodes_qa_automation_system_maintenance.pdf (Portofolio Proyek QA & Maintenance) | https://0xmuhamadrofii.my.id/thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf (Surat Pencatatan HKI)
+  - Dokumen Bukti / Portofolio: https://0xmuhamadrofii.my.id/thumbnails/enterprise_qa_automation_system_maintenance.pdf (Portofolio Proyek QA & Maintenance)
   - Tanggung Jawab & Pencapaian:
     * **3-Layer QA Automation Pyramid & Playwright POM**: Engineered 12 automated End-to-End (E2E) browser scenarios using Playwright with Page Object Model (POM) in TypeScript across Chromium, Firefox, and WebKit (covering authentication, CRUD operations, confirmation modals, correspondence archives, and PDF reporting) and integrated 79 backend tests with PHPUnit (468 assertions) running on in-memory SQLite runner in 4.2 seconds.
     * **Database Engineering & 81.8% Query Reduction**: Eliminated N+1 query bottlenecks using Eloquent eager loading with explicit column projection (Member::with(['category:id,name'])->select(...)), reducing query overhead by 81.8% from 1+N to 2 constant queries; established B-Tree composite indexing cutting point-lookup latency from 68ms to 1.2ms.

@@ -144,8 +144,8 @@ DOKUMEN STATIC TAMBAHAN (YANG SUDAH ADA DI STATIC SEBELUMNYA):
 [17] Letter of Acceptance (LoA) Vocatech Jurnal - Publikasi Skripsi
      - Path: /thumbnails/loa010.pdf (194.549 bytes)
      - Checksum MD5: 8a96d2b79f80accf2cd7bf0bd96cf95a
-[18] Enterprise QA Automation, DevOps & System Maintenance Deck (Kemdikti Saintek)
-     - Path: /thumbnails/simkodes_qa_automation_system_maintenance.pdf (1.783.201 bytes)
+[18] Enterprise QA Automation, DevOps & System Maintenance Deck (Freelance)
+     - Path: /thumbnails/enterprise_qa_automation_system_maintenance.pdf (1.783.201 bytes)
      - Checksum MD5: ad99c76da58e9572168c40335b9b312d
 [19] Certificate of Achievement - G-TOE (UNUGIRI Language Center Skor 480)
      - Path: /thumbnails/sertifikat_g_toe_english_unugiri.pdf (329.344 bytes)
