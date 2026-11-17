@@ -3,7 +3,7 @@ template: experience
 company: Kemdikti Saintek "Pemberdayaan Desa Binaan"
 role: Cloud DevOps & Backend Engineer
 date_range: '2025 - 2026'
-order: 2
+order: 3
 company_logo: ''
 attachment_pdf: /thumbnails/simkodes_cloud_devops_automated_cicd_pipeline.pdf
 catbox_url: /thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf

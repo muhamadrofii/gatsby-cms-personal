@@ -47,7 +47,7 @@
 - Posisi / Jabatan: Maintenance & QA Automation Engineer
   - Nama Perusahaan / Tempat: Kemdikti Saintek "Pemberdayaan Desa Binaan" (SIMKODES)
   - Lokasi: Sranak, Bojonegoro, Indonesia (Paruh Waktu)
-  - Periode: 2025 - 2026
+  - Periode: Nov 2026 - Present
   - Dokumen Bukti / Portofolio: https://0xmuhamadrofii.my.id/thumbnails/simkodes_qa_automation_system_maintenance.pdf (Portofolio Proyek QA & Maintenance) | https://0xmuhamadrofii.my.id/thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf (Surat Pencatatan HKI)
   - Tanggung Jawab & Pencapaian:
     * **3-Layer QA Automation Pyramid & Playwright POM**: Engineered 12 automated End-to-End (E2E) browser scenarios using Playwright with Page Object Model (POM) in TypeScript across Chromium, Firefox, and WebKit (covering authentication, CRUD operations, confirmation modals, correspondence archives, and PDF reporting) and integrated 79 backend tests with PHPUnit (468 assertions) running on in-memory SQLite runner in 4.2 seconds.

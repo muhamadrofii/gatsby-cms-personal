@@ -2,8 +2,8 @@
 template: experience
 company: Kemdikti Saintek "Pemberdayaan Desa Binaan"
 role: Maintenance & QA Automation Engineer
-date_range: '2025 - 2026'
-order: 3
+date_range: 'Nov 2026 - Present'
+order: 1
 company_logo: ''
 attachment_pdf: /thumbnails/simkodes_qa_automation_system_maintenance.pdf
 catbox_url: /thumbnails/surat_pencatatan_cipta_hki_kemdikti_saintek.pdf
