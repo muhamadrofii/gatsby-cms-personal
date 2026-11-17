@@ -120,8 +120,8 @@ DAFTAR FILE, CHECKSUM MD5, DAN PEMETAAN PATH STATIC LOKAL:
      - Link Catbox Asli : https://files.catbox.moe/uo8p40.pdf (Versi Lama)
      - File Lokal Static: /thumbnails/simkodes_cloud_devops_automated_cicd_pipeline.pdf
                           (alias: /thumbnails/simkodes_cloud_devops___containerized_infrastructure.pdf)
-     - Ukuran File      : 934.944 bytes (Diperbarui 15 Nov 2026)
-     - Checksum MD5     : 54f32c5aca7fd645d90ab86e5ea9e1c9
+     - Ukuran File      : 934.992 bytes (Diperbarui 17 Nov 2026)
+     - Checksum MD5     : 602a48661ab2307e0bd12f6c6ab911b5
      - Status           : SUDAH TERSEDIA DI STATIC & DIPERBARUI KE SLIDE DECK TERBARU
      - Referensi        : content/experience/acce273ae67e.md
 
