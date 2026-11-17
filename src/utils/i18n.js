@@ -19,7 +19,7 @@ const resources = {
       hero: {
         greeting: "Halo, Saya Rofi'i! 👋",
         description:
-          'Saya adalah Software Engineer dengan spesialisasi dalam Fullstack Development dan DevOps, berfokus pada pembangunan aplikasi web yang skalabel, aman, dan berkinerja tinggi. Saya terbiasa memecahkan masalah kompleks melalui kode yang bersih, arsitektur modern, dan pipeline delivery terotomasi.\n\nPengalaman saya mencakup rekayasa fullstack menggunakan Laravel, Django, Spring Boot, React, serta basis data relasional (MySQL, PostgreSQL), dikombinasikan dengan kontainerisasi dan infrastruktur cloud menggunakan Docker, Docker Compose, Nginx, serta alur kerja CI/CD otomatis.\n\nFokus utama saya adalah menghadirkan sistem yang mudah dirawat—mulai dari integrasi payment gateway yang aman dan RESTful API hingga standardisasi lingkungan deployment yang dapat direplikasi. Terbuka untuk tantangan baru dan peluang rekayasa perangkat lunak yang berdampak.',
+          'Saya adalah Software Engineer dengan spesialisasi dalam Backend, QA Automation, dan Cloud DevOps, berfokus pada pembangunan sistem dan aplikasi yang skalabel, aman, dan berkinerja tinggi. Saya terbiasa memecahkan masalah kompleks melalui kode yang bersih, arsitektur modern, dan pipeline delivery terotomasi.\n\nPengalaman saya mencakup rekayasa backend menggunakan Laravel, Django, Spring Boot, pengujian otomatis (Playwright, PHPUnit, K6), serta basis data relasional (MySQL, PostgreSQL), dikombinasikan dengan kontainerisasi dan infrastruktur cloud menggunakan Docker, Docker Compose, Nginx, serta alur kerja CI/CD otomatis.\n\nFokus utama saya adalah menghadirkan sistem yang mudah dirawat—mulai dari integrasi payment gateway yang aman dan RESTful API hingga standardisasi lingkungan deployment yang dapat direplikasi. Terbuka untuk tantangan baru dan peluang rekayasa perangkat lunak yang berdampak.',
         extra_description: 'Seluruh konten di situs ini ditulis langsung oleh saya, bukan AI.',
         about_me: 'Tentang Saya',
         newsletter: 'Newsletter Email',
@@ -28,7 +28,7 @@ const resources = {
       sidebar: {
         about_me: 'Tentang Saya',
         theme: 'Tema',
-        sidebar_bio: "Saya Rofi'i, Software Engineer dengan minat pada Fullstack & DevOps di Indonesia. Ini adalah digital garden saya. 🌱",
+        sidebar_bio: "Saya Rofi'i, Software Engineer dengan spesialisasi Backend, QA & Cloud DevOps di Indonesia. Ini adalah digital garden saya. 🌱",
       },
       sections: {
         skills_title: 'Keahlian & Alat (Skills & Tools)',
@@ -130,7 +130,7 @@ const resources = {
       hero: {
         greeting: "Hi, I'm Rofi'i! 👋",
         description:
-          "I am a Software Engineer specializing in Fullstack Development and DevOps, dedicated to building scalable, secure, and high-performance web applications. I enjoy solving complex problems through clean code, modern architectures, and automated delivery pipelines.\n\nMy experience spans fullstack engineering across Laravel, Django, Spring Boot, React, and relational databases (MySQL, PostgreSQL), combined with containerization and cloud infrastructure using Docker, Docker Compose, Nginx, and automated CI/CD workflows.\n\nI focus on shipping maintainable systems—from secure payment gateways and RESTful APIs to reproducible deployment environments. Open to new challenges and impactful engineering opportunities.",
+          "I am a Software Engineer specializing in Backend, QA Automation, and Cloud DevOps, dedicated to building scalable, secure, and high-performance applications. I enjoy solving complex problems through clean code, modern architectures, and automated delivery pipelines.\n\nMy experience spans backend engineering across Laravel, Django, Spring Boot, automated testing (Playwright, PHPUnit, K6), and relational databases (MySQL, PostgreSQL), combined with containerization and cloud infrastructure using Docker, Docker Compose, Nginx, and automated CI/CD workflows.\n\nI focus on shipping maintainable systems—from secure payment gateways and RESTful APIs to reproducible deployment environments. Open to new challenges and impactful engineering opportunities.",
         extra_description: 'Everything on this site is written by me, not AI.',
         about_me: 'About Me',
         newsletter: 'Email Newsletter',
@@ -139,7 +139,7 @@ const resources = {
       sidebar: {
         about_me: 'About Me',
         theme: 'Theme',
-        sidebar_bio: "I'm Rofi'i, a Software Engineer, Fullstack & DevOps enthusiast based in Indonesia. This is my digital garden. 🌱",
+        sidebar_bio: "I'm Rofi'i, a Software Engineer specializing in Backend, QA & Cloud DevOps based in Indonesia. This is my digital garden. 🌱",
       },
       sections: {
         skills_title: 'Skills & Tools',

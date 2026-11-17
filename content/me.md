@@ -21,7 +21,7 @@ comments_off: true
   <div style="flex: 1; min-width: 260px;">
     <h2 style="margin-top: 0; margin-bottom: 1rem;">Hi, I'm Rofi'i! 👋</h2>
     <p style="margin: 0; line-height: 1.6;">
-      I am a Software Engineer specializing in Fullstack Development and DevOps, dedicated to building scalable, secure, and maintainable applications. I enjoy solving complex problems through clean architecture, automated deployment pipelines, and continuous learning.
+      I am a Software Engineer specializing in Backend, QA Automation, and Cloud DevOps, dedicated to building scalable, secure, and maintainable applications. I enjoy solving complex problems through clean architecture, automated deployment pipelines, and continuous learning.
     </p>
   </div>
   <div style="flex-shrink: 0;">
@@ -31,7 +31,7 @@ comments_off: true
 
 My technical experience covers end-to-end web engineering—developing robust backend services and RESTful APIs using PHP (Laravel), Python (Django), and Java (Spring Boot), integrating payment gateways (Midtrans, Xendit), crafting intuitive frontends with JavaScript and React, and orchestrating containerized environments with Docker, Docker Compose, Nginx, and automated CI/CD workflows.
 
-I focus on building reliable software systems with strong security fundamentals, database design, and automated testing (Playwright). I am always enthusiastic about collaborating on impactful software engineering, fullstack, and DevOps initiatives.
+I focus on building reliable software systems with strong security fundamentals, database design, and automated testing (Playwright, PHPUnit, K6). I am always enthusiastic about collaborating on impactful software engineering, backend, QA, and cloud DevOps initiatives.
 
 ### Skills
 

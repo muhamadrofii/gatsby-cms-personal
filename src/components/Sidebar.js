@@ -29,7 +29,7 @@ export const Sidebar = ({
 
   const currentLang = (i18n.language || 'id').startsWith('en') ? 'en' : 'id'
 
-  const sidebarText = currentLang === 'id' ? t('sidebar.sidebar_bio') : (data.homeHero?.frontmatter?.sidebar_about || "I'm Rofi'i, a Software Engineer, Fullstack & DevOps enthusiast based in Indonesia. This is my digital garden. 🌱")
+  const sidebarText = currentLang === 'id' ? t('sidebar.sidebar_bio') : (data.homeHero?.frontmatter?.sidebar_about || "I'm Rofi'i, a Software Engineer specializing in Backend, QA & Cloud DevOps based in Indonesia. This is my digital garden. 🌱")
 
   const handleToggleLanguage = () => {
     const nextLang = currentLang === 'id' ? 'en' : 'id'

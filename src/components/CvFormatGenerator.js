@@ -23,7 +23,7 @@ export const generateDynamicCvContent = ({
   const website = 'https://0xmuhamadrofii.my.id'
   const linkedin = aboutMe?.frontmatter?.linkedin_link || 'https://www.linkedin.com/in/muhamad-rofi-i-80a125176'
   const github = aboutMe?.frontmatter?.github_link || 'https://github.com/muhamadrofii'
-  const status = 'Fresh Graduate / Open to Work (Software Engineer, Fullstack & DevOps)'
+  const status = 'Fresh Graduate / Open to Work (Software Engineer, Backend, QA & Cloud DevOps)'
 
   const bahasa = `### 2. Bahasa
 - Bahasa Indonesia: Penutur Asli / Native
@@ -151,7 +151,7 @@ ${bullets.join('\n')}`)
 ${pengalamanList.join('\n\n')}`
 
   const skills = `### 5. Keterampilan & Keahlian (Skills)
-- Keahlian Utama (Hard Skills): Software Engineering, Fullstack Web Development, DevOps & Containerization (Docker, CI/CD), RESTful API Design, Relational Database Architecture, System Security, Payment Gateway Integration
+- Keahlian Utama (Hard Skills): Software Engineering, Backend Architecture, QA Automation (Playwright, PHPUnit, K6), Cloud DevOps & Containerization (Docker, CI/CD), RESTful API Design, Relational Database Architecture, System Security, Payment Gateway Integration
 - Software / Tools: PHP, Laravel 12, Python, Django, Java, Spring Boot, JavaScript, React, MySQL, PostgreSQL, SQLite, Docker, Docker Compose, LiteSpeed, Nginx, GitHub Actions, CI/CD, Git, PHPUnit, Playwright, Linux, VS Code
 - Keahlian Tambahan / Soft Skills: Leadership, Problem Solving, Technical Documentation, Agile/Scrum, Team Collaboration`
 
@@ -184,7 +184,7 @@ ${pengalamanList.join('\n\n')}`
 ${certList.join('\n')}`
 
   const targetSection = `### 7. Target Lowongan & Batasan
-- Posisi yang Ditargetkan: Software Engineer / Fullstack Developer / Cloud DevOps Engineer / Backend Developer
+- Posisi yang Ditargetkan: Software Engineer / Backend Developer / QA Automation Engineer / Cloud DevOps Engineer
 - Industri yang Dituju: Information Technology (IT), Software House, FinTech, Tech Startup, Enterprise
 - Batasan / Deal-breakers: Terbuka untuk Remote, On-site, maupun Hybrid`
 

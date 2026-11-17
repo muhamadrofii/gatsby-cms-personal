@@ -274,7 +274,7 @@ export default function Index({ data }) {
                     📄 Curriculum Vitae (CV) - Muhamad Rofi'i
                   </h3>
                   <p style={{ margin: '0.3rem 0 0 0', color: 'var(--color-text-muted)', fontSize: '0.9rem' }}>
-                    Software Engineer | Fullstack Developer & DevOps
+                    Software Engineer | Backend, QA & Cloud DevOps
                   </p>
                 </div>
                 <div className="cv-preview-actions">

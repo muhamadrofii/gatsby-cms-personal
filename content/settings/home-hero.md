@@ -2,16 +2,16 @@
 template: home-hero
 title: "Halo, Saya Rofi'i!."
 description: |-
-  I am a Software Engineer specializing in Fullstack Development and DevOps, dedicated to building scalable, secure, and high-performance web applications. I enjoy solving complex problems through clean code, modern architectures, and automated delivery pipelines.
+  I am a Software Engineer specializing in Backend, QA Automation, and Cloud DevOps, dedicated to building scalable, secure, and high-performance applications. I enjoy solving complex problems through clean code, modern architectures, and automated delivery pipelines.
 
-  My experience spans fullstack engineering across Laravel, Django, Spring Boot, React, and relational databases (MySQL, PostgreSQL), combined with containerization and cloud infrastructure using Docker, Docker Compose, Nginx, and automated CI/CD workflows.
+  My experience spans backend engineering across Laravel, Django, Spring Boot, automated QA testing (Playwright, PHPUnit, K6), and relational databases (MySQL, PostgreSQL), combined with containerization and cloud infrastructure using Docker, Docker Compose, Nginx, and automated CI/CD workflows.
 
   I focus on shipping maintainable systems—from secure payment gateways and RESTful APIs to reproducible deployment environments. Open to new challenges and impactful engineering opportunities.
 extra_description: Everything on this site is written by me, not AI.
 image: /profil.png
 about_me_link: /me
 newsletter_link: https://instagram.com/em.rofii
-sidebar_about: "I'm Rofi'i, a Software Engineer, Fullstack & DevOps enthusiast based in Indonesia. This is my digital garden."
+sidebar_about: "I'm Rofi'i, a Software Engineer specializing in Backend, QA & Cloud DevOps based in Indonesia. This is my digital garden."
 notes_title: My Notes
 notes_description: Koleksi catatan seputar programming.
 projects_title: Projects
